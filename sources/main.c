@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:45 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/19 13:40:41 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/07/27 14:49:16 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 	ft_check_arg(ac, av);
 	game = ft_game_init();
 	game->mlx_ptr = mlx_init();
-	game->win_ptr = mlx_new_window(game->mlx_ptr, 1280, 720, "cube3D");
+	game->win_ptr = mlx_new_window(game->mlx_ptr, 1280, 720, "cub3D");
 	mlx_hook(game->win_ptr, 17, 0L, ft_quit, game);
 	mlx_loop(game->mlx_ptr);
 	return (0);
