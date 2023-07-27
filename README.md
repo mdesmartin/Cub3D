@@ -12,6 +12,6 @@ The main objective of Cub3D is to create a visually immersive 3D game using rayc
 - Game mechanics: The project implements game mechanics such as player movement, collision detection, interaction with objects, and enemy AI.
 - User interface: Cub3D includes a graphical user interface (GUI) that displays game information, such as the player's health and score.
 
-*By working on Cub3D, you will gain practical experience in graphics programming, game development concepts, and problem-solving skills. It offers an opportunity to apply algorithms, optimize performance, and create an interactive game environment.
+*By working on Cub3D, you will gain practical experience in graphics programming, game development concepts, and problem-solving skills. It offers an opportunity to apply algorithms, optimize performance, and create an interactive game environment.*
 
 **Note:** This project was developed as part of the 42 school curriculum and should be considered a learning exercise rather than a fully-featured commercial game engine.*
