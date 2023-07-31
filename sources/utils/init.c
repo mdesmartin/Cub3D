@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/27 17:37:26 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 14:26:09 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_check_texture_file(t_data *game, char *texture_file)
 		if (!msg)
 		{
 			ft_error(game, "Error when creating error message");
-			return (12);
+			return ;
 		}
 		perror(msg);
 		free(msg);
@@ -32,7 +32,7 @@ static void	ft_check_texture_file(t_data *game, char *texture_file)
 	}
 	close(fd);
 }
-
+// Test function used because the final texture are not yet implemented 
 static void	ft_check_textures(t_data *game)
 {
 	ft_check_texture_file(game, game->path_north);
@@ -41,20 +41,29 @@ static void	ft_check_textures(t_data *game)
 	ft_check_texture_file(game, game->path_west);
 }
 
-static void	ft_load_textures(t_data *game)
+static void	ft_init_textures(t_data *game)
+{
+	game->path_north = ft_strdup("./img/test.xpm");
+	game->path_south = ft_strdup("./img/test.xpm");
+	game->path_east = ft_strdup("./img/test.xpm");
+	game->path_west = ft_strdup("./img/test.xpm");
+}
+
+void	ft_load_textures(t_data *game)
 {
 	int	box_size;
 
 	box_size = 64;
+ft_init_textures(game);
 	ft_check_textures(game);
 	game->north = mlx_xpm_file_to_image(game->mlx_ptr,
-			game->path_north, box_size, box_size);
+			game->path_north, &box_size, &box_size);
 	game->south = mlx_xpm_file_to_image(game->mlx_ptr,
-			game->path_south, box_size, box_size);
+			game->path_south, &box_size, &box_size);
 	game->east = mlx_xpm_file_to_image(game->mlx_ptr,
-			game->path_east, box_size, box_size);
+			game->path_east, &box_size, &box_size);
 	game->west = mlx_xpm_file_to_image(game->mlx_ptr,
-			game->path_west, box_size, box_size);
+			game->path_west, &box_size, &box_size);
 	if (!game->north || !game->south || !game->east || !game->west)
 	{
 		ft_dprintf(2, "Xpm convertion failed !");

@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/27 17:09:07 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 13:20:03 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_data
 
 // Game initiation
 t_data	*ft_game_init(void);
+void	ft_load_textures(t_data *game);
 
 // Utils
 void	ft_check_arg(int ac, char **av);
