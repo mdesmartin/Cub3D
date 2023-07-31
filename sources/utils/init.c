@@ -6,11 +6,11 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/31 14:26:09 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 15:36:26 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
+#include "../../includes/cube3d.h"
 
 static void	ft_check_texture_file(t_data *game, char *texture_file)
 {

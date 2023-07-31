@@ -6,14 +6,14 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/31 14:38:48 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 15:35:32 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
-# include "libft/sources/libft.h"
-# include "./minilibx-linux/mlx.h"
+# include "../libraries/libft/sources/libft.h"
+# include "../libraries/minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 
