@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:45 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/27 16:14:13 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 14:41:11 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = mlx_new_window(game->mlx_ptr, 1280, 720, "cub3D");
 	ft_load_textures(game);
+	mlx_hook(game->win_ptr, 2, 1L << 0, ft_key, game);
 	mlx_hook(game->win_ptr, 17, 0L, ft_quit, game);
 	mlx_loop(game->mlx_ptr);
 	return (0);

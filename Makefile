@@ -2,7 +2,7 @@ NAME = cub3D
 DEBUG = no
 
 CFLAGS = -Wall -Wextra -Werror
-MLXFlAGS = -Lmlx -lmlx -L sources/minilibx-linux/ -Imlx -lXext -lX11 -lm 
+MLXFlAGS = -L sources/minilibx-linux/ -lmlx -lXext -lX11 -lm 
 
 DFLAGS = -g3 -fsanitize=leak -fsanitize=address -fsanitize=pointer-subtract -fsanitize=pointer-compare -fsanitize=undefined
 
@@ -14,6 +14,7 @@ DIR_SRC =	sources/
 
 LST_SRC =	main.c				\
 			utils/init.c		\
+			utils/move.c		\
 			utils/close.c		\
 			utils/check_arg.c
 			
@@ -33,6 +34,7 @@ all: lib
 
 lib :
 	@$(MAKE) -C $(DIR_SRC)libft
+	@$(MAKE) -C $(DIR_SRC)minilibx-linux
 
 debug :
 	@$(MAKE) re DEBUG=yes
@@ -40,6 +42,7 @@ debug :
 clean:
 	@rm -rf $(DIR_OBJ)
 	@$(MAKE) -C $(DIR_SRC)libft clean
+	@$(MAKE) -C $(DIR_SRC)minilibx-linux
 
 fclean: clean
 	@rm -rf $(NAME)
@@ -49,7 +52,11 @@ fclean: clean
 re: fclean
 	@$(MAKE) all
 
-.PHONY: all clean fclean re lib debug
+run: fclean
+	@$(MAKE) -C $(DIR_SRC)libft
+	$(MAKE) $(NAME)
+
+.PHONY: all clean fclean re lib debug run
 
 #  ===========================  COMPILATION  ===========================  #
 
