@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:14:33 by mvogel            #+#    #+#             */
-/*   Updated: 2023/07/27 17:36:17 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 14:59:29 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
-
+#include "../includes/cube3d.h"
 int	parsing(t_data	*game, char **av)
 {
 	get_description(game, av);

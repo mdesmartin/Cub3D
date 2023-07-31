@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/27 16:44:41 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 15:01:57 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
-# include "libft/sources/libft.h"
-# include "./minilibx-linux/mlx.h"
+# include "../libraries/libft/sources/libft.h"
+# include "../libraries/minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 

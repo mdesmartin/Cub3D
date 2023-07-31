@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:26:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/27 15:12:15 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 15:08:44 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
+#include "../../includes/cube3d.h"
 
 static void	ft_check_map_name(char *directory)
 {

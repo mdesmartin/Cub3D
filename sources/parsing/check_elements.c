@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:34:55 by mvogel            #+#    #+#             */
-/*   Updated: 2023/07/27 17:35:34 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 14:59:22 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
-
+#include "../includes/cube3d.h"
 int	find_element(t_data *game, char *element, int size)
 {
 	int	i;

@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
-
+#include "../includes/cube3d.h"
 int	get_map_size(char **av)
 {
 	int		fd;
