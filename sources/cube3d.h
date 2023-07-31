@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/31 13:20:03 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 14:38:48 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "./minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
+
+# define KEY_ESC 65307
 
 typedef struct s_data
 {
@@ -61,6 +63,7 @@ void	ft_load_textures(t_data *game);
 void	ft_check_arg(int ac, char **av);
 int		ft_quit(t_data *data);
 void	ft_error(t_data *data, char *str);
+int		ft_key(int key, t_data *game);
 
 //parsing
 void	fill_map(t_data	*game, char **av);
