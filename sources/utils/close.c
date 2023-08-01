@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:27 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/31 15:36:26 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/01 12:19:13 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ static void	ft_free_textures(t_data *game)
 		mlx_destroy_image(game->mlx_ptr, game->east);
 	if (game->west)
 		mlx_destroy_image(game->mlx_ptr, game->west);
+	if (game->path_north)
+		free(game->path_north);
+	if (game->path_south)
+		free(game->path_south);
+	if (game->path_east)
+		free(game->path_east);
+	if (game->path_west)
+		free(game->path_west);
 }
 
 int	ft_quit(t_data *game)
@@ -31,6 +39,7 @@ int	ft_quit(t_data *game)
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 	game->mlx_ptr = NULL;
+	free(game);
 	exit(0);
 }
 
