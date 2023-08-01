@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/31 16:06:48 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 17:11:11 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,9 @@ t_data	*ft_game_init(void)
 		perror("Memory allocation failed for t_data game");
 		exit (12);
 	}
+game->x_player = 100;
+game->y_player = 100;
+game->img = NULL;
+game->addr = NULL;
 	return (game);
 }

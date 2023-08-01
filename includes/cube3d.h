@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/31 15:35:32 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/07/31 16:50:13 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 # include <stdlib.h>
 
 # define KEY_ESC 65307
+# define KEY_W 65362
+# define KEY_S 65364
+# define KEY_A 65361
+# define KEY_D 65363
+# define KEY_UP 119
+# define KEY_DOWN 115
+# define KEY_LEFT 97
+# define KEY_RIGHT 100
 
 typedef struct s_data
 {
@@ -53,7 +61,14 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 
+	//pixel
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }				t_data;
+
 
 // Game initiation
 t_data	*ft_game_init(void);
@@ -64,6 +79,7 @@ void	ft_check_arg(int ac, char **av);
 int		ft_quit(t_data *data);
 void	ft_error(t_data *data, char *str);
 int		ft_key(int key, t_data *game);
+void	ft_mlx_pixel_put(t_data *game, int x, int y, int color);
 
 //parsing
 void	fill_map(t_data	*game, char **av);
