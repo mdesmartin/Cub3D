@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/31 17:11:11 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/02 15:00:04 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static void	ft_check_texture_file(t_data *game, char *texture_file)
 	}
 	close(fd);
 }
-// Test function used because the final texture are not yet implemented 
+// Test function used because the final texture are not yet implemented
+
 static void	ft_check_textures(t_data *game)
 {
 	ft_check_texture_file(game, game->path_north);
@@ -81,8 +82,9 @@ t_data	*ft_game_init(void)
 		perror("Memory allocation failed for t_data game");
 		exit (12);
 	}
-game->x_player = 100;
-game->y_player = 100;
+game->x_player = 600;
+game->y_player = 300;
+game->degree = 0;
 game->img = NULL;
 game->addr = NULL;
 	return (game);
