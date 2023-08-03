@@ -6,22 +6,23 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 15:04:47 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 15:39:17 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
+// square with black sides
 void	ft_draw_square(t_data *game, int x, int y, int color)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < BOX_SIZE)
+	i = 1;
+	while (i < BOX_SIZE - 1)
 	{
-		j = 0;
-		while (j < BOX_SIZE)
+		j = 1;
+		while (j < BOX_SIZE - 1)
 		{
 			ft_mlx_pixel_put(game, x * BOX_SIZE + i, y * BOX_SIZE + j, color);
 			j++;
