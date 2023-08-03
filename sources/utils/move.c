@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 15:16:58 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 15:32:44 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	ft_render_player(t_data *game, int x, int y)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < PLAYER_SIZE)
+	i = -PLAYER_SIZE / 2;
+	while (i < PLAYER_SIZE / 2)
 	{
-		j = 0;
-		while (j < PLAYER_SIZE)
+		j = -PLAYER_SIZE / 2;
+		while (j < PLAYER_SIZE / 2)
 		{
 			if (x >= 0 && x < 1280 && y >= 0 && y < 720)
 				ft_mlx_pixel_put(game, x + i, y + j, 0xff0000);
@@ -51,13 +51,14 @@ int	ft_key(int key, t_data *game)
 {
 	if (key == KEY_ESC)
 		ft_quit(game);
-	if ((key == KEY_W || key == KEY_UP) && game->y_player > 0)
+	if ((key == KEY_W || key == KEY_UP) && game->y_player - PLAYER_SIZE / 2 > 0)
 		ft_move(game, &game->y_player, -1, 0);
-	if ((key == KEY_S || key == KEY_DOWN) && game->y_player + PLAYER_SIZE < 720)
+	if ((key == KEY_S || key == KEY_DOWN)
+		&& game->y_player + PLAYER_SIZE / 2 < 720)
 		ft_move(game, &game->y_player, 1, 0);
-	if (key == KEY_LEFT && game->x_player > 0)
+	if (key == KEY_LEFT && game->x_player - PLAYER_SIZE / 2 > 0)
 		ft_move(game, &game->x_player, -1, 0);
-	if (key == KEY_RIGHT && game->x_player + PLAYER_SIZE < 1280)
+	if (key == KEY_RIGHT && game->x_player + PLAYER_SIZE / 2 < 1280)
 		ft_move(game, &game->x_player, 1, 0);
 	if (key == KEY_A)
 		ft_move(game, &game->x_player, 0, -(M_PI / 60));
