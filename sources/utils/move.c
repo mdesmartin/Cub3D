@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 11:26:21 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 12:53:32 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int	ft_key(int key, t_data *game)
 	if (key == KEY_RIGHT && game->x_player + PLAYER_SIZE < 1280)
 		ft_move(game, &game->x_player, 1, 0);
 	if (key == KEY_A)
-		ft_move(game, &game->x_player, 0, -(M_PI / 90));
+		ft_move(game, &game->x_player, 0, -(M_PI / 60));
 	if (key == KEY_D)
-		ft_move(game, &game->x_player, 0, M_PI / 90);
+		ft_move(game, &game->x_player, 0, M_PI / 60);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/02 15:00:04 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 12:51:31 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,14 @@ static void	ft_check_texture_file(t_data *game, char *texture_file)
 
 static void	ft_check_textures(t_data *game)
 {
+game->path_north = ft_strdup("./textures/test.xpm");
+game->path_south = ft_strdup("./textures/test.xpm");
+game->path_east = ft_strdup("./textures/test.xpm");
+game->path_west = ft_strdup("./textures/test.xpm");
 	ft_check_texture_file(game, game->path_north);
 	ft_check_texture_file(game, game->path_south);
 	ft_check_texture_file(game, game->path_east);
 	ft_check_texture_file(game, game->path_west);
-}
-
-static void	ft_init_textures(t_data *game)
-{
-	game->path_north = ft_strdup("./textures/test.xpm");
-	game->path_south = ft_strdup("./textures/test.xpm");
-	game->path_east = ft_strdup("./textures/test.xpm");
-	game->path_west = ft_strdup("./textures/test.xpm");
 }
 
 void	ft_load_textures(t_data *game)
@@ -55,7 +51,6 @@ void	ft_load_textures(t_data *game)
 	int	box_size;
 
 	box_size = 64;
-ft_init_textures(game);
 	ft_check_textures(game);
 	game->north = mlx_xpm_file_to_image(game->mlx_ptr,
 			game->path_north, &box_size, &box_size);
@@ -72,6 +67,18 @@ ft_init_textures(game);
 	}
 }
 
+void	ft_player_start_direction(t_data *game)
+{
+	if (game->direction == 'N')
+		game->degree = -M_PI_2;
+	else if (game->direction == 'S')
+		game->degree = M_PI_2;
+	else if (game->direction == 'E')
+		game->degree = 0;
+	else if (game->direction == 'W')
+		game->degree = M_PI;
+}
+
 t_data	*ft_game_init(void)
 {
 	t_data	*game;
@@ -82,9 +89,10 @@ t_data	*ft_game_init(void)
 		perror("Memory allocation failed for t_data game");
 		exit (12);
 	}
+game->direction = 'S';
+	ft_player_start_direction(game);
 game->x_player = 600;
 game->y_player = 300;
-game->degree = 0;
 game->img = NULL;
 game->addr = NULL;
 	return (game);
