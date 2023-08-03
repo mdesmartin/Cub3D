@@ -15,8 +15,9 @@ DIR_SRC =	sources/
 LST_SRC =	main.c				\
 			utils/init.c		\
 			utils/move.c		\
+			utils/draw.c		\
 			utils/close.c		\
-			utils/put_pixel.c	\
+			utils/draw_map.c	\
 			utils/check_arg.c
 			
 SOURCES	=	$(addprefix $(DIR_SRC), $(LST_SRC))

@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 14:06:25 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 15:15:22 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	ft_map_gen(t_data *game)
 	game->map[1] = ft_strdup("1000001");
 	game->map[2] = ft_strdup("1011101");
 	game->map[3] = ft_strdup("1010101");
-	game->map[4] = ft_strdup("100N001");
+	game->map[4] = ft_strdup("1000001");
 	game->map[5] = ft_strdup("1111111");
 }
 
@@ -103,8 +103,8 @@ t_data	*ft_game_init(void)
 	ft_map_gen(game);
 game->direction = 'S';
 	ft_player_start_direction(game);
-game->x_player = 4 * BOX_SIZE;
-game->y_player = 5 * BOX_SIZE;
+game->x_player = 3 * BOX_SIZE  + BOX_SIZE / 2;
+game->y_player = 4 * BOX_SIZE + BOX_SIZE / 2;
 game->img = NULL;
 game->addr = NULL;
 	return (game);

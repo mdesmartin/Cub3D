@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:45 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/02 14:43:44 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 15:16:11 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	ft_first_img(t_data *game)
 	game->img = mlx_new_image(game->mlx_ptr, 1280, 720);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
 			&game->line_length, &game->endian);
+	ft_draw_map(game, game->map);
 	ft_render_player(game, game->x_player, game->y_player);
+	ft_draw_fov(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img, 0, 0);
 	if (game->img)
 		mlx_destroy_image(game->mlx_ptr, game->img);

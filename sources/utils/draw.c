@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel.c                                        :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 12:51:51 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 15:15:45 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,24 @@ void	ft_calculate_line(t_data *game, t_line *line, int color)
 	}
 }
 
-void	ft_draw_line(t_data *game)
+void	ft_draw_fov(t_data *game)
 {
 	ft_add_x_line(game, &game->line,
 		game->x_player + PLAYER_SIZE / 2, 1280 / 2);
 	ft_add_y_line(game, &game->line,
 		game->y_player + PLAYER_SIZE / 2, 720 / 2);
-	ft_calculate_line(game, &game->line, 0x00ff00);
+	ft_calculate_line(game, &game->line, GREEN);
 	game->degree += M_PI / 6;
 	ft_add_x_line(game, &game->line,
 		game->x_player + PLAYER_SIZE / 2, 1280 / 2);
 	ft_add_y_line(game, &game->line,
 		game->y_player + PLAYER_SIZE / 2, 720 / 2);
-	ft_calculate_line(game, &game->line, 0x0000ff);
+	ft_calculate_line(game, &game->line, BLUE);
 	game->degree -= M_PI / 3;
 	ft_add_x_line(game, &game->line,
 		game->x_player + PLAYER_SIZE / 2, 1280 / 2);
 	ft_add_y_line(game, &game->line,
 		game->y_player + PLAYER_SIZE / 2, 720 / 2);
-	ft_calculate_line(game, &game->line, 0x0000ff);
+	ft_calculate_line(game, &game->line, BLUE);
 	game->degree += M_PI / 6;
 }
