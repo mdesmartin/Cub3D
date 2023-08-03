@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 15:11:28 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 17:35:56 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@
 # define WHITE		0xffffff
 # define YELLOW		0xffff00
 
-# define PLAYER_SIZE 16
-# define BOX_SIZE 80
+# define PLAYER_SIZE	16
+# define BOX_SIZE		80
+# define STEP_LENGTH	4
 
 typedef struct s_line
 {
@@ -126,6 +127,10 @@ void	ft_draw_fov(t_data *game);
 void	ft_calculate_line(t_data *game, t_line *line, int color);
 void	ft_add_x_line(t_data *game, t_line *line, int x0, int x1);
 void	ft_add_y_line(t_data *game, t_line *line, int y0, int y1);
+
+// Game Play
+int		ft_check_collision(t_data *game, int new_x, int new_y);
+
 
 //parsing
 void	fill_map(t_data	*game, char **av);

@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 15:32:44 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 17:34:42 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_render_player(t_data *game, int x, int y)
 
 static void	ft_move(t_data *game, int *pos, int direction, float rotation)
 {
-	*pos += 4 * direction;
+	*pos += STEP_LENGTH * direction;
 	game->degree += rotation;
 	game->img = mlx_new_image(game->mlx_ptr, 1280, 720);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
@@ -51,14 +51,17 @@ int	ft_key(int key, t_data *game)
 {
 	if (key == KEY_ESC)
 		ft_quit(game);
-	if ((key == KEY_W || key == KEY_UP) && game->y_player - PLAYER_SIZE / 2 > 0)
+	if ((key == KEY_W || key == KEY_UP)
+		&& ft_check_collision(game, game->x_player, game->y_player - 1) == 0)
 		ft_move(game, &game->y_player, -1, 0);
 	if ((key == KEY_S || key == KEY_DOWN)
-		&& game->y_player + PLAYER_SIZE / 2 < 720)
+		&& ft_check_collision(game, game->x_player, game->y_player + 1) == 0)
 		ft_move(game, &game->y_player, 1, 0);
-	if (key == KEY_LEFT && game->x_player - PLAYER_SIZE / 2 > 0)
+	if (key == KEY_LEFT
+		&& ft_check_collision(game, game->x_player - 1, game->y_player) == 0)
 		ft_move(game, &game->x_player, -1, 0);
-	if (key == KEY_RIGHT && game->x_player + PLAYER_SIZE / 2 < 1280)
+	if (key == KEY_RIGHT
+		&& ft_check_collision(game, game->x_player + 1, game->y_player) == 0)
 		ft_move(game, &game->x_player, 1, 0);
 	if (key == KEY_A)
 		ft_move(game, &game->x_player, 0, -(M_PI / 60));

@@ -12,13 +12,14 @@ endif
 
 DIR_SRC =	sources/
 
-LST_SRC =	main.c				\
-			utils/init.c		\
-			utils/move.c		\
-			utils/draw.c		\
-			utils/close.c		\
-			utils/draw_map.c	\
-			utils/check_arg.c
+LST_SRC =	main.c						\
+			utils/init.c				\
+			utils/move.c				\
+			utils/draw.c				\
+			utils/close.c				\
+			utils/draw_map.c			\
+			utils/check_arg.c			\
+			utils/player_collision.c
 			
 SOURCES	=	$(addprefix $(DIR_SRC), $(LST_SRC))
 
