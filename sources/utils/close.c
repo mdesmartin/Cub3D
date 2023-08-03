@@ -6,11 +6,28 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:27 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/01 12:19:13 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 14:08:53 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
+
+void	ft_free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
+	}
+	free(tab);
+	tab = NULL;
+}
 
 static void	ft_free_textures(t_data *game)
 {
@@ -35,6 +52,7 @@ static void	ft_free_textures(t_data *game)
 int	ft_quit(t_data *game)
 {
 	ft_free_textures(game);
+	ft_free_tab(game->map);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
