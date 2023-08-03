@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/02 14:40:41 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 11:02:37 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+
+# define PLAYER_SIZE 5
 
 typedef struct s_line
 {
@@ -100,7 +102,8 @@ int		ft_key(int key, t_data *game);
 // Draw
 void	ft_render_player(t_data *game, int x, int y);
 void	ft_mlx_pixel_put(t_data *game, int x, int y, int color);
-void	ft_draw_line(t_data *game, t_line *line);
+void	ft_draw_line(t_data *game);
+void	ft_calculate_line(t_data *game, t_line *line, int color);
 void	ft_add_x_line(t_data *game, t_line *line, int x0, int x1);
 void	ft_add_y_line(t_data *game, t_line *line, int y0, int y1);
 

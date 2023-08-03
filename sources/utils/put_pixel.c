@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/02 14:59:12 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 11:25:37 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,6 @@ void	ft_mlx_pixel_put(t_data *game, int x, int y, int color)
 
 	dst = game->addr + (y * game->line_length + x * (game->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
-}
-
-void	ft_draw_line(t_data *game, t_line *line)
-{
-	float	e2;
-	int		i;
-
-	i = 0;
-	line->e = line->dx + line->dy;
-	while (i < 100)
-	{
-		if (line->x0 > 0 && line->x0 < 1280 && line->y0 > 0 && line->y0 < 720)
-			ft_mlx_pixel_put(game, line->x0, line->y0, 0x00ff00);
-		e2 = 2 * line->e;
-		if (e2 >= line->dy)
-		{
-			line->e += line->dy;
-			line->x0 += line->sx;
-		}
-		if (e2 <= line->dx)
-		{
-			line->e += line->dx;
-			line->y0 += line->sy;
-		}
-		i++;
-	}
 }
 
 void	ft_add_x_line(t_data *game, t_line *line, int x0, int x1)
@@ -73,4 +47,52 @@ void	ft_add_y_line(t_data *game, t_line *line, int y0, int y1)
 		line->sy = 1;
 	else
 		line->sy = -1;
+}
+
+void	ft_calculate_line(t_data *game, t_line *line, int color)
+{
+	float	e2;
+	int		i;
+
+	i = 0;
+	line->e = line->dx + line->dy;
+	while (i < 100)
+	{
+		if (line->x0 > 0 && line->x0 < 1280 && line->y0 > 0 && line->y0 < 720)
+			ft_mlx_pixel_put(game, line->x0, line->y0, color);
+		e2 = 2 * line->e;
+		if (e2 >= line->dy)
+		{
+			line->e += line->dy;
+			line->x0 += line->sx;
+		}
+		if (e2 <= line->dx)
+		{
+			line->e += line->dx;
+			line->y0 += line->sy;
+		}
+		i++;
+	}
+}
+
+void	ft_draw_line(t_data *game)
+{
+	ft_add_x_line(game, &game->line,
+		game->x_player + PLAYER_SIZE / 2, 1280 / 2);
+	ft_add_y_line(game, &game->line,
+		game->y_player + PLAYER_SIZE / 2, 720 / 2);
+	ft_calculate_line(game, &game->line, 0x00ff00);
+	game->degree += M_PI / 6;
+	ft_add_x_line(game, &game->line,
+		game->x_player + PLAYER_SIZE / 2, 1280 / 2);
+	ft_add_y_line(game, &game->line,
+		game->y_player + PLAYER_SIZE / 2, 720 / 2);
+	ft_calculate_line(game, &game->line, 0x0000ff);
+	game->degree -= M_PI / 3;
+	ft_add_x_line(game, &game->line,
+		game->x_player + PLAYER_SIZE / 2, 1280 / 2);
+	ft_add_y_line(game, &game->line,
+		game->y_player + PLAYER_SIZE / 2, 720 / 2);
+	ft_calculate_line(game, &game->line, 0x0000ff);
+	game->degree += M_PI / 6;
 }
