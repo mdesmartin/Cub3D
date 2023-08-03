@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/07/31 15:01:57 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 14:55:14 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,21 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct s_data
+typedef struct s_parsing
 {
 	char	**description;
+
+	int		map_north;
+	int		map_south;
+	int		map_east;
+	int		map_west;
+
+	int		first_wall_x;
+	int		first_wall_y;
+}				t_parsing;
+
+typedef struct s_data
+{
 	char	**map;
 
 	//path to texture
@@ -37,13 +49,8 @@ typedef struct s_data
 
 
 	//colors
-	int		r_floor;
-	int		g_floor;
-	int		b_floor;
-
-	int		r_ceiling;
-	int		g_ceiling;
-	int		b_ceiling;
+	int		*floor_color;
+	int		*ceiling_color;
 
 	//player
 	int		x_player;

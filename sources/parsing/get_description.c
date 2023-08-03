@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../includes/cube3d.h"
+
 int	get_map_size(char **av)
 {
 	int		fd;
@@ -19,17 +20,17 @@ int	get_map_size(char **av)
 
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
-		error_n_exit("Error\nFailed to open map\n");
+		return (ft_dprintf(2, "Error\nFailed to open map\n"), 1);
 	size = 1;
 	while (read(fd, &buff, 1))
 		size++;
 	if (size < 2)
-		return (close(fd), error_n_exit("Error\nMap is empty\n"), -1);
+		return (close(fd), ft_dprintf(2, "Error\nMap is empty\n"), 1);
 	close(fd);
 	return (size);
 }
 
-void	get_description(t_data	*game, char **av)
+void	get_description(t_parsing *parsed, char **av)
 {
 	char	*line;
 	int		fd;
@@ -38,19 +39,20 @@ void	get_description(t_data	*game, char **av)
 	size = get_map_size(av);
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
-		error_n_exit("Error\nFailed to open map\n");
+		return (ft_dprintf(2, "Error\nFailed to open map\n"), 1);
 	line = (char *)ft_calloc(size, sizeof(char));
 	if (!line)
-		error_n_exit("Error\nFailed to malloc map\n");
+		return (ft_dprintf(2, "Error\nFailed to malloc map\n"), 1);
 	if (read(fd, line, size) == -1)
 	{
 		close(fd);
 		free(line);
-		error_n_exit("Error\nFailed to read map\n");
+		ft_dprintf(2, "Error\nFailed to read map\n");
+		return (1);
 	}
 	close(fd);
-	game->description = ft_split(line, '\n');
+	parsed->description = ft_split(line, '\n');
 	free(line);
-	if (!game->description)
-		error_n_exit("Error\nFailed to split map\n");
+	if (!parsed->description)
+		return (ft_dprintf(2, "Error\nFailed to split map\n"), 1);
 }

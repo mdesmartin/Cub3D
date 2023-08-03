@@ -43,11 +43,11 @@ debug :
 clean:
 	@rm -rf $(DIR_OBJ)
 	@$(MAKE) -C $(DIR_LIB)libft clean
-	@$(MAKE) -C $(DIR_LIB)minilibx-linux clean
 
 fclean: clean
 	@rm -rf $(NAME)
 	@$(MAKE) -C $(DIR_LIB)libft fclean
+	@$(MAKE) -C $(DIR_LIB)minilibx-linux clean
 	@printf "$(RED)$(NAME) fclean done!\n$(END)"
 
 re: fclean
