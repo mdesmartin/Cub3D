@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 12:53:32 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 14:03:15 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_render_player(t_data *game, int x, int y)
 
 static void	ft_move(t_data *game, int *pos, int direction, float rotation)
 {
-	*pos += 10 * direction;
+	*pos += BOX_SIZE * direction;
 	game->degree += rotation;
 	game->img = mlx_new_image(game->mlx_ptr, 1280, 720);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,

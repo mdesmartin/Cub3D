@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 11:02:37 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 14:04:59 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define KEY_RIGHT 65363
 
 # define PLAYER_SIZE 5
+# define BOX_SIZE 80
 
 typedef struct s_line
 {

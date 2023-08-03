@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 12:51:31 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/03 14:06:25 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_load_textures(t_data *game)
 {
 	int	box_size;
 
-	box_size = 64;
+	box_size = BOX_SIZE;
 	ft_check_textures(game);
 	game->north = mlx_xpm_file_to_image(game->mlx_ptr,
 			game->path_north, &box_size, &box_size);
@@ -67,7 +67,7 @@ void	ft_load_textures(t_data *game)
 	}
 }
 
-void	ft_player_start_direction(t_data *game)
+static void	ft_player_start_direction(t_data *game)
 {
 	if (game->direction == 'N')
 		game->degree = -M_PI_2;
@@ -77,6 +77,17 @@ void	ft_player_start_direction(t_data *game)
 		game->degree = 0;
 	else if (game->direction == 'W')
 		game->degree = M_PI;
+}
+
+static void	ft_map_gen(t_data *game)
+{
+	game->map = ft_calloc(7, sizeof(char *));
+	game->map[0] = ft_strdup("1111111");
+	game->map[1] = ft_strdup("1000001");
+	game->map[2] = ft_strdup("1011101");
+	game->map[3] = ft_strdup("1010101");
+	game->map[4] = ft_strdup("100N001");
+	game->map[5] = ft_strdup("1111111");
 }
 
 t_data	*ft_game_init(void)
@@ -89,10 +100,11 @@ t_data	*ft_game_init(void)
 		perror("Memory allocation failed for t_data game");
 		exit (12);
 	}
+	ft_map_gen(game);
 game->direction = 'S';
 	ft_player_start_direction(game);
-game->x_player = 600;
-game->y_player = 300;
+game->x_player = 4 * BOX_SIZE;
+game->y_player = 5 * BOX_SIZE;
 game->img = NULL;
 game->addr = NULL;
 	return (game);
