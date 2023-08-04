@@ -19,6 +19,7 @@ LST_SRC =	main.c						\
 			utils/close.c				\
 			utils/draw_map.c			\
 			utils/check_arg.c			\
+			utils/ray_casting.c			\
 			utils/player_collision.c
 			
 SOURCES	=	$(addprefix $(DIR_SRC), $(LST_SRC))

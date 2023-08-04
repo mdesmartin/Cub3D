@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 17:49:32 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/04 14:03:29 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,10 @@ void	ft_draw_fov(t_data *game);
 void	ft_calculate_line(t_data *game, t_line *line, int color);
 void	ft_add_x_line(t_data *game, t_line *line, int x0, int x1);
 void	ft_add_y_line(t_data *game, t_line *line, int y0, int y1);
+
+// Ray casting
+int		ft_ray_collision(t_data *game, int new_x, int new_y);
+void	ft_draw_ray(t_data *game, t_line *line, int color);
 
 // Game Play
 int		ft_check_collision(t_data *game, int new_x, int new_y);
