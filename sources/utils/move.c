@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 17:34:42 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/04 13:45:06 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ int	ft_key(int key, t_data *game)
 	if ((key == KEY_S || key == KEY_DOWN)
 		&& ft_check_collision(game, game->x_player, game->y_player + 1) == 0)
 		ft_move(game, &game->y_player, 1, 0);
-	if (key == KEY_LEFT
+	if (key == KEY_A
 		&& ft_check_collision(game, game->x_player - 1, game->y_player) == 0)
 		ft_move(game, &game->x_player, -1, 0);
-	if (key == KEY_RIGHT
+	if (key == KEY_D
 		&& ft_check_collision(game, game->x_player + 1, game->y_player) == 0)
 		ft_move(game, &game->x_player, 1, 0);
-	if (key == KEY_A)
+	if (key == KEY_LEFT)
 		ft_move(game, &game->x_player, 0, -(M_PI / 60));
-	if (key == KEY_D)
+	if (key == KEY_RIGHT)
 		ft_move(game, &game->x_player, 0, M_PI / 60);
 	return (0);
 }
