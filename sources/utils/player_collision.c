@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:42:00 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/04 13:51:16 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/05 16:50:09 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	ft_check_collision(t_data *game, int new_x, int new_y)
 	int	new_x_s;
 
 	player_radius = PLAYER_SIZE / 2;
-	if (new_x - player_radius < 0 || new_x + player_radius > 1280
-		|| new_y - player_radius < 0 || new_y + player_radius > 720)
+	if (new_x - player_radius < 0 || new_x + player_radius > WIN_WIDTH
+		|| new_y - player_radius < 0 || new_y + player_radius > WIN_HEIGTH)
 		return (1);
 	new_y_w = (new_y + player_radius - 1) / 80;
 	new_y_e = (new_y - player_radius) / 80;

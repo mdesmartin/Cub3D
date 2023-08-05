@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/05 13:02:07 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/05 16:48:16 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <math.h>
 
+# define WIN_WIDTH 1280
+# define WIN_HEIGTH 720
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_S 115
@@ -118,13 +120,13 @@ void	ft_check_arg(int ac, char **av);
 int		ft_quit(t_data *data);
 void	ft_error(t_data *data, char *str);
 int		ft_key(int key, t_data *game);
+void	ft_position_cal(t_data *game, int forward, int strafe);
 
 // Draw
 void	ft_draw_map(t_data *game, char **map);
 void	ft_render_player(t_data *game, int x, int y);
 void	ft_mlx_pixel_put(t_data *game, int x, int y, int color);
 void	ft_draw_fov(t_data *game);
-void	ft_calculate_line(t_data *game, t_line *line, int color);
 void	ft_add_x_line(t_line *line, int x0, int x1, float degree);
 void	ft_add_y_line(t_line *line, int y0, int y1, float degree);
 

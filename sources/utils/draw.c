@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/05 13:21:05 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/05 16:50:00 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,32 +49,6 @@ void	ft_add_y_line(t_line *line, int y0, int y1, float degree)
 		line->sy = -1;
 }
 
-void	ft_calculate_line(t_data *game, t_line *line, int color)
-{
-	float	e2;
-	int		i;
-
-	i = 0;
-	line->e = line->dx + line->dy;
-	while (i < 100)
-	{
-		if (line->x0 > 0 && line->x0 < 1280 && line->y0 > 0 && line->y0 < 720)
-			ft_mlx_pixel_put(game, line->x0, line->y0, color);
-		e2 = 2 * line->e;
-		if (e2 >= line->dy)
-		{
-			line->e += line->dy;
-			line->x0 += line->sx;
-		}
-		if (e2 <= line->dx)
-		{
-			line->e += line->dx;
-			line->y0 += line->sy;
-		}
-		i++;
-	}
-}
-
 void	ft_draw_fov(t_data *game)
 {
 	float	degree;
@@ -85,12 +59,12 @@ void	ft_draw_fov(t_data *game)
 	degree += M_PI / 6;
 	while (degree >= game->degree - M_PI / 6)
 	{
-		ft_add_x_line(&game->line, game->x_player, 1280 / 2, degree);
-		ft_add_y_line(&game->line, game->y_player, 720 / 2, degree);
+		ft_add_x_line(&game->line, game->x_player, WIN_WIDTH / 2, degree);
+		ft_add_y_line(&game->line, game->y_player, WIN_HEIGTH / 2, degree);
 		ft_draw_ray(game, &game->line, GREEN);
-		degree -= M_PI / 1280;
+		degree -= M_PI / WIN_WIDTH;
 	}
-	ft_add_x_line(&game->line, game->x_player, 1280 / 2, game->degree);
-	ft_add_y_line(&game->line, game->y_player, 720 / 2, game->degree);
+	ft_add_x_line(&game->line, game->x_player, WIN_WIDTH / 2, game->degree);
+	ft_add_y_line(&game->line, game->y_player, WIN_HEIGTH / 2, game->degree);
 	ft_draw_ray(game, &game->line, BLUE);
 }
