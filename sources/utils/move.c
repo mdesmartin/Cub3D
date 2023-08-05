@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/04 13:45:06 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/05 13:28:29 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,22 @@ void	ft_render_player(t_data *game, int x, int y)
 
 }
 
-static void	ft_move(t_data *game, int *pos, int direction, float rotation)
+static void	ft_move(t_data *game, int *pos, int direction)
 {
 	*pos += STEP_LENGTH * direction;
+	game->img = mlx_new_image(game->mlx_ptr, 1280, 720);
+	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
+			&game->line_length, &game->endian);
+	ft_draw_map(game, game->map);
+	ft_render_player(game, game->x_player, game->y_player);
+	ft_draw_fov(game);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img, 0, 0);
+	if (game->img)
+		mlx_destroy_image(game->mlx_ptr, game->img);
+}
+
+static void	ft_rotate(t_data *game, float rotation)
+{
 	game->degree += rotation;
 	game->img = mlx_new_image(game->mlx_ptr, 1280, 720);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
@@ -53,21 +66,20 @@ int	ft_key(int key, t_data *game)
 		ft_quit(game);
 	if ((key == KEY_W || key == KEY_UP)
 		&& ft_check_collision(game, game->x_player, game->y_player - 1) == 0)
-		ft_move(game, &game->y_player, -1, 0);
+		ft_move(game, &game->y_player, -1);
 	if ((key == KEY_S || key == KEY_DOWN)
 		&& ft_check_collision(game, game->x_player, game->y_player + 1) == 0)
-		ft_move(game, &game->y_player, 1, 0);
+		ft_move(game, &game->y_player, 1);
 	if (key == KEY_A
 		&& ft_check_collision(game, game->x_player - 1, game->y_player) == 0)
-		ft_move(game, &game->x_player, -1, 0);
+		ft_move(game, &game->x_player, -1);
 	if (key == KEY_D
 		&& ft_check_collision(game, game->x_player + 1, game->y_player) == 0)
-		ft_move(game, &game->x_player, 1, 0);
+		ft_move(game, &game->x_player, 1);
 	if (key == KEY_LEFT)
-		ft_move(game, &game->x_player, 0, -(M_PI / 60));
+		ft_rotate(game, -(M_PI / 60));
 	if (key == KEY_RIGHT)
-		ft_move(game, &game->x_player, 0, M_PI / 60);
+		ft_rotate(game, M_PI / 60);
 	return (0);
 }
 
-// protect rotation
