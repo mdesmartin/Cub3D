@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/04 14:26:41 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/05 13:21:05 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	ft_mlx_pixel_put(t_data *game, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	ft_add_x_line(t_data *game, t_line *line, int x0, int x1)
+void	ft_add_x_line(t_line *line, int x0, int x1, float degree)
 {
 	line->x0 = x0;
 	line->x1 = x1;
-	line->x_f = cosf(game->degree) * 1000 + game->x_player ;
+	line->x_f = cosf(degree) * 1000 + x0 ;
 	line->dx = line->x_f - (float) line->x0;
 	if (line->dx < 0)
 		line->dx *= -1;
@@ -34,11 +34,11 @@ void	ft_add_x_line(t_data *game, t_line *line, int x0, int x1)
 		line->sx = -1;
 }
 
-void	ft_add_y_line(t_data *game, t_line *line, int y0, int y1)
+void	ft_add_y_line(t_line *line, int y0, int y1, float degree)
 {
 	line->y0 = y0;
 	line->y1 = y1;
-	line->y_f = sinf(game->degree) * 1000 + game->y_player;
+	line->y_f = sinf(degree) * 1000 + y0;
 	line->dy = line->y_f - (float) line->y0;
 	if (line->dy < 0)
 		line->dy *= -1;
@@ -77,16 +77,20 @@ void	ft_calculate_line(t_data *game, t_line *line, int color)
 
 void	ft_draw_fov(t_data *game)
 {
-	ft_add_x_line(game, &game->line, game->x_player, 1280 / 2);
-	ft_add_y_line(game, &game->line, game->y_player, 720 / 2);
-	ft_draw_ray(game, &game->line, GREEN);
-	game->degree += M_PI / 6;
-	ft_add_x_line(game, &game->line, game->x_player, 1280 / 2);
-	ft_add_y_line(game, &game->line, game->y_player, 720 / 2);
+	float	degree;
+	int		i;
+
+	i = 0;
+	degree = game->degree;
+	degree += M_PI / 6;
+	while (degree >= game->degree - M_PI / 6)
+	{
+		ft_add_x_line(&game->line, game->x_player, 1280 / 2, degree);
+		ft_add_y_line(&game->line, game->y_player, 720 / 2, degree);
+		ft_draw_ray(game, &game->line, GREEN);
+		degree -= M_PI / 1280;
+	}
+	ft_add_x_line(&game->line, game->x_player, 1280 / 2, game->degree);
+	ft_add_y_line(&game->line, game->y_player, 720 / 2, game->degree);
 	ft_draw_ray(game, &game->line, BLUE);
-	game->degree -= M_PI / 3;
-	ft_add_x_line(game, &game->line, game->x_player, 1280 / 2);
-	ft_add_y_line(game, &game->line, game->y_player, 720 / 2);
-	ft_draw_ray(game, &game->line, BLUE);
-	game->degree += M_PI / 6;
 }
