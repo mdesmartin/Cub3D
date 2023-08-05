@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:50:53 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/04 14:02:20 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/05 16:04:10 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	ft_draw_ray(t_data *game, t_line *line, int color)
 	{
 		if (line->x0 > 0 && line->x0 < 1280 && line->y0 > 0 && line->y0 < 720)
 			ft_mlx_pixel_put(game, line->x0, line->y0, color);
+		else
+			break ;
 		e2 = 2 * line->e;
 		if (e2 >= line->dy)
 		{
