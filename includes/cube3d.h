@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/06 14:37:20 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 15:20:09 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int		ft_key(int key, t_data *game);
 void	ft_position_cal(t_data *game, int forward, int strafe);
 
 // Draw
-void	ft_draw_3d(t_data *game);
+void	ft_draw_floor_ceiling(t_data *game);
 void	ft_refresh_img(t_data *game);
 void	ft_draw_map(t_data *game, char **map);
 void	ft_render_player(t_data *game, int x, int y);
@@ -136,7 +136,6 @@ void	ft_draw_ray(t_data *game, t_line *line, int color);
 
 // Game Play
 int		ft_check_collision(t_data *game, int new_x, int new_y);
-
 
 //parsing
 void	fill_map(t_data	*game, char **av);
