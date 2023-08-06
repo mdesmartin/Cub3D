@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/06 14:42:24 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 14:44:28 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_refresh_img(t_data *game)
 	game->img = mlx_new_image(game->mlx_ptr, 1280, 720);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
 			&game->line_length, &game->endian);
+	ft_draw_3d(game);
 	if (game->show_map == 1)
 	{
 		ft_draw_map(game, game->map);

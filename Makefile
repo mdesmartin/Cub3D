@@ -17,6 +17,7 @@ LST_SRC =	main.c						\
 			utils/move.c				\
 			utils/draw.c				\
 			utils/close.c				\
+			utils/draw_3d.c				\
 			utils/move_cal.c			\
 			utils/draw_map.c			\
 			utils/check_arg.c			\

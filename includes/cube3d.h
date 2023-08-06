@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/06 14:17:44 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 14:37:20 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,9 @@ typedef struct s_data
 	void	*east;
 
 	//colors
-	int		r_floor;
-	int		g_floor;
-	int		b_floor;
+	int		floor_color;
 
-	int		r_ceiling;
-	int		g_ceiling;
-	int		b_ceiling;
+	int		ceiling_color;
 
 	//player
 	int		x_player;
@@ -125,6 +121,7 @@ int		ft_key(int key, t_data *game);
 void	ft_position_cal(t_data *game, int forward, int strafe);
 
 // Draw
+void	ft_draw_3d(t_data *game);
 void	ft_refresh_img(t_data *game);
 void	ft_draw_map(t_data *game, char **map);
 void	ft_render_player(t_data *game, int x, int y);

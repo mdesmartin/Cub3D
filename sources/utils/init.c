@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/06 14:10:39 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 14:38:03 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,7 @@ game->y_player = 4 * BOX_SIZE + BOX_SIZE / 2;
 game->img = NULL;
 game->addr = NULL;
 game->show_map = 1;
+game->floor_color = OLIVE;
+game->ceiling_color = NAVY;
 	return (game);
 }
