@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 15:57:08 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/05 18:20:38 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 12:11:27 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	ft_position_cal(t_data *game, int forward, int strafe)
 
 	if (forward != 0)
 	{
-		ft_add_x_line(&new_pos, game->x_player, WIN_WIDTH / 2, game->degree);
-		ft_add_y_line(&new_pos, game->y_player, WIN_HEIGTH / 2, game->degree);
+		ft_add_x_line(&new_pos, game->x_player, WIN_WIDTH, game->degree);
+		ft_add_y_line(&new_pos, game->y_player, WIN_HEIGTH, game->degree);
 		ft_calculate_line(&new_pos, forward);
 	}
 	else if (strafe != 0)
 	{
-		ft_add_x_line(&new_pos, game->x_player, WIN_WIDTH / 2,
+		ft_add_x_line(&new_pos, game->x_player, WIN_WIDTH,
 			game->degree - M_PI_2);
-		ft_add_y_line(&new_pos, game->y_player, WIN_HEIGTH / 2,
+		ft_add_y_line(&new_pos, game->y_player, WIN_HEIGTH,
 			game->degree - M_PI_2);
 		ft_calculate_line(&new_pos, strafe);
 	}
