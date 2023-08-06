@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/05 16:50:07 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 14:18:02 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,12 @@ static void	ft_move(t_data *game, int forward, int strafe)
 	game->img = mlx_new_image(game->mlx_ptr, WIN_WIDTH, WIN_HEIGTH);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
 			&game->line_length, &game->endian);
-	ft_draw_map(game, game->map);
-	ft_render_player(game, game->x_player, game->y_player);
-	ft_draw_fov(game);
+	if (game->show_map == 1)
+	{
+		ft_draw_map(game, game->map);
+		ft_render_player(game, game->x_player, game->y_player);
+		ft_draw_fov(game);
+	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img, 0, 0);
 	if (game->img)
 		mlx_destroy_image(game->mlx_ptr, game->img);
@@ -52,12 +55,24 @@ static void	ft_rotate(t_data *game, float rotation)
 	game->img = mlx_new_image(game->mlx_ptr, WIN_WIDTH, WIN_HEIGTH);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
 			&game->line_length, &game->endian);
-	ft_draw_map(game, game->map);
-	ft_render_player(game, game->x_player, game->y_player);
-	ft_draw_fov(game);
+	if (game->show_map == 1)
+	{
+		ft_draw_map(game, game->map);
+		ft_render_player(game, game->x_player, game->y_player);
+		ft_draw_fov(game);
+	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img, 0, 0);
 	if (game->img)
 		mlx_destroy_image(game->mlx_ptr, game->img);
+}
+
+static void	ft_show_map(t_data *game)
+{
+	if (game->show_map == 0)
+		game->show_map = 1;
+	else
+		game->show_map = 0;
+	ft_refresh_img(game);
 }
 
 int	ft_key(int key, t_data *game)
@@ -76,6 +91,8 @@ int	ft_key(int key, t_data *game)
 		ft_rotate(game, -(M_PI / 60));
 	if (key == KEY_RIGHT)
 		ft_rotate(game, M_PI / 60);
+	if (key == KEY_M)
+		ft_show_map(game);
 	return (0);
 }
 

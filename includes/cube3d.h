@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/05 16:48:16 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 14:17:44 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define KEY_S 115
 # define KEY_A 97
 # define KEY_D 100
+# define KEY_M 109
 # define KEY_UP 65362
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
@@ -98,6 +99,7 @@ typedef struct s_data
 	int		y_player;
 	char	direction;//NESW
 	float	degree;
+	int		show_map;
 
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -123,6 +125,7 @@ int		ft_key(int key, t_data *game);
 void	ft_position_cal(t_data *game, int forward, int strafe);
 
 // Draw
+void	ft_refresh_img(t_data *game);
 void	ft_draw_map(t_data *game, char **map);
 void	ft_render_player(t_data *game, int x, int y);
 void	ft_mlx_pixel_put(t_data *game, int x, int y, int color);
