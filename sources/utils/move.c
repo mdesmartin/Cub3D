@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/06 14:18:02 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 14:33:32 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_render_player(t_data *game, int x, int y)
 		while (j < PLAYER_SIZE / 2)
 		{
 			if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGTH)
-				ft_mlx_pixel_put(game, x + i, y + j, 0xff0000);
+				ft_mlx_pixel_put(game, x + i, y + j, RED);
 			j++;
 		}
 		i++;
@@ -35,35 +35,13 @@ void	ft_render_player(t_data *game, int x, int y)
 static void	ft_move(t_data *game, int forward, int strafe)
 {
 	ft_position_cal(game, forward, strafe);
-	game->img = mlx_new_image(game->mlx_ptr, WIN_WIDTH, WIN_HEIGTH);
-	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
-			&game->line_length, &game->endian);
-	if (game->show_map == 1)
-	{
-		ft_draw_map(game, game->map);
-		ft_render_player(game, game->x_player, game->y_player);
-		ft_draw_fov(game);
-	}
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img, 0, 0);
-	if (game->img)
-		mlx_destroy_image(game->mlx_ptr, game->img);
+	ft_refresh_img(game);
 }
 
 static void	ft_rotate(t_data *game, float rotation)
 {
 	game->degree += rotation;
-	game->img = mlx_new_image(game->mlx_ptr, WIN_WIDTH, WIN_HEIGTH);
-	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
-			&game->line_length, &game->endian);
-	if (game->show_map == 1)
-	{
-		ft_draw_map(game, game->map);
-		ft_render_player(game, game->x_player, game->y_player);
-		ft_draw_fov(game);
-	}
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img, 0, 0);
-	if (game->img)
-		mlx_destroy_image(game->mlx_ptr, game->img);
+	ft_refresh_img(game);
 }
 
 static void	ft_show_map(t_data *game)
