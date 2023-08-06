@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/05 15:31:24 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 12:14:29 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,15 @@ static void	ft_player_start_direction(t_data *game)
 static void	ft_map_gen(t_data *game)
 {
 	game->map = ft_calloc(10, sizeof(char *));
-	game->map[0] = ft_strdup("11111111111");
-	game->map[1] = ft_strdup("10000000001");
-	game->map[2] = ft_strdup("10111011101");
-	game->map[3] = ft_strdup("10101010101");
-	game->map[4] = ft_strdup("10000000001");
-	game->map[5] = ft_strdup("10101010101");
-	game->map[6] = ft_strdup("10101010101");
-	game->map[7] = ft_strdup("10000000001");
-	game->map[8] = ft_strdup("11111111111");
+	game->map[0] = ft_strdup("111111111111111");
+	game->map[1] = ft_strdup("100000000000001");
+	game->map[2] = ft_strdup("101110111011101");
+	game->map[3] = ft_strdup("101010101010101");
+	game->map[4] = ft_strdup("100000000000001");
+	game->map[5] = ft_strdup("101010101010101");
+	game->map[6] = ft_strdup("101010101010101");
+	game->map[7] = ft_strdup("100000000000001");
+	game->map[8] = ft_strdup("111111111111111");
 }
 
 t_data	*ft_game_init(void)
