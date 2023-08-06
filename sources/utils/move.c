@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/06 14:33:32 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 15:16:42 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ static void	ft_move(t_data *game, int forward, int strafe)
 static void	ft_rotate(t_data *game, float rotation)
 {
 	game->degree += rotation;
+	if (game->degree >= M_PI * 2)
+		game->degree -= M_PI * 2;
+	else if (game->degree <= M_PI * -2)
+		game->degree += M_PI * 2;
 	ft_refresh_img(game);
 }
 
