@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 15:39:17 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/06 14:49:55 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,18 @@ void	ft_draw_square(t_data *game, int x, int y, int color)
 	int	i;
 	int	j;
 
-	i = 1;
-	while (i < BOX_SIZE - 1)
+	i = 0;
+	while (i < BOX_SIZE)
 	{
-		j = 1;
-		while (j < BOX_SIZE - 1)
+		j = 0;
+		while (j < BOX_SIZE)
 		{
-			ft_mlx_pixel_put(game, x * BOX_SIZE + i, y * BOX_SIZE + j, color);
+			if (i == 0 || i == BOX_SIZE || j == 0 || j == BOX_SIZE)
+				ft_mlx_pixel_put(game, x * BOX_SIZE + i, y * BOX_SIZE + j,
+					BLACK);
+			else
+				ft_mlx_pixel_put(game, x * BOX_SIZE + i, y * BOX_SIZE + j,
+					color);
 			j++;
 		}
 		i++;
