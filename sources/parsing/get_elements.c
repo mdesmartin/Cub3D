@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:20 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/03 14:53:29 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/07 12:37:48 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,9 @@ int	get_elements(t_data *game, t_parsing *parsed)
 		return (1);
 	if (!get_path(parsed,  "WE", 2, game->path_west))
 		return (1);
-	if (!get_color(parsed,  "F", 1, game->floor_color))
+	if (!get_color(parsed,  "F", 1, &game->floor_color))
 		return (1);
-	if (!get_color(parsed,  "C", 1, game->ceiling_color))
+	if (!get_color(parsed,  "C", 1, &game->ceiling_color))
 		return (1);
+	return (0);
 }

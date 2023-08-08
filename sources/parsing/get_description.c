@@ -12,7 +12,7 @@
 
 #include "../../includes/cube3d.h"
 
-int	get_map_size(char **av)
+int	get_original_size(char **av)
 {
 	int		fd;
 	int		size;
@@ -30,29 +30,116 @@ int	get_map_size(char **av)
 	return (size);
 }
 
-void	get_description(t_parsing *parsed, char **av)
+int	get_new_size(char **tab)
 {
-	char	*line;
-	int		fd;
-	int		size;
+	int	size;
+	int	i;
 
-	size = get_map_size(av);
+	size = 0;
+	i = 0;
+	while (tab[i])
+	{
+		size += ft_strlen(tab[i]);
+		i++;
+	}
+	return (size);
+}
+
+int	get_number_line(char **av)
+{
+	char 	*line;
+	int		nb_line;
+	int		fd;
+
+	nb_line = 0;
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+		return (ft_dprintf(2, "Error\nFailed to open map\n"), 0);
+	line = get_next_line(fd);
+	while (line)
+	{
+		nb_line += 1;
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (nb_line);
+}
+
+int	init_map(t_parsing *parsed, char **av)
+{
+	int nb_line;
+
+	nb_line = get_number_line(av);
+	if (!nb_line)
+		return (1);
+	parsed->description = ft_calloc(nb_line + 1, sizeof(char *));
+	return (0);
+
+}
+
+int	get_description(t_parsing *parsed, char **av)
+{
+	int	i;
+	int	original_size;
+	int	new_size;
+	int	fd;
+
+	i = 0;
+	original_size = get_original_size(av);
+	if (init_map(parsed, av))
+		return (1);
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (ft_dprintf(2, "Error\nFailed to open map\n"), 1);
-	line = (char *)ft_calloc(size, sizeof(char));
-	if (!line)
-		return (ft_dprintf(2, "Error\nFailed to malloc map\n"), 1);
-	if (read(fd, line, size) == -1)
+	parsed->description[i] = get_next_line(fd);
+	while (parsed->description[i])
 	{
-		close(fd);
-		free(line);
-		ft_dprintf(2, "Error\nFailed to read map\n");
-		return (1);
+		i++;
+		parsed->description[i] = get_next_line(fd);
 	}
+	new_size = get_new_size(parsed->description);
+	(void) original_size;
+	(void) new_size;
+	// if (new_size != original_size)
+	// 	return (ft_dprintf(2, "Error\nFailed to copy map\n"), 1);
 	close(fd);
-	parsed->description = ft_split(line, '\n');
-	free(line);
-	if (!parsed->description)
-		return (ft_dprintf(2, "Error\nFailed to split map\n"), 1);
+	return (0);
 }
+
+
+
+
+
+
+
+
+// int	get_description(t_parsing *parsed, char **av)
+// {
+// 	char	*line;
+// 	int		fd;
+// 	int		size;
+
+// 	size = get_map_size(av);
+// 	fd = open(av[1], O_RDONLY);
+// 	if (fd == -1)
+// 		return (ft_dprintf(2, "Error\nFailed to open map\n"), 1);
+// 	line = (char *)ft_calloc(size, sizeof(char));
+// 	if (!line)
+// 		return (ft_dprintf(2, "Error\nFailed to malloc map\n"), 1);
+// 	if (read(fd, line, size) == -1)
+// 	{
+// 		close(fd);
+// 		free(line);
+// 		ft_dprintf(2, "Error\nFailed to read map\n");
+// 		return (1);
+// 	}
+// 	close(fd);
+// 	parsed->description = ft_split(line, '\n');
+// 	free(line);
+// 	if (!parsed->description)
+// 		return (ft_dprintf(2, "Error\nFailed to split map\n"), 1);
+// 	return (0);
+// }
+
+//get description, then compare to original size to see if it crashedl

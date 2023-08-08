@@ -12,10 +12,19 @@ endif
 
 DIR_SRC =	sources/
 
-LST_SRC =	main.c				\
-			utils/init.c		\
-			utils/close.c		\
-			utils/check_arg.c
+LST_SRC =	main.c								\
+			utils/init.c						\
+			utils/close.c						\
+			utils/check_arg.c					\
+			parsing/check_elements.c			\
+			parsing/check_map.c					\
+			parsing/get_description.c			\
+			parsing/get_elements.c				\
+			parsing/get_map.c					\
+			parsing/get_map_cardinal_limits.c	\
+			parsing/parsing.c					\
+			parsing/parsing_utils.c
+
 			
 SOURCES	=	$(addprefix $(DIR_SRC), $(LST_SRC))
 
@@ -67,6 +76,7 @@ $(NAME): $(DIR_OBJ) $(OBJECTS)
 $(DIR_OBJ)	:
 	@mkdir -p $(DIR_OBJ)
 	@mkdir -p $(DIR_OBJ)/utils
+	@mkdir -p $(DIR_OBJ)/parsing
 
 $(DIR_OBJ)%.o: $(DIR_SRC)%.c $(HEADERS) $(LIBRARY)
 	cc $(CFLAGS) -c $< -o $@

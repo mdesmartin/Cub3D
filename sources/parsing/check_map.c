@@ -6,13 +6,13 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:27 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/03 12:59:06 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 15:08:14 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	check_symbols(t_parsing *parsed)
+int	check_symbols(t_parsing *parsed)// a revoir totallement??
 {
 	int	y;
 	int	x;
@@ -22,17 +22,15 @@ int	check_symbols(t_parsing *parsed)
 	y = parsed->map_north;
 	while (parsed->description[y])
 	{
-		x = 0;
+		x = parsed->map_west;
 		while (parsed->description[y][x])
 		{
-			if (!is_map_symbol(parsed->description[y][x]))
+			// printf("x:%d\ny:%d\nsymbol:%c\n", x, y, parsed->description[y][x]);
+			if (!is_map_symbol(parsed->description[y][x]) && parsed->description[y][x] != ' ')
 				return (1);
 			if (parsed->description[y][x] == '1' && !wall)
-			{
 				wall = 1;
-				parsed->first_wall_x = x;
-				parsed->first_wall_y = y;
-			}
+			y++;
 		}
 	}
 	if (wall)
@@ -46,7 +44,7 @@ int	borders_whitespace(t_parsing *parsed, int y, int x)
 	if (y == parsed->map_north || y == parsed->map_south 
 		|| x == parsed->map_east || x == parsed->map_west)
 		return (1);
-	if (is_whitespace(parsed->description[y - 1][x - 1]) 
+	else if (is_whitespace(parsed->description[y - 1][x - 1]) 
 		|| is_whitespace(parsed->description[y - 1][x + 1])
 		|| is_whitespace(parsed->description[y + 1][x - 1])
 		|| is_whitespace(parsed->description[y + 1][x + 1])
@@ -55,6 +53,8 @@ int	borders_whitespace(t_parsing *parsed, int y, int x)
 		|| is_whitespace(parsed->description[y][x - 1]) 
 		|| is_whitespace(parsed->description[y][x + 1]))
 		return (1);
+	else
+		return (0);
 }
 
 int	check_walls(t_parsing *parsed)
@@ -76,15 +76,19 @@ int	check_walls(t_parsing *parsed)
 			x++;
 		}
 	}
+	return (0);
 }
 
 int	check_map(t_parsing *parsed)
 {
 	get_map_cardinal_limits(parsed);
+	printf("N%d, S%d, E%d, W%d\n", parsed->map_north, parsed->map_south, parsed->map_east, parsed->map_west);
+	// printf("didnt stoped here\n");
 	if (check_symbols(parsed) == 1)
 		return (ft_dprintf(2, "Error\nForbidden symbol(s) in map\n"), 1);
 	if (check_symbols(parsed) == 2)
 		return (ft_dprintf(2, "Error\nMap need to be limited by walls\n"), 1);
 	if (check_walls(parsed))
 		return (ft_dprintf(2, "Error\nMissing wall(s) to border map\n"), 1);
+	return (0);
 }

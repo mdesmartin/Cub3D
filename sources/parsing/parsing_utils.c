@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:35:25 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/03 13:38:05 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 13:57:20 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	*ft_free_tab(char **tab)
 		free(tab[i]);
 		i++;
 	}
-	free(tab);
+	if (tab)
+		free(tab);
 	return (NULL);
 }
