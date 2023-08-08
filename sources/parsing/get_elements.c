@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:20 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/08 18:11:01 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 22:05:08 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,20 +105,49 @@ int	get_path(t_parsing *parsed, char *element, int size, char **path)
 // 	return (0);
 // }
 
+int get_player(t_data *game, t_parsing *parsed)
+{
+	int	y;
+	int	x;
+
+	y = parsed->map_north;
+	while (y <= parsed->map_south)
+	{
+		x = parsed->map_west;
+		while (x <= parsed->map_east && parsed->description[y][x])
+		{
+			if (parsed->description[y][x] == 'N' || parsed->description[y][x] == 'S'
+			|| parsed->description[y][x] == 'E' || parsed->description[y][x] == 'W')
+			{
+				game->player_direction = parsed->description[y][x];
+				game->player_x = x - parsed->map_west;
+				game->player_y = y - parsed->map_north; 
+				return (1);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
 int	get_elements(t_data *game, t_parsing *parsed)
 {
 	if (!get_path(parsed,  "NO", 2, &game->path_north))
 		return (1);
-	if (!get_path(parsed,  "EA", 2, &game->path_east))
+	else if (!get_path(parsed,  "EA", 2, &game->path_east))
 		return (1);
-	if (!get_path(parsed,  "SO", 2, &game->path_south))
+	else if (!get_path(parsed,  "SO", 2, &game->path_south))
 		return (1);
-	if (!get_path(parsed,  "WE", 2, &game->path_west))
+	else if (!get_path(parsed,  "WE", 2, &game->path_west))
 		return (1);
 	// printf("NO:%s\nEA:%s\nSO:%s\nWE:%s\n", game->path_north, game->path_east, game->path_south, game->path_west);
-	// if (!get_color_code(parsed,  "F", 1, &game->floor_color))
+	// else if (!get_color_code(parsed,  "F", 1, &game->floor_color))
 	// 	return (1);
-	// if (!get_color_code(parsed,  "C", 1, &game->ceiling_color))
+	// else if (!get_color_code(parsed,  "C", 1, &game->ceiling_color))
 	// 	return (1);
-	return (0);
+	else if (!get_player(game, parsed))
+		return (1);
+	else
+		return (0);
 }

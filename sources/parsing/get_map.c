@@ -6,11 +6,36 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:16 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/08 18:28:52 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 22:39:52 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
+
+char	*fill_line(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = ft_calloc((len + 1), sizeof(char));
+	if (!str)
+		return (NULL);
+	while (s[start] && s[start] != '\n' && len)
+	{
+		str[i] = s[start];
+		start++;
+		i++;
+		len--;
+	}
+	while (len)
+	{
+		str[i] = ' ';
+		i++;
+		len--;
+	}
+	return (str);
+}
 
 int	get_map(t_data *game, t_parsing *parsed)
 {
@@ -21,16 +46,17 @@ int	get_map(t_data *game, t_parsing *parsed)
 	int		nb_columns;
 
 	i = 0;
-	y = 0;
 	nb_lines = parsed->map_south - parsed->map_north + 1;
 	nb_columns = parsed->map_east - parsed->map_west + 1;
-	map = ft_calloc(nb_lines + 2, sizeof(char *));
+	map = ft_calloc(nb_lines + 1, sizeof(char *));
 	if (!map)
 		return (ft_free_tab(map), ft_dprintf(2, "Error\nMalloc failed in get_map\n"), 1);
 	y = parsed->map_north;
 	while (i < nb_lines)
 	{
-		map[i] = ft_substr(parsed->description[y], parsed->map_west, nb_columns);
+		map[i] = fill_line(parsed->description[y], parsed->map_west, nb_columns);
+		if (!map[i])
+			return (ft_free_tab(map), ft_dprintf(2, "Error\nMalloc failed in get_map\n"), 1);
 		y++;
 		i++;
 	}
@@ -38,5 +64,3 @@ int	get_map(t_data *game, t_parsing *parsed)
 	game->map = map;
 	return (0);
 }
-
-//partons du principe quon ne gere pas les tab dans la carte mais uniquement les space
