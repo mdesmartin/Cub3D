@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:20 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/08 22:05:08 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 22:44:59 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,6 @@ int	get_elements(t_data *game, t_parsing *parsed)
 		return (1);
 	else if (!get_path(parsed,  "WE", 2, &game->path_west))
 		return (1);
-	// printf("NO:%s\nEA:%s\nSO:%s\nWE:%s\n", game->path_north, game->path_east, game->path_south, game->path_west);
 	// else if (!get_color_code(parsed,  "F", 1, &game->floor_color))
 	// 	return (1);
 	// else if (!get_color_code(parsed,  "C", 1, &game->ceiling_color))

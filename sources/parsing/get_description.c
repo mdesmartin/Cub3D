@@ -35,7 +35,7 @@ int	get_new_size(char **tab)
 	int	size;
 	int	i;
 
-	size = 0;
+	size = 1;
 	i = 0;
 	while (tab[i])
 	{
@@ -99,47 +99,8 @@ int	get_description(t_parsing *parsed, char **av)
 		parsed->description[i] = get_next_line(fd);
 	}
 	new_size = get_new_size(parsed->description);
-	(void) original_size;
-	(void) new_size;
-	// if (new_size != original_size)
-	// 	return (ft_dprintf(2, "Error\nFailed to copy map\n"), 1);
+	if (new_size != original_size)
+		return (ft_dprintf(2, "Error\nFailed to copy map\n"), 1);
 	close(fd);
 	return (0);
 }
-
-
-
-
-
-
-
-
-// int	get_description(t_parsing *parsed, char **av)
-// {
-// 	char	*line;
-// 	int		fd;
-// 	int		size;
-
-// 	size = get_map_size(av);
-// 	fd = open(av[1], O_RDONLY);
-// 	if (fd == -1)
-// 		return (ft_dprintf(2, "Error\nFailed to open map\n"), 1);
-// 	line = (char *)ft_calloc(size, sizeof(char));
-// 	if (!line)
-// 		return (ft_dprintf(2, "Error\nFailed to malloc map\n"), 1);
-// 	if (read(fd, line, size) == -1)
-// 	{
-// 		close(fd);
-// 		free(line);
-// 		ft_dprintf(2, "Error\nFailed to read map\n");
-// 		return (1);
-// 	}
-// 	close(fd);
-// 	parsed->description = ft_split(line, '\n');
-// 	free(line);
-// 	if (!parsed->description)
-// 		return (ft_dprintf(2, "Error\nFailed to split map\n"), 1);
-// 	return (0);
-// }
-
-//get description, then compare to original size to see if it crashedl

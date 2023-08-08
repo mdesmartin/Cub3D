@@ -6,18 +6,16 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:14:33 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/08 18:27:52 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 22:45:36 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-//what tp do when error ?
-
 void	parsing_test(t_parsing *parsed)
 {
 	printf("PARSING TESTS\n-------\n");
-	printf("NO:%d\nSO:%d\nEA:%d\nWE:%d\n-------\n", parsed->map_north, parsed->map_south, parsed->map_east, parsed->map_west);
+	printf("NO:%d\nSO:%d\nEA:%d\nWE:%d\n-------\n\n", parsed->map_north, parsed->map_south, parsed->map_east, parsed->map_west);
 }
 
 int	init_parsed(t_parsing **parsed)

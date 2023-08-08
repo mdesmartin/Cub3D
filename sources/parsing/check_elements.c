@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:34:55 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/08 21:46:33 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 22:41:10 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,3 @@ int	check_elements(t_parsing *parsed)
 	else
 		return (0);
 }
-
-
-// return (r << 16 || g << 8 || b << 4);
