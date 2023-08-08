@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:45 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/08 18:29:30 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 18:33:47 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_tab(char **tab)
 		printf("%s\n", tab[i]);
 		i++;
 	}
-	printf("-------end_of_map\n");
+	printf("-------\n");
 }
 
 void	main_parsing_test(t_data	*game)
