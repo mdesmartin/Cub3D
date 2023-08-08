@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/08 13:56:26 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 14:01:59 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,15 +103,15 @@ t_data	*ft_game_init(void)
 		perror("Memory allocation failed for t_data game");
 		exit (12);
 	}
+	game->img = NULL;
+	game->addr = NULL;
+	game->show_map = 0;
 	ft_map_gen(game);
 game->direction = 'S';
 	ft_player_start_direction(game);
 game->x_player = 3 * BOX_SIZE + BOX_SIZE / 2;
 game->y_player = 4 * BOX_SIZE + BOX_SIZE / 2;
-game->img = NULL;
-game->addr = NULL;
-game->show_map = 0;
-game->floor_color = OLIVE;
+game->floor_color = MAROON;
 game->ceiling_color = NAVY;
 	return (game);
 }
