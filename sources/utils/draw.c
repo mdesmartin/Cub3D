@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/06 16:00:20 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 13:31:08 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_refresh_img(t_data *game)
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
 			&game->line_length, &game->endian);
 	ft_draw_floor_ceiling(game);
+	ft_draw_3d(game);
 	if (game->show_map == 1)
 	{
 		ft_draw_map(game, game->map);
@@ -69,17 +70,15 @@ void	ft_add_y_line(t_line *line, int y0, int y1, float degree)
 void	ft_draw_fov(t_data *game)
 {
 	float	degree;
-	int		i;
 
-	i = 0;
 	degree = game->degree;
-	degree += M_PI / 6;
-	while (degree >= game->degree - M_PI / 6)
+	degree -= M_PI / 6;
+	while (degree <= game->degree + M_PI / 6)
 	{
 		ft_add_x_line(&game->line, game->x_player, WIN_WIDTH / 2, degree);
 		ft_add_y_line(&game->line, game->y_player, WIN_HEIGTH / 2, degree);
 		ft_draw_ray(game, &game->line, GREEN);
-		degree -= M_PI / WIN_WIDTH;
+		degree += M_PI / (3 * WIN_WIDTH);
 	}
 	ft_add_x_line(&game->line, game->x_player, WIN_WIDTH / 2, game->degree);
 	ft_add_y_line(&game->line, game->y_player, WIN_HEIGTH / 2, game->degree);

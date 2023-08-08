@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/06 15:20:09 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 13:30:44 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ typedef struct s_line
 	int		sx;
 	int		sy;
 }				t_line;
+
+typedef struct s_point
+{
+	int		x;
+	int		y;
+}				t_point;
 
 typedef struct s_data
 {
@@ -129,6 +135,8 @@ void	ft_mlx_pixel_put(t_data *game, int x, int y, int color);
 void	ft_draw_fov(t_data *game);
 void	ft_add_x_line(t_line *line, int x0, int x1, float degree);
 void	ft_add_y_line(t_line *line, int y0, int y1, float degree);
+void	ft_draw_wall(t_data *game, t_point point, int x_pixel);
+void	ft_draw_3d(t_data *game);
 
 // Ray casting
 int		ft_ray_collision(t_data *game, int new_x, int new_y);
