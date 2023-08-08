@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/08 13:31:08 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 13:58:58 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,3 @@ void	ft_draw_fov(t_data *game)
 	ft_add_y_line(&game->line, game->y_player, WIN_HEIGTH / 2, game->degree);
 	ft_draw_ray(game, &game->line, BLUE);
 }
-
-// FOV vertical 45.74642225995102507
