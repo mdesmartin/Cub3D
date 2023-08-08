@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/08 13:35:35 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 13:41:49 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ void	ft_draw_wall(t_data *game, t_point point, int x_pixel)
 
 	distance = sqrtf(pow((point.x - game->x_player), 2)
 			+ pow((point.y - game->y_player), 2));
-	wall_heigth = (360 * 350.7) / distance;
+	wall_heigth = ((WIN_HEIGTH / 2) * 350.7) / distance;
 	y = WIN_HEIGTH / 2 - wall_heigth / 2;
 	while (y <= (WIN_HEIGTH / 2 + wall_heigth / 2))
 	{
-		if (x_pixel > 0 && x_pixel < 1280 && y > 0 && y < 720)
+		if (x_pixel > 0 && x_pixel < WIN_WIDTH && y > 0 && y < WIN_HEIGTH)
 			ft_mlx_pixel_put(game, x_pixel, y, MAROON);
 		y++;
 	}
