@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/06 14:49:55 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 13:56:16 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_draw_map(t_data *game, char **map)
 	while (map[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (map[y][x] != '\n')
 		{
 			if (map[y][x] == '1')
 				ft_draw_square(game, x, y, SILVER);
