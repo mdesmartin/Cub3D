@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/03 16:53:18 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 17:01:44 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ typedef struct s_parsing
 	int		map_south;
 	int		map_east;
 	int		map_west;
-
-	int		first_wall_x;
-	int		first_wall_y;
-	
-	unsigned char	*floor_color;
-	unsigned char 	*ceiling_color;
 }				t_parsing;
 
 typedef struct s_data
@@ -51,8 +45,8 @@ typedef struct s_data
 	void 	*east;
 
 	//colors
-	int	floor_color;
-	int	ceiling_color;
+	int		floor_color;
+	int		ceiling_color;
 	
 	//player
 	int		player_x;

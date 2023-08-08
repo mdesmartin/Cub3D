@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:42:13 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/08 15:47:19 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 18:17:54 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_map_north(t_parsing *parsed)
 			j++;
 		if (parsed->description[i][j] && is_map_symbol(parsed->description[i][j]))
 		{
-			parsed->map_north = i + 1;
+			parsed->map_north = i;
 			return ;
 		}
 		i++;
@@ -45,7 +45,7 @@ void	get_map_south(t_parsing *parsed)
 			j++;
 		if (parsed->description[i][j] && parsed->description[i][j] == '\n')
 		{
-			parsed->map_south = i;
+			parsed->map_south = i - 1;
 			return ;
 		}
 		i++;
@@ -67,12 +67,12 @@ void	get_map_east(t_parsing *parsed)
 		while (j > 0 && (!is_map_symbol(parsed->description[i][j])))
 			j--;
 		if (j > parsed->map_east)
-			parsed->map_east = j + 1;
+			parsed->map_east = j;
 		i++;
 	}
 }
 
-void	get_map_west(t_parsing *parsed)
+void	get_map_west(t_parsing *parsed)//compare to the first line instead of int max
 {
 	int	i;
 	int	j;
@@ -86,7 +86,7 @@ void	get_map_west(t_parsing *parsed)
 		if (parsed->description[i][j] && is_map_symbol(parsed->description[i][j]))
 		{
 			if (j < parsed->map_west)
-				parsed->map_west = j + 1;
+				parsed->map_west = j;
 		}
 		i++;
 	}
@@ -95,6 +95,6 @@ void	get_map_cardinal_limits(t_parsing *parsed)
 {
 	get_map_north(parsed);
 	get_map_south(parsed);
-	get_map_east(parsed);
 	get_map_west(parsed);
+	get_map_east(parsed);
 }

@@ -6,13 +6,19 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:14:33 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/08 15:46:38 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/08 18:27:52 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
 //what tp do when error ?
+
+void	parsing_test(t_parsing *parsed)
+{
+	printf("PARSING TESTS\n-------\n");
+	printf("NO:%d\nSO:%d\nEA:%d\nWE:%d\n-------\n", parsed->map_north, parsed->map_south, parsed->map_east, parsed->map_west);
+}
 
 int	init_parsed(t_parsing **parsed)
 {
@@ -26,18 +32,6 @@ int	init_parsed(t_parsing **parsed)
 	return (0);
 }
 
-void	print_tab(char **tab)
-{
-	int i = 0;
-
-	while (tab[i])
-	{
-		printf("%s", tab[i]);
-		i++;
-	}
-	printf("\n");
-}
-
 int	parsing(t_data	*game, char **av)
 {
 	t_parsing *parsed;
@@ -47,7 +41,6 @@ int	parsing(t_data	*game, char **av)
 		return (free(parsed), 1);
 	if (get_description(parsed, av))
 		return (ft_free_tab(parsed->description), free(parsed), 1);
-	print_tab(parsed->description);//
 	if (check_elements(parsed))
 		return (ft_free_tab(parsed->description), free(parsed), 1);
 	if (check_map(parsed))
@@ -56,7 +49,9 @@ int	parsing(t_data	*game, char **av)
 		return (ft_free_tab(parsed->description), free(parsed), 1);
 	if (get_map(game, parsed))
 		return (ft_free_tab(parsed->description), free(parsed), 1);
+	parsing_test(parsed);//
 	ft_free_tab(parsed->description);
+	free(parsed);
 	return (0);
 }
 
