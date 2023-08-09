@@ -2,7 +2,7 @@ NAME = cub3D
 DEBUG = no
 
 CFLAGS = -Wall -Wextra -Werror
-MLXFlAGS =  -L $(DIR_LIB)minilibx-linux -lmlx -lXext -lX11 -lm -I $(DIR_LIB)minilibx-linux
+MLXFlAGS = -L $(DIR_LIB)minilibx-linux -lmlx -lXext -lX11 -lm -I $(DIR_LIB)minilibx-linux
 
 DFLAGS = -g3 -fsanitize=leak -fsanitize=address -fsanitize=pointer-subtract -fsanitize=pointer-compare -fsanitize=undefined
 
@@ -14,8 +14,15 @@ DIR_SRC =	sources/
 
 LST_SRC =	main.c								\
 			utils/init.c						\
+			utils/move.c						\
+			drawing/draw.c						\
 			utils/close.c						\
+			drawing/draw_3d.c					\
+			utils/move_cal.c					\
+			drawing/draw_map.c					\
 			utils/check_arg.c					\
+			drawing/ray_casting.c				\
+			utils/player_collision.c			\
 			parsing/check_elements.c			\
 			parsing/check_map.c					\
 			parsing/get_description.c			\
@@ -31,10 +38,10 @@ SOURCES	=	$(addprefix $(DIR_SRC), $(LST_SRC))
 DIR_OBJ	=	objects/
 OBJECTS = 	$(patsubst $(DIR_SRC)%.c, $(DIR_OBJ)%.o, $(SOURCES))
 
-DIR_HDR = includes/
+DIR_HDR = 	includes/
 HEADERS =	$(DIR_HDR)cube3d.h
 
-DIR_LIB = libraries/
+DIR_LIB = 	libraries/
 LIBRARY = 	$(DIR_LIB)libft/libft.a
 
 #  ==============================  RULES  ==============================  #
@@ -76,6 +83,7 @@ $(NAME): $(DIR_OBJ) $(OBJECTS)
 $(DIR_OBJ)	:
 	@mkdir -p $(DIR_OBJ)
 	@mkdir -p $(DIR_OBJ)/utils
+	@mkdir -p $(DIR_OBJ)/drawing
 	@mkdir -p $(DIR_OBJ)/parsing
 
 $(DIR_OBJ)%.o: $(DIR_SRC)%.c $(HEADERS) $(LIBRARY)

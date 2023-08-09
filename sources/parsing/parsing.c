@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:14:33 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/08 22:45:36 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/09 12:29:00 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	parsing(t_data	*game, char **av)
 		return (ft_free_tab(parsed->description), free(parsed), 1);
 	if (get_map(game, parsed))
 		return (ft_free_tab(parsed->description), free(parsed), 1);
-	parsing_test(parsed);//
+	// parsing_test(parsed);//
 	ft_free_tab(parsed->description);
 	free(parsed);
 	return (0);
