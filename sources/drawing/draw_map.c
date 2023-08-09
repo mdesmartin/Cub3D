@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 15:01:12 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/09 15:06:18 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,22 @@ void	ft_draw_map(t_data *game, char **map)
 		}
 		y++;
 	}
+}
+
+void	ft_draw_fov(t_data *game)
+{
+	float	degree;
+
+	degree = game->degree;
+	degree -= M_PI / 6;
+	while (degree <= game->degree + M_PI / 6)
+	{
+		ft_add_x_line(&game->line, game->player_x, WIN_WIDTH / 2, degree);
+		ft_add_y_line(&game->line, game->player_y, WIN_HEIGTH / 2, degree);
+		ft_draw_ray(game, &game->line, GREEN);
+		degree += M_PI / (3 * WIN_WIDTH);
+	}
+	ft_add_x_line(&game->line, game->player_x, WIN_WIDTH / 2, game->degree);
+	ft_add_y_line(&game->line, game->player_y, WIN_HEIGTH / 2, game->degree);
+	ft_draw_ray(game, &game->line, BLUE);
 }
