@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:27 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/08 21:53:56 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/09 17:27:55 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int	check_symbols(t_parsing *parsed)
 		x = parsed->map_west;
 		while (x <= parsed->map_east && parsed->description[y][x])
 		{
-			if (!is_map_symbol(parsed->description[y][x]) && parsed->description[y][x] != ' ' && parsed->description[y][x] != '\n')
+			if (!is_map_symbol(parsed->description[y][x])
+				&& parsed->description[y][x] != ' '
+				&& parsed->description[y][x] != '\n')
 				return (1);
 			if (parsed->description[y][x] == '1' && !wall)
 				wall = 1;
@@ -41,16 +43,16 @@ int	check_symbols(t_parsing *parsed)
 
 int	borders_whitespace(t_parsing *parsed, int y, int x)
 {
-	if (y == parsed->map_north || y == parsed->map_south 
+	if (y == parsed->map_north || y == parsed->map_south
 		|| x == parsed->map_east || x == parsed->map_west)
 		return (1);
-	else if (is_whitespace(parsed->description[y - 1][x - 1]) 
+	else if (is_whitespace(parsed->description[y - 1][x - 1])
 		|| is_whitespace(parsed->description[y - 1][x + 1])
 		|| is_whitespace(parsed->description[y + 1][x - 1])
 		|| is_whitespace(parsed->description[y + 1][x + 1])
 		|| is_whitespace(parsed->description[y - 1][x])
 		|| is_whitespace(parsed->description[y + 1][x])
-		|| is_whitespace(parsed->description[y][x - 1]) 
+		|| is_whitespace(parsed->description[y][x - 1])
 		|| is_whitespace(parsed->description[y][x + 1]))
 		return (1);
 	else
@@ -59,9 +61,9 @@ int	borders_whitespace(t_parsing *parsed, int y, int x)
 
 int	check_walls(t_parsing *parsed)
 {
-	int	y;
-	int	x;
-	char symbol;
+	int		y;
+	int		x;
+	char	symbol;
 
 	y = parsed->map_north;
 	while (y <= parsed->map_south)
@@ -96,8 +98,7 @@ int	check_player(t_parsing *parsed)
 		x = parsed->map_west;
 		while (x <= parsed->map_east && parsed->description[y][x])
 		{
-			if (parsed->description[y][x] == 'N' || parsed->description[y][x] == 'S'
-			|| parsed->description[y][x] == 'E' || parsed->description[y][x] == 'W')
+			if (is_cardinal_point(parsed->description[y][x]))
 				symbol += 1;
 			x++;
 		}

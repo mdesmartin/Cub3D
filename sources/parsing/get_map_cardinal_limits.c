@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:42:13 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/08 18:17:54 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/09 17:29:00 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ void	get_map_north(t_parsing *parsed)
 	while (parsed->description[i])
 	{
 		j = 0;
-		while (parsed->description[i][j] && is_whitespace(parsed->description[i][j]))
+		while (parsed->description[i][j]
+			&& is_whitespace(parsed->description[i][j]))
 			j++;
-		if (parsed->description[i][j] && is_map_symbol(parsed->description[i][j]))
+		if (parsed->description[i][j]
+			&& is_map_symbol(parsed->description[i][j]))
 		{
 			parsed->map_north = i;
 			return ;
@@ -41,7 +43,8 @@ void	get_map_south(t_parsing *parsed)
 	while (parsed->description[i])
 	{
 		j = 0;
-		while (parsed->description[i][j] && is_whitespace(parsed->description[i][j]))
+		while (parsed->description[i][j]
+			&& is_whitespace(parsed->description[i][j]))
 			j++;
 		if (parsed->description[i][j] && parsed->description[i][j] == '\n')
 		{
@@ -52,7 +55,6 @@ void	get_map_south(t_parsing *parsed)
 	}
 }
 
-
 void	get_map_east(t_parsing *parsed)
 {
 	int	i;
@@ -62,7 +64,9 @@ void	get_map_east(t_parsing *parsed)
 	while (i <= parsed->map_south)
 	{
 		j = parsed->map_west;
-		while (parsed->description[i][j] && (is_map_symbol(parsed->description[i][j]) || is_whitespace(parsed->description[i][j])))
+		while (parsed->description[i][j]
+			&& (is_map_symbol(parsed->description[i][j])
+			|| is_whitespace(parsed->description[i][j])))
 			j++;
 		while (j > 0 && (!is_map_symbol(parsed->description[i][j])))
 			j--;
@@ -72,18 +76,26 @@ void	get_map_east(t_parsing *parsed)
 	}
 }
 
-void	get_map_west(t_parsing *parsed)//compare to the first line instead of int max
+void	get_map_west(t_parsing *parsed)
 {
 	int	i;
 	int	j;
 
 	i = parsed->map_north;
+	j = 0;
+	while (parsed->description[i][j]
+		&& is_whitespace(parsed->description[i][j]))
+		j++;
+	parsed->map_west = j;
+	i++;
 	while (i <= parsed->map_south)
 	{
 		j = 0;
-		while (parsed->description[i][j] && is_whitespace(parsed->description[i][j]))
+		while (parsed->description[i][j]
+			&& is_whitespace(parsed->description[i][j]))
 			j++;
-		if (parsed->description[i][j] && is_map_symbol(parsed->description[i][j]))
+		if (parsed->description[i][j]
+			&& is_map_symbol(parsed->description[i][j]))
 		{
 			if (j < parsed->map_west)
 				parsed->map_west = j;
@@ -91,6 +103,7 @@ void	get_map_west(t_parsing *parsed)//compare to the first line instead of int m
 		i++;
 	}
 }
+
 void	get_map_cardinal_limits(t_parsing *parsed)
 {
 	get_map_north(parsed);

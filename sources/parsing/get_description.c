@@ -47,7 +47,7 @@ int	get_new_size(char **tab)
 
 int	get_number_line(char **av)
 {
-	char 	*line;
+	char	*line;
 	int		nb_line;
 	int		fd;
 
@@ -68,14 +68,13 @@ int	get_number_line(char **av)
 
 int	init_map(t_parsing *parsed, char **av)
 {
-	int nb_line;
+	int	nb_line;
 
 	nb_line = get_number_line(av);
 	if (!nb_line)
 		return (1);
 	parsed->description = ft_calloc(nb_line + 1, sizeof(char *));
 	return (0);
-
 }
 
 int	get_description(t_parsing *parsed, char **av)

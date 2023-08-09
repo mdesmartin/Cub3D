@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:34:55 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/08 22:41:10 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/09 16:03:43 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	find_element(t_parsing *parsed, char *element, int size)
 	while (parsed->description[i])
 	{
 		j = 0;
-		while (parsed->description[i][j] && is_whitespace(parsed->description[i][j]))
+		while (parsed->description[i][j]
+			&& is_whitespace(parsed->description[i][j]))
 			j++;
-		if (parsed->description[i][j] && !ft_strncmp(&parsed->description[i][j], element, size))
+		if (parsed->description[i][j]
+			&& !ft_strncmp(&parsed->description[i][j], element, size))
 		{
 			if (i + 1 > parsed->map_north)
 				parsed->map_north = i + 1;
