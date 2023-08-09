@@ -2,7 +2,7 @@ NAME = cub3D
 DEBUG = no
 
 CFLAGS = -Wall -Wextra -Werror
-MLXFlAGS = -Lmlx -lmlx -L sources/minilibx-linux/ -Imlx -lXext -lX11 -lm 
+MLXFlAGS =  -L $(DIR_LIB)minilibx-linux -lmlx -lXext -lX11 -lm -I $(DIR_LIB)minilibx-linux
 
 DFLAGS = -g3 -fsanitize=leak -fsanitize=address -fsanitize=pointer-subtract -fsanitize=pointer-compare -fsanitize=undefined
 
@@ -12,19 +12,30 @@ endif
 
 DIR_SRC =	sources/
 
-LST_SRC =	main.c				\
-			utils/init.c		\
-			utils/close.c		\
-			utils/check_arg.c
+LST_SRC =	main.c								\
+			utils/init.c						\
+			utils/close.c						\
+			utils/check_arg.c					\
+			parsing/check_elements.c			\
+			parsing/check_map.c					\
+			parsing/get_description.c			\
+			parsing/get_elements.c				\
+			parsing/get_map.c					\
+			parsing/get_map_cardinal_limits.c	\
+			parsing/parsing.c					\
+			parsing/parsing_utils.c
+
 			
 SOURCES	=	$(addprefix $(DIR_SRC), $(LST_SRC))
 
 DIR_OBJ	=	objects/
 OBJECTS = 	$(patsubst $(DIR_SRC)%.c, $(DIR_OBJ)%.o, $(SOURCES))
 
-HEADERS =	$(DIR_SRC)cube3d.h
+DIR_HDR = includes/
+HEADERS =	$(DIR_HDR)cube3d.h
 
-LIBRARY = 	$(DIR_SRC)libft/libft.a
+DIR_LIB = libraries/
+LIBRARY = 	$(DIR_LIB)libft/libft.a
 
 #  ==============================  RULES  ==============================  #
 
@@ -32,24 +43,30 @@ all: lib
 	$(MAKE) $(NAME)
 
 lib :
-	@$(MAKE) -C $(DIR_SRC)libft
+	@$(MAKE) -C $(DIR_LIB)libft
+	@$(MAKE) -C $(DIR_LIB)minilibx-linux
 
 debug :
 	@$(MAKE) re DEBUG=yes
 
 clean:
 	@rm -rf $(DIR_OBJ)
-	@$(MAKE) -C $(DIR_SRC)libft clean
+	@$(MAKE) -C $(DIR_LIB)libft clean
 
 fclean: clean
 	@rm -rf $(NAME)
-	@$(MAKE) -C $(DIR_SRC)libft fclean
+	@$(MAKE) -C $(DIR_LIB)libft fclean
+	@$(MAKE) -C $(DIR_LIB)minilibx-linux clean
 	@printf "$(RED)$(NAME) fclean done!\n$(END)"
 
 re: fclean
 	@$(MAKE) all
 
-.PHONY: all clean fclean re lib debug
+run: fclean
+	@$(MAKE) -C $(DIR_SRC)libft
+	$(MAKE) $(NAME)
+
+.PHONY: all clean fclean re lib debug run
 
 #  ===========================  COMPILATION  ===========================  #
 
@@ -59,6 +76,7 @@ $(NAME): $(DIR_OBJ) $(OBJECTS)
 $(DIR_OBJ)	:
 	@mkdir -p $(DIR_OBJ)
 	@mkdir -p $(DIR_OBJ)/utils
+	@mkdir -p $(DIR_OBJ)/parsing
 
 $(DIR_OBJ)%.o: $(DIR_SRC)%.c $(HEADERS) $(LIBRARY)
 	cc $(CFLAGS) -c $< -o $@
