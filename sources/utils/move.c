@@ -6,31 +6,11 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 12:48:32 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/09 15:00:58 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
-
-void	ft_render_player(t_data *game, int x, int y)
-{
-	int	i;
-	int	j;
-
-	i = -PLAYER_SIZE / 2;
-	while (i < PLAYER_SIZE / 2)
-	{
-		j = -PLAYER_SIZE / 2;
-		while (j < PLAYER_SIZE / 2)
-		{
-			if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGTH)
-				ft_mlx_pixel_put(game, x + i, y + j, RED);
-			j++;
-		}
-		i++;
-	}
-
-}
 
 static void	ft_move(t_data *game, int forward, int strafe)
 {
