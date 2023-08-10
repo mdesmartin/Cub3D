@@ -20,12 +20,12 @@ int	get_original_size(char **av)
 
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
-		return (ft_dprintf(2, "Error\nFailed to open map\n"), 1);
+		return (ft_dprintf(2, "Error\nFailed to open map\n"), -1);
 	size = 1;
 	while (read(fd, &buff, 1))
 		size++;
 	if (size < 2)
-		return (close(fd), ft_dprintf(2, "Error\nMap is empty\n"), 1);
+		return (close(fd), ft_dprintf(2, "Error\nMap is empty\n"), -1);
 	close(fd);
 	return (size);
 }
@@ -51,18 +51,23 @@ int	get_number_line(char **av)
 	int		nb_line;
 	int		fd;
 
-	nb_line = 0;
+	nb_line = 1;
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (ft_dprintf(2, "Error\nFailed to open map\n"), 0);
 	line = get_next_line(fd);
+	if (!line)
+		return (ft_dprintf(2, "Error\nFailed to gnl map\n"), 0);
 	while (line)
 	{
-		nb_line += 1;
 		free(line);
 		line = get_next_line(fd);
+		if (line)
+			nb_line += 1;
 	}
 	close(fd);
+	if (nb_line == 1)
+		return (ft_dprintf(2, "Error\nFailed to gnl map\n"), 0);
 	return (nb_line);
 }
 
@@ -74,6 +79,8 @@ int	init_map(t_parsing *parsed, char **av)
 	if (!nb_line)
 		return (1);
 	parsed->description = ft_calloc(nb_line + 1, sizeof(char *));
+	if (!parsed->description)
+		return (ft_dprintf(2, "Error\nFailed to calloc in init_map\n"), 1);
 	return (0);
 }
 
@@ -86,6 +93,8 @@ int	get_description(t_parsing *parsed, char **av)
 
 	i = 0;
 	original_size = get_original_size(av);
+	if (original_size == -1)
+		return (1);
 	if (init_map(parsed, av))
 		return (1);
 	fd = open(av[1], O_RDONLY);

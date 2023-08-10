@@ -6,11 +6,19 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:35:25 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/09 15:53:32 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 17:44:38 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
+
+int	is_whitespace_or_end(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	else
+		return (0);
+}
 
 int	is_whitespace(char c)
 {

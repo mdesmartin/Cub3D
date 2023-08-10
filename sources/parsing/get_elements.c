@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:20 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/09 17:26:30 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 17:41:47 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	get_path(t_parsing *parsed, char *element, int size, char **path)
 			move_on_space(parsed->description, i, &j);
 			get_len(parsed->description, i, &j, &len);
 			*path = ft_substr(parsed->description[i], j, len);
-			if (!path)
+			if (!(*path))
 				return (ft_dprintf(2, "Error\nMalloc failed in get_path\n"), 0);
 			return (1);
 		}

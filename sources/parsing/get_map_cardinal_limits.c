@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:42:13 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/09 17:29:00 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 17:38:40 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	get_map_south(t_parsing *parsed)
 		}
 		i++;
 	}
+	parsed->map_south = i - 1;
 }
 
 void	get_map_east(t_parsing *parsed)
@@ -104,10 +105,13 @@ void	get_map_west(t_parsing *parsed)
 	}
 }
 
-void	get_map_cardinal_limits(t_parsing *parsed)
+int	get_map_cardinal_limits(t_parsing *parsed)
 {
 	get_map_north(parsed);
 	get_map_south(parsed);
+	if (parsed->map_north >= parsed->map_south)
+		return (ft_dprintf(2, "Error\nMissing map buddy ;)\n"), 1);
 	get_map_west(parsed);
 	get_map_east(parsed);
+	return (0);
 }
