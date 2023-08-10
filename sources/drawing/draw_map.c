@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 15:06:18 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 11:06:47 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_render_player(t_data *game, int x, int y)
 		}
 		i++;
 	}
-
 }
 
 // square with black sides
