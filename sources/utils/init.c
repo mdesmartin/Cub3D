@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 14:21:21 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 14:51:28 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static void	ft_check_texture_file(t_data *game, char *texture_file)
 
 static void	ft_check_textures(t_data *game)
 {
-game->path_north = ft_strdup("./textures/test.xpm");
-game->path_south = ft_strdup("./textures/test.xpm");
-game->path_east = ft_strdup("./textures/test.xpm");
-game->path_west = ft_strdup("./textures/test.xpm");
+	game->north = NULL;
+	game->south = NULL;
+	game->east = NULL;
+	game->west = NULL;
 	ft_check_texture_file(game, game->path_north);
 	ft_check_texture_file(game, game->path_south);
 	ft_check_texture_file(game, game->path_east);
