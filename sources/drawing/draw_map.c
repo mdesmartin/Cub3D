@@ -6,25 +6,26 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/10 11:06:47 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 12:05:20 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
+// divide by 4 because BOX_SIZE / MAP_BOX_SIZE = 4;
 void	ft_render_player(t_data *game, int x, int y)
 {
 	int	i;
 	int	j;
 
-	i = -PLAYER_SIZE / 2;
-	while (i < PLAYER_SIZE / 2)
+	i = -(MAP_PLAYER_SIZE);
+	while (i < (MAP_PLAYER_SIZE))
 	{
-		j = -PLAYER_SIZE / 2;
-		while (j < PLAYER_SIZE / 2)
+		j = -(MAP_PLAYER_SIZE);
+		while (j < (MAP_PLAYER_SIZE))
 		{
 			if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGTH)
-				ft_mlx_pixel_put(game, x + i, y + j, RED);
+				ft_mlx_pixel_put(game, (x + i) / 4, (y + j) / 4, RED);
 			j++;
 		}
 		i++;
@@ -38,17 +39,17 @@ void	ft_draw_square(t_data *game, int x, int y, int color)
 	int	j;
 
 	i = 0;
-	while (i < BOX_SIZE)
+	while (i < MAP_BOX_SIZE)
 	{
 		j = 0;
-		while (j < BOX_SIZE)
+		while (j < MAP_BOX_SIZE)
 		{
-			if (i == 0 || i == BOX_SIZE || j == 0 || j == BOX_SIZE)
-				ft_mlx_pixel_put(game, x * BOX_SIZE + i, y * BOX_SIZE + j,
-					BLACK);
+			if (i == 0 || i == MAP_BOX_SIZE || j == 0 || j == MAP_BOX_SIZE)
+				ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
+					y * MAP_BOX_SIZE + j, BLACK);
 			else
-				ft_mlx_pixel_put(game, x * BOX_SIZE + i, y * BOX_SIZE + j,
-					color);
+				ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
+					y * MAP_BOX_SIZE + j, color);
 			j++;
 		}
 		i++;
@@ -80,18 +81,19 @@ void	ft_draw_map(t_data *game, char **map)
 
 void	ft_draw_fov(t_data *game)
 {
+	t_line	line;
 	float	degree;
 
 	degree = game->degree;
 	degree -= M_PI / 6;
 	while (degree <= game->degree + M_PI / 6)
 	{
-		ft_add_x_line(&game->line, game->player_x, WIN_WIDTH / 2, degree);
-		ft_add_y_line(&game->line, game->player_y, WIN_HEIGTH / 2, degree);
-		ft_draw_ray(game, &game->line, GREEN);
+		ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, degree);
+		ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, degree);
+		ft_draw_ray(game, &line, GREEN);
 		degree += M_PI / (3 * WIN_WIDTH);
 	}
-	ft_add_x_line(&game->line, game->player_x, WIN_WIDTH / 2, game->degree);
-	ft_add_y_line(&game->line, game->player_y, WIN_HEIGTH / 2, game->degree);
-	ft_draw_ray(game, &game->line, BLUE);
+	ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, game->degree);
+	ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, game->degree);
+	ft_draw_ray(game, &line, BLUE);
 }

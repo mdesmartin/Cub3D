@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 13:05:03 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 12:06:46 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,9 @@ void	ft_draw_wall(t_data *game, t_point point, int x_pixel)
 
 void	ft_draw_3d(t_data *game)
 {
-	float	degree;
 	t_point	point;
+	t_line	line;
+	float	degree;
 	int		i;
 
 	i = 0;
@@ -105,9 +106,9 @@ void	ft_draw_3d(t_data *game)
 	degree -= M_PI / 6;
 	while (degree <= game->degree + M_PI / 6)
 	{
-		ft_add_x_line(&game->line, game->player_x, WIN_WIDTH / 2, degree);
-		ft_add_y_line(&game->line, game->player_y, WIN_HEIGTH / 2, degree);
-		point = ft_wall_distance(game, &game->line);
+		ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, degree);
+		ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, degree);
+		point = ft_wall_distance(game, &line);
 		ft_draw_wall(game, point, i);
 		degree += M_PI / (3 * WIN_WIDTH);
 		i++;

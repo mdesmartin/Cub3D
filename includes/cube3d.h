@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 14:26:26 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 12:07:54 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@
 # define WHITE		0xffffff
 # define YELLOW		0xffff00
 
-# define PLAYER_SIZE	16
-# define BOX_SIZE		80
-# define STEP_LENGTH	4
+# define PLAYER_SIZE		16
+# define BOX_SIZE			80
+# define STEP_LENGTH		4
+# define MAP_BOX_SIZE		20
+# define MAP_PLAYER_SIZE	5
 
 typedef struct s_parsing
 {
@@ -122,7 +124,6 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	t_line	line;
 }				t_data;
 
 // Game initiation
