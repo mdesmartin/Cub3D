@@ -6,11 +6,18 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:16 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/08 22:39:52 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 17:32:21 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
+
+int	error_free(char **tab, char *message)
+{
+	ft_free_tab(tab);
+	ft_dprintf(2, message);
+	return (1);
+}
 
 char	*fill_line(char const *s, unsigned int start, size_t len)
 {
@@ -50,13 +57,14 @@ int	get_map(t_data *game, t_parsing *parsed)
 	nb_columns = parsed->map_east - parsed->map_west + 1;
 	map = ft_calloc(nb_lines + 1, sizeof(char *));
 	if (!map)
-		return (ft_free_tab(map), ft_dprintf(2, "Error\nMalloc failed in get_map\n"), 1);
+		return (error_free(map, "Error\nMalloc failed in get_map\n"));
 	y = parsed->map_north;
 	while (i < nb_lines)
 	{
-		map[i] = fill_line(parsed->description[y], parsed->map_west, nb_columns);
+		map[i] = fill_line(parsed->description[y], \
+			parsed->map_west, nb_columns);
 		if (!map[i])
-			return (ft_free_tab(map), ft_dprintf(2, "Error\nMalloc failed in get_map\n"), 1);
+			return (error_free(map, "Error\nMalloc failed in get_map\n"));
 		y++;
 		i++;
 	}
