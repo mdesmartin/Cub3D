@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:45 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 14:34:52 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 16:08:08 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int	main(int ac, char **av)
 		return (free_main(game), 1);//ne rien faire ensuite si ca marche pas
 	// main_parsing_test(game);
 	game->mlx_ptr = mlx_init();
-	game->win_ptr = mlx_new_window(game->mlx_ptr, 1280, 720, "cub3D");
+	game->win_ptr = mlx_new_window(game->mlx_ptr,
+			WIN_WIDTH, WIN_HEIGTH, "cub3D");
 	ft_load_textures(game);
 	ft_refresh_img(game);
 	mlx_hook(game->win_ptr, 2, 1L << 0, ft_key, game);
