@@ -14,15 +14,12 @@ DIR_SRC =	sources/
 
 LST_SRC =	main.c								\
 			utils/init.c						\
-			utils/move.c						\
-			drawing/draw.c						\
 			utils/close.c						\
-			drawing/draw_3d.c					\
-			utils/move_cal.c					\
-			drawing/draw_map.c					\
 			utils/check_arg.c					\
+			drawing/draw.c						\
+			drawing/draw_3d.c					\
+			drawing/draw_map.c					\
 			drawing/ray_casting.c				\
-			utils/player_collision.c			\
 			parsing/check_elements.c			\
 			parsing/check_map.c					\
 			parsing/get_description.c			\
@@ -30,7 +27,10 @@ LST_SRC =	main.c								\
 			parsing/get_map.c					\
 			parsing/get_map_cardinal_limits.c	\
 			parsing/parsing.c					\
-			parsing/parsing_utils.c
+			parsing/parsing_utils.c				\
+			movements/move.c					\
+			movements/move_cal.c				\
+			movements/player_collision.c
 
 			
 SOURCES	=	$(addprefix $(DIR_SRC), $(LST_SRC))
@@ -85,6 +85,7 @@ $(DIR_OBJ)	:
 	@mkdir -p $(DIR_OBJ)/utils
 	@mkdir -p $(DIR_OBJ)/drawing
 	@mkdir -p $(DIR_OBJ)/parsing
+	@mkdir -p $(DIR_OBJ)/movements
 
 $(DIR_OBJ)%.o: $(DIR_SRC)%.c $(HEADERS) $(LIBRARY)
 	cc $(CFLAGS) -c $< -o $@
