@@ -20,6 +20,7 @@ LST_SRC =	main.c								\
 			drawing/draw_3d.c					\
 			drawing/draw_map.c					\
 			drawing/ray_casting.c				\
+			drawing/wall_calculation.c			\
 			parsing/check_elements.c			\
 			parsing/check_map.c					\
 			parsing/get_description.c			\
