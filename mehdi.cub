@@ -1,15 +1,15 @@
 
 
-	NO         ./textures/test.xpm
+	NO         ./textures/collectible.xpm
  
 
 C               32,0,78
 
-SO ./textures/test.xpm
+SO ./textures/hidden_exit.xpm
 
 
-EA    ./textures/test.xpm
-WE ./textures/test.xpm
+EA    ./textures/open_exit.xpm
+WE ./textures/player.xpm
 
 F 220,100,0
 
