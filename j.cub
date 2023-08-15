@@ -2,20 +2,27 @@
 	NO         ./textures/test.xpm
  
 
-C 32,43,99999999999999999999  
-
-SO ./textures/test.xpm
-
-lol 
+	NO         ./textures/test.xpm
+ 
 
                      			EA    ./textures/test.xpm
 WE 					./textures/test.xpm
 
-F 220,1000,	
+SO ./textures/test.xpm
 
 
-11111111111
-1E000000001111111
-11111111111111
+EA    ./textures/test.xpm
+WE ./textures/test.xpm
 
+F 220,100,0
+
+111111111111111
+100000000000001
+101110111011101
+101010101010101
+1E0000000000001
+101010101010101
+100010101010101
+100000000000001
+111111111111111
 

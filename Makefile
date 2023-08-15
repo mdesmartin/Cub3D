@@ -13,11 +13,14 @@ endif
 DIR_SRC =	sources/
 
 LST_SRC =	main.c								\
+			utils/init.c						\
+			utils/close.c						\
+			utils/check_arg.c					\
 			drawing/draw.c						\
 			drawing/draw_3d.c					\
 			drawing/draw_map.c					\
 			drawing/ray_casting.c				\
-			drawing/texturing.c					\
+			drawing/wall_calculation.c			\
 			parsing/check_elements.c			\
 			parsing/check_map.c					\
 			parsing/get_colors.c				\
@@ -28,6 +31,9 @@ LST_SRC =	main.c								\
 			parsing/get_player.c				\
 			parsing/parsing.c					\
 			parsing/parsing_utils.c				\
+			movements/move.c					\
+			movements/move_cal.c				\
+			movements/player_collision.c				\
 			utils/check_arg.c					\
 			utils/close.c						\
 			utils/init.c						\
@@ -88,6 +94,7 @@ $(DIR_OBJ)	:
 	@mkdir -p $(DIR_OBJ)/utils
 	@mkdir -p $(DIR_OBJ)/drawing
 	@mkdir -p $(DIR_OBJ)/parsing
+	@mkdir -p $(DIR_OBJ)/movements
 
 $(DIR_OBJ)%.o: $(DIR_SRC)%.c $(HEADERS) $(LIBRARY)
 	cc $(CFLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 13:05:03 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/15 13:41:59 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,34 +70,39 @@ static t_point	ft_wall_distance(t_data *game, t_line *line)
 	return (ft_save_collision_point(line->x0, line->y0));
 }
 
-
-void	ft_draw_wall(t_data *game, t_point point, int x_pixel)
+void	ft_draw_wall(t_data *game, t_point point, int x_display)
 {
 	float	wall_heigth;
 	float	distance;
-	int		y;
+	int		y_display;
 
 	distance = sqrtf(pow((point.x - game->player_x), 2)
 			+ pow((point.y - game->player_y), 2));
 	wall_heigth = ((WIN_HEIGTH / 2) * 350.7) / distance;
-	y = (int)(WIN_HEIGTH / 2 - wall_heigth / 2);
-	while (y <= (int)(WIN_HEIGTH / 2 + wall_heigth / 2))
+	y_display = (int)(WIN_HEIGTH / 2 - wall_heigth / 2);
+	while (y_display <= (int)(WIN_HEIGTH / 2 + wall_heigth / 2))
 	{
-		if (x_pixel > 0 && x_pixel < WIN_WIDTH && y > 0 && y < WIN_HEIGTH)
+// function(char face, int x_display, int line_height, float position_in_wall)
+		if (x_display > 0 && x_display < WIN_WIDTH
+			&& y_display > 0 && y_display < WIN_HEIGTH)
 		{
-			if (point.x % 80 == 0 && point.y % 80 == 0)
-				ft_mlx_pixel_put(game, x_pixel, y, BLACK);
+			if ((point.x % 80 == 0 && point.y % 80 == 0)
+				|| ((point.x + 1) % 80 == 0 && (point.y + 1) % 80 == 0)
+				|| ((point.x + 1) % 80 == 0 && point.y % 80 == 0)
+				|| (point.x % 80 == 0 && (point.y + 1) % 80 == 0))
+				ft_mlx_pixel_put(game, x_display, y_display, BLACK);
 			else
-				ft_mlx_pixel_put(game, x_pixel, y, LIME);
+				ft_mlx_pixel_put(game, x_display, y_display, LIME);
 		}
-		y++;
+		y_display++;
 	}
 }
 
 void	ft_draw_3d(t_data *game)
 {
-	float	degree;
 	t_point	point;
+	t_line	line;
+	float	degree;
 	int		i;
 
 	i = 0;
@@ -105,11 +110,12 @@ void	ft_draw_3d(t_data *game)
 	degree -= M_PI / 6;
 	while (degree <= game->degree + M_PI / 6)
 	{
-		ft_add_x_line(&game->line, game->player_x, WIN_WIDTH / 2, degree);
-		ft_add_y_line(&game->line, game->player_y, WIN_HEIGTH / 2, degree);
-		point = ft_wall_distance(game, &game->line);
+		ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, degree);
+		ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, degree);
+		point = ft_wall_distance(game, &line);
 		ft_draw_wall(game, point, i);
 		degree += M_PI / (3 * WIN_WIDTH);
 		i++;
 	}
+ft_wall_position(point, ft_wall_face((float)point.x, (float)point.y));
 }

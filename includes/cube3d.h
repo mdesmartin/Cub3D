@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/14 19:24:18 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/15 14:07:09 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@
 # define WHITE		0xffffff
 # define YELLOW		0xffff00
 
-# define PLAYER_SIZE	16
-# define BOX_SIZE		80
-# define STEP_LENGTH	4
+# define PLAYER_SIZE		16
+# define BOX_SIZE			80
+# define STEP_LENGTH		4
+# define MAP_BOX_SIZE		20
+# define MAP_PLAYER_SIZE	5
 
 typedef struct s_parsing
 {
@@ -115,7 +117,6 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	t_line	line;
 }				t_data;
 
 typedef struct s_display_line
@@ -129,6 +130,13 @@ typedef struct s_display_line
 
 /*****************************  GAME INITIATION  ******************************/
 
+	char	face; // N, S, E, W
+	float	x_wall; //horizontal percentage of the wall lengh size where the line take place
+	int		x_display; //where to display on the screen this line
+	int		wall_line_height; //heigh of the wall's line we gonna print
+}				t_display_line;
+
+// Game initiation
 t_data	*ft_game_init(void);
 void	ft_load_textures(t_data *game);
 
@@ -155,6 +163,8 @@ void	ft_add_x_line(t_line *line, int x0, int x1, float degree);
 void	ft_add_y_line(t_line *line, int y0, int y1, float degree);
 void	ft_draw_wall(t_data *game, t_point point, int x_pixel);
 void	ft_draw_3d(t_data *game);
+float	ft_wall_position(t_point point, char face);
+char	ft_wall_face(float x, float y);
 
 /********************************  RAY CASTING  *******************************/
 
