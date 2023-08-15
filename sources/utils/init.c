@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 14:21:21 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/10 17:34:49 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static void	ft_check_texture_file(t_data *game, char *texture_file)
 
 static void	ft_check_textures(t_data *game)
 {
-game->path_north = ft_strdup("./textures/test.xpm");
-game->path_south = ft_strdup("./textures/test.xpm");
-game->path_east = ft_strdup("./textures/test.xpm");
-game->path_west = ft_strdup("./textures/test.xpm");
+// game->path_north = ft_strdup("./textures/test.xpm");
+// game->path_south = ft_strdup("./textures/test.xpm");
+// game->path_east = ft_strdup("./textures/test.xpm");
+// game->path_west = ft_strdup("./textures/test.xpm");
 	ft_check_texture_file(game, game->path_north);
 	ft_check_texture_file(game, game->path_south);
 	ft_check_texture_file(game, game->path_east);
@@ -82,5 +82,9 @@ t_data	*ft_game_init(void)
 	game->show_map = 0;
 	game->degree = 0;
 	game->map = NULL;
+	game->path_north = NULL;
+	game->path_south = NULL;
+	game->path_east = NULL;
+	game->path_west = NULL;
 	return (game);
 }

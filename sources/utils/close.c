@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:27 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 11:33:58 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/09 16:11:49 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,21 @@ void	ft_error(t_data *game, char *str)
 {
 	perror(str);
 	ft_quit(game);
+}
+
+void	free_main(t_data	*game)
+{
+	if (game->map)
+		ft_free_tab(game->map);
+	if (game->path_north)
+		free(game->path_north);
+	if (game->path_south)
+		free(game->path_south);
+	if (game->path_east)
+		free(game->path_east);
+	if (game->path_west)
+		free(game->path_west);
+
+	if (game)
+		free(game);
 }
