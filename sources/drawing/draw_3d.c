@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/15 16:13:09 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/15 17:43:03 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,40 +34,24 @@ void	ft_draw_floor_ceiling(t_data *game)
 
 }
 
-static t_point	ft_save_collision_point(int x, int y)
+float	ft_wall_height(float distance)
 {
-	t_point	point;
+	float	screen_dst;
+	float	wall_heigth;
 
-	point.x = x;
-	point.y = y;
-	return (point);
+	screen_dst = WIN_HEIGTH / (2 * tanf(M_PI_4));
+	wall_heigth = (screen_dst * (WIN_HEIGTH / 3)) / distance;
+	return (wall_heigth);
 }
 
-static t_point	ft_wall_distance(t_data *game, t_line *line)
+static float	ft_wall_distance(t_data *game, t_point point, float angle)
 {
-	float	e2;
+	float	distance;
 
-	line->e = line->dx + line->dy;
-	while (ft_ray_collision(game, line->x0, line->y0) == 0)
-	{
-		if (line->x0 > 0 && line->x0 < WIN_WIDTH
-			&& line->y0 > 0 && line->y0 < WIN_HEIGTH)
-			;
-		else
-			break ;
-		e2 = 2 * line->e;
-		if (e2 >= line->dy)
-		{
-			line->e += line->dy;
-			line->x0 += line->sx;
-		}
-		if (e2 <= line->dx)
-		{
-			line->e += line->dx;
-			line->y0 += line->sy;
-		}
-	}
-	return (ft_save_collision_point(line->x0, line->y0));
+	distance = sqrtf(pow((point.x - game->player_x), 2)
+			+ pow((point.y - game->player_y), 2));
+	distance = cosf(game->degree - angle) * distance;
+	return (distance);
 }
 
 void	ft_draw_wall(t_data *game, t_point point, int x_display, float angle)
@@ -76,18 +60,16 @@ void	ft_draw_wall(t_data *game, t_point point, int x_display, float angle)
 	float	distance;
 	int		y_display;
 
-	distance = sqrtf(pow((point.x - game->player_x), 2)
-			+ pow((point.y - game->player_y), 2));
-	distance = cosf(game->degree - angle) * distance;
-	wall_heigth = ((WIN_HEIGTH / 2) * 350.7) / distance;
+	distance = ft_wall_distance(game, point, angle);
+	wall_heigth = ft_wall_height(distance);
 	y_display = (int)(WIN_HEIGTH / 2 - wall_heigth / 2);
 	while (y_display <= (int)(WIN_HEIGTH / 2 + wall_heigth / 2))
 	{
 		if (x_display > 0 && x_display < WIN_WIDTH
 			&& y_display > 0 && y_display < WIN_HEIGTH)
 		{
-			if ((point.x % BOX_SIZE == 0 && point.y % BOX_SIZE == 0)
-				|| ((point.x + 1) % BOX_SIZE == 0 && (point.y + 1) % BOX_SIZE == 0)
+			if (((point.x + 1) % BOX_SIZE == 0 && (point.y + 1) % BOX_SIZE == 0)
+				|| (point.x % BOX_SIZE == 0 && point.y % BOX_SIZE == 0)
 				|| ((point.x + 1) % BOX_SIZE == 0 && point.y % BOX_SIZE == 0)
 				|| (point.x % BOX_SIZE == 0 && (point.y + 1) % BOX_SIZE == 0))
 				ft_mlx_pixel_put(game, x_display, y_display, BLACK);
@@ -112,10 +94,9 @@ void	ft_draw_3d(t_data *game)
 	{
 		ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, angle);
 		ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, angle);
-		point = ft_wall_distance(game, &line);
+		point = ft_wall_collision(game, &line);
 		ft_draw_wall(game, point, i, angle);
 		angle += M_PI / (3 * WIN_WIDTH);
 		i++;
 	}
-ft_wall_position(point, ft_wall_face((float)point.x, (float)point.y));
 }

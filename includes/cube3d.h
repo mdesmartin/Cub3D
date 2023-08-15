@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/15 15:57:50 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/15 17:42:53 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_line
 
 typedef struct s_point
 {
+	float	distance;
 	int		x;
 	int		y;
 }				t_point;
@@ -159,6 +160,7 @@ float	ft_wall_position(t_point point, char face);
 char	ft_wall_face(float x, float y);
 
 // Ray casting
+t_point	ft_wall_collision(t_data *game, t_line *line);
 int		ft_ray_collision(t_data *game, int new_x, int new_y);
 void	ft_draw_ray(t_data *game, t_line *line, int color);
 
