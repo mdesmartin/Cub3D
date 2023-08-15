@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/15 13:41:59 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/15 14:19:34 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,30 +72,31 @@ static t_point	ft_wall_distance(t_data *game, t_line *line)
 
 void	ft_draw_wall(t_data *game, t_point point, int x_display)
 {
-	float	wall_heigth;
-	float	distance;
-	int		y_display;
+	t_display_line	line;
+	float			distance;
 
 	distance = sqrtf(pow((point.x - game->player_x), 2)
 			+ pow((point.y - game->player_y), 2));
-	wall_heigth = ((WIN_HEIGTH / 2) * 350.7) / distance;
-	y_display = (int)(WIN_HEIGTH / 2 - wall_heigth / 2);
-	while (y_display <= (int)(WIN_HEIGTH / 2 + wall_heigth / 2))
-	{
-// function(char face, int x_display, int line_height, float position_in_wall)
-		if (x_display > 0 && x_display < WIN_WIDTH
-			&& y_display > 0 && y_display < WIN_HEIGTH)
-		{
-			if ((point.x % 80 == 0 && point.y % 80 == 0)
-				|| ((point.x + 1) % 80 == 0 && (point.y + 1) % 80 == 0)
-				|| ((point.x + 1) % 80 == 0 && point.y % 80 == 0)
-				|| (point.x % 80 == 0 && (point.y + 1) % 80 == 0))
-				ft_mlx_pixel_put(game, x_display, y_display, BLACK);
-			else
-				ft_mlx_pixel_put(game, x_display, y_display, LIME);
-		}
-		y_display++;
-	}
+	line.face = ft_wall_face(point.x, point.y);
+	line.x_wall = ft_wall_position(point, line.face);
+	line.x_win = x_display;
+	line.wall_line_height = ((WIN_HEIGTH / 2) * 350.7) / distance;
+	print_line(game, line);
+	// while (y_display <= (int)(WIN_HEIGTH / 2 + wall_heigth / 2))
+	// {
+	// 	if (x_display > 0 && x_display < WIN_WIDTH
+	// 		&& y_display > 0 && y_display < WIN_HEIGTH)
+	// 	{
+	// 		if ((point.x % 80 == 0 && point.y % 80 == 0)
+	// 			|| ((point.x + 1) % 80 == 0 && (point.y + 1) % 80 == 0)
+	// 			|| ((point.x + 1) % 80 == 0 && point.y % 80 == 0)
+	// 			|| (point.x % 80 == 0 && (point.y + 1) % 80 == 0))
+	// 			ft_mlx_pixel_put(game, x_display, y_display, BLACK);
+	// 		else
+	// 			ft_mlx_pixel_put(game, x_display, y_display, LIME);
+	// 	}
+	// 	y_display++;
+	// }
 }
 
 void	ft_draw_3d(t_data *game)
@@ -117,5 +118,4 @@ void	ft_draw_3d(t_data *game)
 		degree += M_PI / (3 * WIN_WIDTH);
 		i++;
 	}
-ft_wall_position(point, ft_wall_face((float)point.x, (float)point.y));
 }

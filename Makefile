@@ -13,33 +13,28 @@ endif
 DIR_SRC =	sources/
 
 LST_SRC =	main.c								\
-			utils/init.c						\
-			utils/close.c						\
-			utils/check_arg.c					\
 			drawing/draw.c						\
 			drawing/draw_3d.c					\
 			drawing/draw_map.c					\
 			drawing/ray_casting.c				\
+			drawing/texturing.c					\
 			drawing/wall_calculation.c			\
-			parsing/check_elements.c			\
+			parsing/get_map.c					\
 			parsing/check_map.c					\
 			parsing/get_colors.c				\
-			parsing/get_description.c			\
-			parsing/get_elements.c				\
-			parsing/get_map.c					\
-			parsing/get_map_cardinal_limits.c	\
 			parsing/get_player.c				\
+			parsing/get_elements.c				\
+			parsing/check_elements.c			\
+			parsing/get_description.c			\
+			parsing/get_map_cardinal_limits.c	\
 			parsing/parsing.c					\
 			parsing/parsing_utils.c				\
 			movements/move.c					\
 			movements/move_cal.c				\
-			movements/player_collision.c				\
+			movements/player_collision.c		\
 			utils/check_arg.c					\
 			utils/close.c						\
-			utils/init.c						\
-			utils/move.c						\
-			utils/move_cal.c					\
-			utils/player_collision.c
+			utils/init.c
 
 			
 SOURCES	=	$(addprefix $(DIR_SRC), $(LST_SRC))

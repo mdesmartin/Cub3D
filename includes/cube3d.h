@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/15 14:07:09 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/15 14:35:38 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,18 +125,11 @@ typedef struct s_display_line
 	float		x_wall; //horizontal percentage of the wall lengh size where the line take place
 	int			x_win; //where to display on the screen this line
 	int			wall_line_height; //heigh of the wall's line we gonna print
-	t_img		wall;
+	t_img		*wall;
 }				t_display_line;
 
 /*****************************  GAME INITIATION  ******************************/
 
-	char	face; // N, S, E, W
-	float	x_wall; //horizontal percentage of the wall lengh size where the line take place
-	int		x_display; //where to display on the screen this line
-	int		wall_line_height; //heigh of the wall's line we gonna print
-}				t_display_line;
-
-// Game initiation
 t_data	*ft_game_init(void);
 void	ft_load_textures(t_data *game);
 
@@ -165,6 +158,7 @@ void	ft_draw_wall(t_data *game, t_point point, int x_pixel);
 void	ft_draw_3d(t_data *game);
 float	ft_wall_position(t_point point, char face);
 char	ft_wall_face(float x, float y);
+void	print_line(t_data *game, t_display_line line);
 
 /********************************  RAY CASTING  *******************************/
 
