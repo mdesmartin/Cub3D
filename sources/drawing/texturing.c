@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:41:25 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/15 18:07:24 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/15 18:18:22 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,13 @@ void	print_line(t_data *game, t_display_line line)//the one that julien call in 
 	y_min_win = (WIN_HEIGTH / 2) - (line.wall_line_height / 2);
 	while (y_win >= y_min_win)
 	{
-		// printf("y_win:%d\n", y_win);
 		if (line.x_win > 0 && line.x_win < WIN_WIDTH
-			&& y_win > 0 && y_win < WIN_HEIGTH)
+			&& y_min_win > 0 && y_min_win < WIN_HEIGTH)
 		{
 			color = get_color(line, i);
-			ft_mlx_pixel_put(game, line.x_win, y_win, color);
+			ft_mlx_pixel_put(game, line.x_win, y_min_win, color);
 		}
 		i++;
-		y_win--;
+		y_min_win++;
 	}
 }
