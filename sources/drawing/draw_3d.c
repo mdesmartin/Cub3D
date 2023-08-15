@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/14 18:05:30 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/15 13:41:59 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,10 @@ void	ft_draw_wall(t_data *game, t_point point, int x_display)
 		if (x_display > 0 && x_display < WIN_WIDTH
 			&& y_display > 0 && y_display < WIN_HEIGTH)
 		{
-			if (point.x % 80 == 0 && point.y % 80 == 0)
+			if ((point.x % 80 == 0 && point.y % 80 == 0)
+				|| ((point.x + 1) % 80 == 0 && (point.y + 1) % 80 == 0)
+				|| ((point.x + 1) % 80 == 0 && point.y % 80 == 0)
+				|| (point.x % 80 == 0 && (point.y + 1) % 80 == 0))
 				ft_mlx_pixel_put(game, x_display, y_display, BLACK);
 			else
 				ft_mlx_pixel_put(game, x_display, y_display, LIME);
