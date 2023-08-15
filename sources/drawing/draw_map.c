@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/10 12:05:20 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/15 16:08:57 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,16 @@ void	ft_draw_map(t_data *game, char **map)
 void	ft_draw_fov(t_data *game)
 {
 	t_line	line;
-	float	degree;
+	float	angle;
 
-	degree = game->degree;
-	degree -= M_PI / 6;
-	while (degree <= game->degree + M_PI / 6)
+	angle = game->degree;
+	angle -= M_PI / 6;
+	while (angle <= game->degree + M_PI / 6)
 	{
-		ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, degree);
-		ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, degree);
+		ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, angle);
+		ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, angle);
 		ft_draw_ray(game, &line, GREEN);
-		degree += M_PI / (3 * WIN_WIDTH);
+		angle += M_PI / (3 * WIN_WIDTH);
 	}
 	ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, game->degree);
 	ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, game->degree);

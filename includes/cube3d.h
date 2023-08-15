@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/14 18:07:34 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/15 15:57:50 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,6 @@ void	ft_mlx_pixel_put(t_data *game, int x, int y, int color);
 void	ft_draw_fov(t_data *game);
 void	ft_add_x_line(t_line *line, int x0, int x1, float degree);
 void	ft_add_y_line(t_line *line, int y0, int y1, float degree);
-void	ft_draw_wall(t_data *game, t_point point, int x_pixel);
 void	ft_draw_3d(t_data *game);
 float	ft_wall_position(t_point point, char face);
 char	ft_wall_face(float x, float y);
