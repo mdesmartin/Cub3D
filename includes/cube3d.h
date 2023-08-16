@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 14:41:12 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 15:39:06 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@
 # define YELLOW		0xffff00
 
 # define PLAYER_SIZE		16
-# define BOX_SIZE			80
-# define STEP_LENGTH		4
-# define MAP_BOX_SIZE		20
-# define MAP_PLAYER_SIZE	5
+# define BOX_SIZE			128
+# define STEP_LENGTH		8
+# define MAP_BOX_SIZE		16
+# define MAP_PLAYER_SIZE	8
 
 typedef struct s_parsing
 {

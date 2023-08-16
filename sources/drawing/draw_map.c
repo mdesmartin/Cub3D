@@ -6,13 +6,12 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 14:57:58 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 15:37:33 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-// divide by 4 because BOX_SIZE / MAP_BOX_SIZE = 4;
 void	ft_render_player(t_data *game, int x, int y)
 {
 	int	scale;
@@ -26,7 +25,8 @@ void	ft_render_player(t_data *game, int x, int y)
 		j = -(MAP_PLAYER_SIZE);
 		while (j < (MAP_PLAYER_SIZE))
 		{
-			if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGTH)
+			if (x >= 0 && (x + i) / scale < WIN_WIDTH && y >= 0
+				&& (y + j) / scale < WIN_HEIGTH)
 				ft_mlx_pixel_put(game, (x + i) / scale, (y + j) / scale, RED);
 			j++;
 		}

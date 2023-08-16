@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:50:53 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 14:40:43 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 15:31:01 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	ft_draw_ray(t_data *game, t_line *line, int color, int scale)
 	line->e = line->dx + line->dy;
 	while (ft_ray_collision(game, line->x0, line->y0) == 0)
 	{
-		if (line->x0 > 0 && line->x0 < WIN_WIDTH
-			&& line->y0 > 0 && line->y0 < WIN_HEIGTH)
+		if (line->x0 > 0 && line->x0 / scale < WIN_WIDTH
+			&& line->y0 > 0 && line->y0 / scale < WIN_HEIGTH)
 			ft_mlx_pixel_put(game, line->x0 / scale, line->y0 / scale, color);
 		else
 			break ;

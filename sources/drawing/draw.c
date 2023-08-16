@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 13:15:34 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 15:37:42 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_add_x_line(t_line *line, int x0, int x1, float degree)
 {
 	line->x0 = x0;
 	line->x1 = x1;
-	line->x_f = cosf(degree) * 1000 + x0 ;
+	line->x_f = cosf(degree) * WIN_WIDTH + x0 ;
 	line->dx = line->x_f - (float) line->x0;
 	if (line->dx < 0)
 		line->dx *= -1;
@@ -56,7 +56,7 @@ void	ft_add_y_line(t_line *line, int y0, int y1, float degree)
 {
 	line->y0 = y0;
 	line->y1 = y1;
-	line->y_f = sinf(degree) * 1000 + y0;
+	line->y_f = sinf(degree) * WIN_WIDTH + y0;
 	line->dy = line->y_f - (float) line->y0;
 	if (line->dy < 0)
 		line->dy *= -1;
