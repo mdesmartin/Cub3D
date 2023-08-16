@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 13:42:23 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 13:58:42 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	fps()
 
 ////////////////////
 
-void	ft_refresh_img(t_data *game)
+int	ft_refresh_img(t_data *game)
 {
 	fps();//a supprimer a la fin
 	game->img = mlx_new_image(game->mlx_ptr, 1280, 720);
@@ -56,6 +56,7 @@ void	ft_refresh_img(t_data *game)
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img, 0, 0);
 	if (game->img)
 		mlx_destroy_image(game->mlx_ptr, game->img);
+	return (0);
 }
 
 void	ft_mlx_pixel_put(t_data *game, int x, int y, int color)

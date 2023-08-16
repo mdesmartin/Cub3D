@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 13:40:02 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 13:58:28 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void	main_parsing_test(t_data	*game);
 /***********************************  DRAW  ***********************************/
 
 void	ft_draw_floor_ceiling(t_data *game);
-void	ft_refresh_img(t_data *game);
+int		ft_refresh_img(t_data *game);
 void	ft_draw_map(t_data *game, char **map);
 void	ft_render_player(t_data *game, int x, int y);
 void	ft_mlx_pixel_put(t_data *game, int x, int y, int color);
