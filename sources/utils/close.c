@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:27 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 16:11:49 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 16:36:26 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	free_main(t_data	*game)
 		free(game->path_east);
 	if (game->path_west)
 		free(game->path_west);
-
 	if (game)
 		free(game);
 }
