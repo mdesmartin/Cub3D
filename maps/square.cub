@@ -3,7 +3,7 @@ SO ./textures/square/carlo.xpm
 EA ./textures/square/bob.xpm
 WE ./textures/square/plancton.xpm
  
-C               0,0,0
+C              255,34,0
 
 
 

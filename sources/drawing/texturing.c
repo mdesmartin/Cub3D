@@ -6,17 +6,12 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:41:25 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/15 18:18:22 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 16:42:18 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-// 0 face nSEW
-// 1 taille du mur, hauteur du mur
-// 2 hauteur y dans la win
-
-//protect here if overflow display white instead, how to see it overflow?
 int	get_color(t_display_line line, int i)
 {
 	u_int32_t	*pixel_tab;
@@ -26,7 +21,7 @@ int	get_color(t_display_line line, int i)
 
 	pixel_tab = (u_int32_t *)line.wall->data;
 	x = line.wall->width * line.x_wall;
-	y = ((line.wall->height * i) / line.wall_line_height * line.wall->width); //line.wall->width * y_size_on_wall;//
+	y = ((line.wall->height * i) / line.wall_line_height * line.wall->width);
 	if ((line.wall->width * line.wall->height) < (int)(x + y))
 		color = 0;
 	else
@@ -46,13 +41,14 @@ void	init_face(t_data *game, t_display_line *line)
 		line->wall = game->west;
 }
 
-void	print_line(t_data *game, t_display_line line)//the one that julien call in ft_draw_wall
+void	print_line(t_data *game, t_display_line line)
 {
-	int		y_win; //la hauteur max du mur sur la grille de la win
+	int		y_win;
 	int		y_min_win;
-	int		i = 0;
+	int		i;
 	int		color;
 
+	i = 0;
 	init_face(game, &line);
 	y_win = (WIN_HEIGTH / 2) + (line.wall_line_height / 2);
 	y_min_win = (WIN_HEIGTH / 2) - (line.wall_line_height / 2);
