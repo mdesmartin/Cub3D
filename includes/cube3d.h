@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/15 15:42:57 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 12:37:04 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_line
 
 typedef struct s_point
 {
+	float	distance;
 	int		x;
 	int		y;
 }				t_point;
@@ -154,7 +155,6 @@ void	ft_mlx_pixel_put(t_data *game, int x, int y, int color);
 void	ft_draw_fov(t_data *game);
 void	ft_add_x_line(t_line *line, int x0, int x1, float degree);
 void	ft_add_y_line(t_line *line, int y0, int y1, float degree);
-void	ft_draw_wall(t_data *game, t_point point, int x_pixel);
 void	ft_draw_3d(t_data *game);
 float	ft_wall_position(t_point point, char face);
 char	ft_wall_face(float x, float y);
@@ -162,6 +162,8 @@ void	print_line(t_data *game, t_display_line line);
 
 /********************************  RAY CASTING  *******************************/
 
+// Ray casting
+t_point	ft_wall_collision(t_data *game, t_line *line);
 int		ft_ray_collision(t_data *game, int new_x, int new_y);
 void	ft_draw_ray(t_data *game, t_line *line, int color);
 
