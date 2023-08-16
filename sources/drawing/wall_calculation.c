@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:35:25 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 17:34:48 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 19:06:37 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,6 @@ t_point	ft_wall_collision(t_data *game, t_line *line)
 	line->e = line->dx + line->dy;
 	while (ft_ray_collision(game, line->x0, line->y0) == 0)
 	{
-		if (line->x0 > 0 && line->x0 < WIN_WIDTH
-			&& line->y0 > 0 && line->y0 < WIN_HEIGTH)
-			;
-		else
-			break ;
 		e2 = 2 * line->e;
 		if (e2 >= line->dy)
 		{
