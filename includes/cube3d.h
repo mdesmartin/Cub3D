@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 13:17:06 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 14:41:12 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ void	print_line(t_data *game, t_display_line line);
 
 t_point	ft_wall_collision(t_data *game, t_line *line);
 int		ft_ray_collision(t_data *game, int new_x, int new_y);
-void	ft_draw_ray(t_data *game, t_line *line, int color);
+void	ft_draw_ray(t_data *game, t_line *line, int color, int scale);
 
 /*********************************  GAMEPLAY  *********************************/
 

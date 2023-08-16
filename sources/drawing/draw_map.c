@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/15 16:08:57 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 14:40:27 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 // divide by 4 because BOX_SIZE / MAP_BOX_SIZE = 4;
 void	ft_render_player(t_data *game, int x, int y)
 {
+	int	scale;
 	int	i;
 	int	j;
 
+	scale = BOX_SIZE / MAP_BOX_SIZE;
 	i = -(MAP_PLAYER_SIZE);
 	while (i < (MAP_PLAYER_SIZE))
 	{
@@ -25,7 +27,7 @@ void	ft_render_player(t_data *game, int x, int y)
 		while (j < (MAP_PLAYER_SIZE))
 		{
 			if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGTH)
-				ft_mlx_pixel_put(game, (x + i) / 4, (y + j) / 4, RED);
+				ft_mlx_pixel_put(game, (x + i) / scale, (y + j) / scale, RED);
 			j++;
 		}
 		i++;
@@ -83,17 +85,19 @@ void	ft_draw_fov(t_data *game)
 {
 	t_line	line;
 	float	angle;
+	int		scale;
 
+	scale = BOX_SIZE / MAP_BOX_SIZE;
 	angle = game->degree;
 	angle -= M_PI / 6;
 	while (angle <= game->degree + M_PI / 6)
 	{
 		ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, angle);
 		ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, angle);
-		ft_draw_ray(game, &line, GREEN);
+		ft_draw_ray(game, &line, GREEN, scale);
 		angle += M_PI / (3 * WIN_WIDTH);
 	}
 	ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, game->degree);
 	ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, game->degree);
-	ft_draw_ray(game, &line, BLUE);
+	ft_draw_ray(game, &line, BLUE, scale);
 }
