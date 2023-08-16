@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:34:55 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/16 15:03:42 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 15:39:06 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int	color_formated(char *str, int j)
 {
 	int	coma;
+	int	digit;
 
 	coma = 0;
+	digit = 0;
 	while (str[j] && is_whitespace(str[j]))
 		j++;
 	while (str[j])
@@ -24,11 +26,14 @@ int	color_formated(char *str, int j)
 		if (!ft_isdigit(str[j]) && str[j] != ','
 			&& !is_whitespace_or_end(str[j]))
 			return (0);
+		if (ft_isdigit(str[j]) && (is_whitespace_or_end(str[j - 1])
+			|| str[j - 1] == ','))
+			digit += 1;
 		if (str[j] == ',')
 			coma += 1;
 		j++;
 	}
-	if (coma != 2)
+	if (coma != 2 || digit != 3)
 		return (0);
 	else
 		return (1);
