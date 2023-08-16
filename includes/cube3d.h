@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:40 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 13:58:28 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 15:47:28 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@
 # define YELLOW		0xffff00
 
 # define PLAYER_SIZE		16
-# define BOX_SIZE			80
-# define STEP_LENGTH		4
-# define MAP_BOX_SIZE		20
-# define MAP_PLAYER_SIZE	5
+# define BOX_SIZE			128
+# define STEP_LENGTH		8
+# define MAP_BOX_SIZE		16
+# define MAP_PLAYER_SIZE	8
 
 typedef struct s_parsing
 {
@@ -164,10 +164,9 @@ void	print_line(t_data *game, t_display_line line);
 
 /********************************  RAY CASTING  *******************************/
 
-// Ray casting
 t_point	ft_wall_collision(t_data *game, t_line *line);
 int		ft_ray_collision(t_data *game, int new_x, int new_y);
-void	ft_draw_ray(t_data *game, t_line *line, int color);
+void	ft_draw_ray(t_data *game, t_line *line, int color, int scale);
 
 /*********************************  GAMEPLAY  *********************************/
 

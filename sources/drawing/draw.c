@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 13:58:42 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 15:50:05 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	fps()
 int	ft_refresh_img(t_data *game)
 {
 	fps();//a supprimer a la fin
-	game->img = mlx_new_image(game->mlx_ptr, 1280, 720);
+	game->img = mlx_new_image(game->mlx_ptr, WIN_WIDTH, WIN_HEIGTH);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
 			&game->line_length, &game->endian);
 	ft_draw_floor_ceiling(game);
@@ -71,7 +71,7 @@ void	ft_add_x_line(t_line *line, int x0, int x1, float degree)
 {
 	line->x0 = x0;
 	line->x1 = x1;
-	line->x_f = cosf(degree) * 1000 + x0 ;
+	line->x_f = cosf(degree) * WIN_WIDTH + x0 ;
 	line->dx = line->x_f - (float) line->x0;
 	if (line->dx < 0)
 		line->dx *= -1;
@@ -85,7 +85,7 @@ void	ft_add_y_line(t_line *line, int y0, int y1, float degree)
 {
 	line->y0 = y0;
 	line->y1 = y1;
-	line->y_f = sinf(degree) * 1000 + y0;
+	line->y_f = sinf(degree) * WIN_WIDTH + y0;
 	line->dy = line->y_f - (float) line->y0;
 	if (line->dy < 0)
 		line->dy *= -1;

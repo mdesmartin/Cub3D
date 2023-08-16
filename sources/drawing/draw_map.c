@@ -3,29 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 14:58:59 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 15:49:27 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-// divide by 4 because BOX_SIZE / MAP_BOX_SIZE = 4;
 void	ft_render_player(t_data *game, int x, int y)
 {
+	int	scale;
 	int	i;
 	int	j;
 
+	scale = BOX_SIZE / MAP_BOX_SIZE;
 	i = -(MAP_PLAYER_SIZE);
 	while (i < (MAP_PLAYER_SIZE))
 	{
 		j = -(MAP_PLAYER_SIZE);
 		while (j < (MAP_PLAYER_SIZE))
 		{
-			if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGTH)
-				ft_mlx_pixel_put(game, (x + i) / 4, (y + j) / 4, RED);
+			if (x >= 0 && (x + i) / scale < WIN_WIDTH && y >= 0
+				&& (y + j) / scale < WIN_HEIGTH)
+				ft_mlx_pixel_put(game, (x + i) / scale, (y + j) / scale, RED);
 			j++;
 		}
 		i++;
@@ -83,17 +85,19 @@ void	ft_draw_fov(t_data *game)
 {
 	t_line	line;
 	float	angle;
+	int		scale;
 
+	scale = BOX_SIZE / MAP_BOX_SIZE;
 	angle = game->degree;
 	angle -= M_PI / 6;
 	while (angle <= game->degree + M_PI / 6)
 	{
 		ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, angle);
 		ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, angle);
-		ft_draw_ray(game, &line, GREEN);
-		angle += M_PI / (WIN_WIDTH);
+		ft_draw_ray(game, &line, GREEN, scale);
+		angle += M_PI / WIN_WIDTH;
 	}
 	ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, game->degree);
 	ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, game->degree);
-	ft_draw_ray(game, &line, BLUE);
+	ft_draw_ray(game, &line, BLUE, scale);
 }
