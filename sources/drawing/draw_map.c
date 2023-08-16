@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 19:31:18 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 23:19:26 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_render_player(t_data *game, int x, int y)
 	int	i;
 	int	j;
 
+	x = x + game->map_x * BOX_SIZE;
+	y = y + game->map_y * BOX_SIZE;
 	scale = BOX_SIZE / MAP_BOX_SIZE;
 	i = -(MAP_PLAYER_SIZE);
 	while (i < (MAP_PLAYER_SIZE))
@@ -25,8 +27,8 @@ void	ft_render_player(t_data *game, int x, int y)
 		j = -(MAP_PLAYER_SIZE);
 		while (j < (MAP_PLAYER_SIZE))
 		{
-			if (x >= 0 && (x + i) / scale < WIN_WIDTH && y >= 0
-				&& (y + j) / scale < WIN_HEIGTH)
+			if (x >= 0 && (x + i) / scale < WIN_WIDTH
+				&& y >= 0 && (y + j) / scale < WIN_HEIGTH)
 				ft_mlx_pixel_put(game, (x + i) / scale, (y + j) / scale, RED);
 			j++;
 		}
@@ -46,12 +48,17 @@ void	ft_draw_square(t_data *game, int x, int y, int color)
 		j = 0;
 		while (j < MAP_BOX_SIZE)
 		{
-			if (i == 0 || i == MAP_BOX_SIZE || j == 0 || j == MAP_BOX_SIZE)
-				ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
-					y * MAP_BOX_SIZE + j, BLACK);
-			else
-				ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
-					y * MAP_BOX_SIZE + j, color);
+			if (x * MAP_BOX_SIZE + i > 0 && y * MAP_BOX_SIZE + j > 0
+				&& x * MAP_BOX_SIZE + i < WIN_WIDTH
+				&& y * MAP_BOX_SIZE + j < WIN_HEIGTH)
+			{
+				if (i == 0 || i == MAP_BOX_SIZE || j == 0 || j == MAP_BOX_SIZE)
+					ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
+						y * MAP_BOX_SIZE + j, BLACK);
+				else
+					ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
+						y * MAP_BOX_SIZE + j, color);
+			}
 			j++;
 		}
 		i++;
@@ -71,14 +78,12 @@ void	ft_draw_map(t_data *game, char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if ((x + 1) * MAP_BOX_SIZE > WIN_WIDTH)
-				break ;
 			if (map[y][x] == '1')
-				ft_draw_square(game, x, y, SILVER);
+				ft_draw_square(game, x + game->map_x, y + game->map_y, SILVER);
 			else if (map[y][x] == '0')
-				ft_draw_square(game, x, y, WHITE);
+				ft_draw_square(game, x + game->map_x, y + game->map_y, WHITE);
 			else if (map[y][x] == ' ')
-				ft_draw_square(game, x, y, BLACK);
+				ft_draw_square(game, x + game->map_x, y + game->map_y, BLACK);
 			x++;
 		}
 		y++;
@@ -96,12 +101,16 @@ void	ft_draw_fov(t_data *game)
 	angle -= M_PI / 6;
 	while (angle <= game->degree + M_PI / 6)
 	{
-		ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, angle);
-		ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, angle);
+		ft_add_x_line(&line,
+			game->player_x + game->map_x * BOX_SIZE, WIN_WIDTH / 2, angle);
+		ft_add_y_line(&line,
+			game->player_y + game->map_y * BOX_SIZE, WIN_HEIGTH / 2, angle);
 		ft_draw_ray(game, &line, GREEN, scale);
 		angle += M_PI / WIN_WIDTH;
 	}
-	ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, game->degree);
-	ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, game->degree);
+	ft_add_x_line(&line,
+		game->player_x + game->map_x * BOX_SIZE, WIN_WIDTH / 2, game->degree);
+	ft_add_y_line(&line,
+		game->player_y + game->map_y * BOX_SIZE, WIN_HEIGTH / 2, game->degree);
 	ft_draw_ray(game, &line, BLUE, scale);
 }

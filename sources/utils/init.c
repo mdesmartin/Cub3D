@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/15 15:01:27 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 22:42:41 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ t_data	*ft_game_init(void)
 	game->path_south = NULL;
 	game->path_east = NULL;
 	game->path_west = NULL;
+	game->map_x = 0;
+	game->map_y = 0;
 	return (game);
 }

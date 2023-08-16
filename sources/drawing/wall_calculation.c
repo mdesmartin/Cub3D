@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:35:25 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 19:06:37 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 23:16:29 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,15 @@ static t_point	ft_save_collision_point(int x, int y)
 	point.x = x;
 	point.y = y;
 	return (point);
+}
+
+static int	ft_ray_collision(t_data *game, int new_x, int new_y)
+{
+	new_x = new_x / BOX_SIZE;
+	new_y = new_y / BOX_SIZE;
+	if (game->map[new_y][new_x] == '1')
+		return (1);
+	return (0);
 }
 
 t_point	ft_wall_collision(t_data *game, t_line *line)
