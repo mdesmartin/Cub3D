@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:34:55 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/16 15:39:06 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 16:34:47 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	color_formated(char *str, int j)
 			&& !is_whitespace_or_end(str[j]))
 			return (0);
 		if (ft_isdigit(str[j]) && (is_whitespace_or_end(str[j - 1])
-			|| str[j - 1] == ','))
+				|| str[j - 1] == ','))
 			digit += 1;
 		if (str[j] == ',')
 			coma += 1;
@@ -85,9 +85,8 @@ int	find_element(t_parsing *parsed, char *element, int size)
 		{
 			if (is_duplicated(parsed, element, size, i + 1))
 				return (ft_dprintf(2, "Error\nDuplicated "), 0);
-			if (is_empty(parsed->description[i], j, size))
-				return (ft_dprintf(2, "Error\nMissing "), 0);
-			if (size == 1 && !color_formated(parsed->description[i], j + size))
+			if ((is_empty(parsed->description[i], j, size)) || (size == 1
+					&& !color_formated(parsed->description[i], j + size)))
 				return (ft_dprintf(2, "Error\nMissing "), 0);
 			if (i + 1 > parsed->map_north)
 				parsed->map_north = i + 1;

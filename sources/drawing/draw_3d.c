@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   draw_3d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 12:42:10 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 16:39:21 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../includes/cube3d.h"
 
@@ -32,7 +31,6 @@ void	ft_draw_floor_ceiling(t_data *game)
 		}
 		i++;
 	}
-
 }
 
 float	ft_wall_height(float distance)

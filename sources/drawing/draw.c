@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 15:50:05 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 16:40:11 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	time_in_s()
+int	time_in_s(void)
 {
 	struct timeval	current_time;
 	int				current_time_in_s;
@@ -22,7 +22,7 @@ int	time_in_s()
 	return (current_time_in_s);
 }
 
-void	fps()
+void	fps(void)
 {
 	static int	fps;
 	static int	last_second;
@@ -37,11 +37,9 @@ void	fps()
 	}
 }
 
-////////////////////
-
 int	ft_refresh_img(t_data *game)
 {
-	fps();//a supprimer a la fin
+	fps();//a supprimer a la fin fps + time_in_s
 	game->img = mlx_new_image(game->mlx_ptr, WIN_WIDTH, WIN_HEIGTH);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
 			&game->line_length, &game->endian);

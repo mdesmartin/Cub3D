@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:26:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/14 19:28:18 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 16:38:45 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void	ft_check_map_name(char *directory)
 	if (ft_strlen(map_name) < 5
 		|| ft_strncmp(&map_name[ft_strlen(map_name) - 4], ".cub", 4) != 0)
 	{
-		ft_dprintf(2, "Error\nMap's name must be at least 1 character follow by .cub!\n");
+		ft_dprintf(2, "Error\nMap's name must be at least 1 character follow");
+		ft_dprintf(2, " by .cub!\n");
 		exit (1);
 	}
 }
@@ -40,7 +41,8 @@ void	ft_check_arg(int ac, char **av)
 	}
 	else if (ac > 2)
 	{
-		ft_dprintf(2, "Error\nPlease execute cube3D follow by only one map!\n");
+		ft_dprintf(2, "Error\nPlease execute cube3D followed by only one ");
+		ft_dprintf(2, "map!\n");
 		exit (1);
 	}
 	else

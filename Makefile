@@ -48,7 +48,7 @@ HEADERS =	$(DIR_HDR)cube3d.h
 DIR_LIB = 	libraries/
 LIBRARY = 	$(DIR_LIB)libft/libft.a
 
-#  ==============================  RULES  ==============================  #
+#  ==============================  RULES  ===============================  #
 
 all: lib 
 	$(MAKE) $(NAME)
@@ -79,7 +79,7 @@ run: fclean
 
 .PHONY: all clean fclean re lib debug run
 
-#  ===========================  COMPILATION  ===========================  #
+#  ==============================  COMPILATION  =============================  #
 
 $(NAME): $(DIR_OBJ) $(OBJECTS)
 	cc $(OBJECTS) $(CFLAGS) $(MLXFlAGS) $(LIBRARY) -o $(NAME)
@@ -94,7 +94,7 @@ $(DIR_OBJ)	:
 $(DIR_OBJ)%.o: $(DIR_SRC)%.c $(HEADERS) $(LIBRARY)
 	cc $(CFLAGS) -c $< -o $@
 
-#  =============================  OPTIONS  =============================  #
+#  ==============================  OPTIONS  ================================  #
 
 ERASE		= 	\033[2K
 RERASE		= 	\r\033[2K
