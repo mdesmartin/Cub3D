@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 16:40:11 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/17 13:52:08 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	time_in_s(void)
 	int				current_time_in_s;
 
 	gettimeofday(&current_time, NULL);
-	current_time_in_s = current_time.tv_sec + (current_time.tv_usec / 1000000);
+	current_time_in_s = current_time.tv_sec;
 	return (current_time_in_s);
 }
 
