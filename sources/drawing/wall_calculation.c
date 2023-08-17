@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:35:25 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 23:16:29 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/17 13:50:12 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ float	ft_wall_position(t_point point, char face)
 
 	if (point.x % BOX_SIZE == 0 || point.x % (BOX_SIZE - 1) == 0)
 	{
-		while (point.y > BOX_SIZE)
+		while (point.y > BOX_SIZE - 1)
 			point.y -= BOX_SIZE;
 		res = (float)point.y / BOX_SIZE;
 	}
 	else
 	{
-		while (point.x > BOX_SIZE)
+		while (point.x > BOX_SIZE - 1)
 			point.x -= BOX_SIZE;
 		res = (float)point.x / BOX_SIZE;
 	}
