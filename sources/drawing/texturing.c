@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:41:25 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/16 16:42:18 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/17 13:32:29 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,24 @@ void	init_face(t_data *game, t_display_line *line)
 
 void	print_line(t_data *game, t_display_line line)
 {
-	int		y_win;
-	int		y_min_win;
+	int		y_win_max;
+	int		y_win_min;
 	int		i;
 	int		color;
 
 	i = 0;
 	init_face(game, &line);
-	y_win = (WIN_HEIGTH / 2) + (line.wall_line_height / 2);
-	y_min_win = (WIN_HEIGTH / 2) - (line.wall_line_height / 2);
-	while (y_win >= y_min_win)
+	y_win_max = (WIN_HEIGTH / 2) + (line.wall_line_height / 2);
+	y_win_min = (WIN_HEIGTH / 2) - (line.wall_line_height / 2);
+	while (y_win_max >= y_win_min)
 	{
 		if (line.x_win > 0 && line.x_win < WIN_WIDTH
-			&& y_min_win > 0 && y_min_win < WIN_HEIGTH)
+			&& y_win_min > 0 && y_win_min < WIN_HEIGTH)
 		{
 			color = get_color(line, i);
-			ft_mlx_pixel_put(game, line.x_win, y_min_win, color);
+			ft_mlx_pixel_put(game, line.x_win, y_win_min, color);
 		}
 		i++;
-		y_min_win++;
+		y_win_min++;
 	}
 }
