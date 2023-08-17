@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:36 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/16 23:16:51 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/17 17:20:40 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_draw_fov(t_data *game);
 void	ft_add_x_line(t_line *line, int x0, int x1, float degree);
 void	ft_add_y_line(t_line *line, int y0, int y1, float degree);
 void	ft_draw_3d(t_data *game);
-float	ft_wall_position(t_point point, char face);
+float	ft_wall_position(int x, int y, char face);
 char	ft_wall_face(float x, float y);
 void	print_line(t_data *game, t_display_line line);
 
