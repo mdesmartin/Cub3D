@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:35:25 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/15 17:42:35 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 23:16:29 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ char	ft_wall_face(float x, float y)
 		return ('E');
 	else if ((int) y % BOX_SIZE == 0)
 		return ('N');
-	else if (((int) y + 1) % BOX_SIZE == 0)
+	else
 		return ('S');
-	return ('\0');
 }
 
 float	ft_wall_position(t_point point, char face)
@@ -55,6 +54,15 @@ static t_point	ft_save_collision_point(int x, int y)
 	return (point);
 }
 
+static int	ft_ray_collision(t_data *game, int new_x, int new_y)
+{
+	new_x = new_x / BOX_SIZE;
+	new_y = new_y / BOX_SIZE;
+	if (game->map[new_y][new_x] == '1')
+		return (1);
+	return (0);
+}
+
 t_point	ft_wall_collision(t_data *game, t_line *line)
 {
 	float	e2;
@@ -62,11 +70,6 @@ t_point	ft_wall_collision(t_data *game, t_line *line)
 	line->e = line->dx + line->dy;
 	while (ft_ray_collision(game, line->x0, line->y0) == 0)
 	{
-		if (line->x0 > 0 && line->x0 < WIN_WIDTH
-			&& line->y0 > 0 && line->y0 < WIN_HEIGTH)
-			;
-		else
-			break ;
 		e2 = 2 * line->e;
 		if (e2 >= line->dy)
 		{

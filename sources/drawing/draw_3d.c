@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_3d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 16:39:21 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 23:57:46 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ float	ft_wall_height(float distance)
 	float	screen_dst;
 	float	wall_heigth;
 
-	screen_dst = WIN_HEIGTH / (2 * tanf(M_PI_4));
+	screen_dst = WIN_HEIGTH / (2 * tanf(M_PI / 6));
 	wall_heigth = (screen_dst * (WIN_HEIGTH / 3)) / distance;
 	return (wall_heigth);
 }

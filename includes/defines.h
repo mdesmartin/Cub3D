@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:58:44 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/16 16:04:30 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 22:48:35 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+# define KEY_I 105
+# define KEY_J 106
+# define KEY_K 107
+# define KEY_L 108
 
 /**********************************  COLORS  **********************************/
 
@@ -52,7 +56,7 @@
 
 # define PLAYER_SIZE		16
 # define BOX_SIZE			128
-# define STEP_LENGTH		8
+# define STEP_LENGTH		16
 # define MAP_BOX_SIZE		16
 # define MAP_PLAYER_SIZE	8
 

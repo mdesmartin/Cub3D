@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:45 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 16:14:43 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/17 00:07:31 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ int	main(int ac, char **av)
 	if (parsing(game, av))
 		return (free_main(game), 1);
 	game->mlx_ptr = mlx_init();
-	// if (!game->mlx_ptr)
-	// 	ft_quit(game);
+	if (!game->mlx_ptr)
+	{
+		ft_dprintf(2, "Error\nmlx_init fail!\n");
+		free_main(game);
+		return (1);
+	}
 	game->win_ptr = mlx_new_window(game->mlx_ptr,
 			WIN_WIDTH, WIN_HEIGTH, "cub3D");
 	ft_load_textures(game);

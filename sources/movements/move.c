@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:35:35 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 16:36:13 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/16 22:52:39 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,37 @@ static void	ft_show_map(t_data *game)
 		game->show_map = 0;
 }
 
+static void	ft_move_map(int key, t_data *game)
+{
+	if (key == KEY_I)
+		game->map_y-- ;
+	if (key == KEY_K)
+		game->map_y++ ;
+	if (key == KEY_J)
+		game->map_x-- ;
+	if (key == KEY_L)
+		game->map_x++ ;
+}
+
 int	ft_key(int key, t_data *game)
 {
 	if (key == KEY_ESC)
 		ft_quit(game);
-	if ((key == KEY_W || key == KEY_UP))
+	else if (key == KEY_W || key == KEY_UP)
 		ft_move(game, 1, 0);
-	if ((key == KEY_S || key == KEY_DOWN))
+	else if (key == KEY_S || key == KEY_DOWN)
 		ft_move(game, -1, 0);
-	if (key == KEY_A)
+	else if (key == KEY_A)
 		ft_move(game, 0, 1);
-	if (key == KEY_D)
+	else if (key == KEY_D)
 		ft_move(game, 0, -1);
-	if (key == KEY_LEFT)
+	else if (key == KEY_LEFT)
 		ft_rotate(game, -(M_PI / 60));
-	if (key == KEY_RIGHT)
+	else if (key == KEY_RIGHT)
 		ft_rotate(game, M_PI / 60);
-	if (key == KEY_M)
+	else if (key == KEY_M)
 		ft_show_map(game);
+	else if (game->show_map == 1)
+		ft_move_map(key, game);
 	return (0);
 }

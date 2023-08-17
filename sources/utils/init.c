@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/15 15:01:27 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/17 00:13:50 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,9 @@ static void	ft_check_texture_file(t_data *game, char *texture_file)
 	}
 	close(fd);
 }
-// Test function used because the final texture are not yet implemented
 
 static void	ft_check_textures(t_data *game)
 {
-	game->north = NULL;
-	game->south = NULL;
-	game->east = NULL;
-	game->west = NULL;
 	ft_check_texture_file(game, game->path_north);
 	ft_check_texture_file(game, game->path_south);
 	ft_check_texture_file(game, game->path_east);
@@ -82,9 +77,15 @@ t_data	*ft_game_init(void)
 	game->show_map = 0;
 	game->degree = 0;
 	game->map = NULL;
+	game->north = NULL;
+	game->south = NULL;
+	game->east = NULL;
+	game->west = NULL;
 	game->path_north = NULL;
 	game->path_south = NULL;
 	game->path_east = NULL;
 	game->path_west = NULL;
+	game->map_x = 0;
+	game->map_y = 0;
 	return (game);
 }
