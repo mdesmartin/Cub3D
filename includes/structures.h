@@ -3,15 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:10 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/16 22:43:31 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/18 09:26:40 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
+
+/***********************************  MOVE  ***********************************/
+
+typedef struct s_movements
+{
+	bool	w;
+	bool	a;
+	bool	s;
+	bool	d;
+	bool	up;
+	bool	down;
+	bool	left;
+	bool	right;
+	bool	i;
+	bool	j;
+	bool	k;
+	bool	l;
+}			t_movements;
 
 /***********************************  MAIN  ***********************************/
 
@@ -47,6 +65,7 @@ typedef struct s_data
 	int		endian;
 	int		map_x;
 	int		map_y;
+	t_movements	move;
 }				t_data;
 
 /**********************************  PARSING  *********************************/

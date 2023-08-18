@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:36 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/16 23:16:51 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/18 10:04:14 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 
 t_data	*ft_game_init(void);
 void	ft_load_textures(t_data *game);
+
+/***********************************  MOVE  ***********************************/
+
+int		release_key(int key, t_data *game);
+int		press_key(int key, t_data *game);
+int		game_refresh(t_data *game);
+
 
 /***********************************  UTILS  **********************************/
 
