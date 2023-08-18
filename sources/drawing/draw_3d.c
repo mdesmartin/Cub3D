@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 23:57:46 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/17 19:00:42 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_draw_wall(t_data *game, t_point point, int x_display, float angle)
 	distance = ft_wall_distance(game, point, angle);
 	line.wall_line_height = ft_wall_height(distance);
 	line.face = ft_wall_face(point.x, point.y);
-	line.x_wall = ft_wall_position(point, line.face);
+	line.x_wall = ft_wall_position(point.x, point.y, line.face);
 	line.x_win = x_display;
 	print_line(game, line);
 }
