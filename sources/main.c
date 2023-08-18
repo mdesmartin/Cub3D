@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:53:45 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/17 00:07:31 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/18 09:40:10 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int	main(int ac, char **av)
 			WIN_WIDTH, WIN_HEIGTH, "cub3D");
 	ft_load_textures(game);
 	mlx_loop_hook(game->mlx_ptr, ft_refresh_img, game);
-	mlx_hook(game->win_ptr, 2, 1L << 0, ft_key, game);
+	// mlx_hook(game->win_ptr, 2, 1L << 0, ft_key, game);
+	mlx_hook(game->win_ptr, 2, 1L << 0, press_key, game);
+	mlx_hook(game->win_ptr, 3, 1L << 1, release_key, game);
 	mlx_hook(game->win_ptr, 17, 0L, ft_quit, game);
 	mlx_loop(game->mlx_ptr);
 	return (0);

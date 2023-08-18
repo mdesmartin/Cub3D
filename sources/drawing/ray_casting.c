@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:50:53 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 23:41:19 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/18 10:20:32 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_draw_ray(t_data *game, t_line *line, int color, int scale)
 	x_start = line->x0;
 	y_start = line->y0;
 	line->e = line->dx + line->dy;
-	while (ft_ray_collision(game, line->x0, line->y0) == 0 
+	while (ft_ray_collision(game, line->x0, line->y0) == 0
 		&& ft_ray_length(x_start, y_start, line->x0, line->y0) < 1000)
 	{
 		if (line->x0 > 0 && line->x0 / scale < WIN_WIDTH

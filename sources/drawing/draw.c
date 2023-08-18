@@ -40,6 +40,7 @@ void	fps(void)
 int	ft_refresh_img(t_data *game)
 {
 	fps();//a supprimer a la fin fps + time_in_s
+	game_refresh(game);
 	game->img = mlx_new_image(game->mlx_ptr, WIN_WIDTH, WIN_HEIGTH);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
 			&game->line_length, &game->endian);
