@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:27 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/10 17:19:47 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/18 10:54:40 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,7 @@ int	borders_whitespace_or_end(t_parsing *parsed, int y, int x)
 	if (y == parsed->map_north || y == parsed->map_south
 		|| x == parsed->map_east || x == parsed->map_west)
 		return (1);
-	else if (is_whitespace_or_end(parsed->description[y - 1][x - 1])
-		|| is_whitespace_or_end(parsed->description[y - 1][x + 1])
-		|| is_whitespace_or_end(parsed->description[y + 1][x - 1])
-		|| is_whitespace_or_end(parsed->description[y + 1][x + 1])
-		|| is_whitespace_or_end(parsed->description[y - 1][x])
+	else if (is_whitespace_or_end(parsed->description[y - 1][x])
 		|| is_whitespace_or_end(parsed->description[y + 1][x])
 		|| is_whitespace_or_end(parsed->description[y][x - 1])
 		|| is_whitespace_or_end(parsed->description[y][x + 1]))
