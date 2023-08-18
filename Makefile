@@ -30,6 +30,7 @@ LST_SRC =	main.c								\
 			parsing/parsing.c					\
 			parsing/parsing_utils.c				\
 			movements/move.c					\
+			movements/key_event.c				\
 			movements/move_cal.c				\
 			movements/player_collision.c		\
 			utils/check_arg.c					\

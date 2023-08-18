@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/17 13:29:42 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/18 10:05:12 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	fps(void)
 int	ft_refresh_img(t_data *game)
 {
 	fps();//a supprimer a la fin fps + time_in_s
+	game_refresh(game);
 	game->img = mlx_new_image(game->mlx_ptr, WIN_WIDTH, WIN_HEIGTH);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
 			&game->line_length, &game->endian);
