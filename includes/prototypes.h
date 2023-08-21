@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:36 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/21 15:36:14 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/21 15:41:22 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ft_check_arg(int ac, char **av);
 void	ft_free_tab(char **tab);
 int		ft_quit(t_data *data);
 void	ft_error(t_data *data, char *str);
-int		ft_key(int key, t_data *game);
 void	ft_position_cal(t_data *game, int forward, int strafe);
 void	free_main(t_data	*game);
 void	main_parsing_test(t_data	*game);
