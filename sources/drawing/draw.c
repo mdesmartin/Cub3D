@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/17 13:52:08 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/21 15:37:29 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_refresh_img(t_data *game)
 	{
 		ft_draw_map(game, game->map);
 		ft_render_player(game, game->player_x, game->player_y);
-		ft_draw_fov(game);
+		ft_draw_fov(game, game->player_x, game->player_y);
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img, 0, 0);
 	if (game->img)
