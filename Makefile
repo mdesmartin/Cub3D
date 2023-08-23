@@ -33,6 +33,8 @@ LST_SRC =	main.c								\
 			movements/player_collision.c		\
 			ray_casting/wall_float.c			\
 			ray_casting/ray_casting.c			\
+			ray_casting/wall_vert_col.c			\
+			ray_casting/wall_hori_col.c			\
 			ray_casting/wall_calculation.c		\
 			utils/check_arg.c					\
 			utils/close.c						\

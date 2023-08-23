@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/23 10:46:59 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 14:09:03 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	ft_draw_wall(t_data *game, t_point point, int x_display, float angle)
 
 void	ft_draw_3d(t_data *game)
 {
+	t_col_point	lol;
 	t_point	point;
 	t_line	line;
 	float	angle;
@@ -75,7 +76,8 @@ void	ft_draw_3d(t_data *game)
 
 	i = 0;
 	angle = game->degree;
-ft_float_collision(game);
+lol = ft_float_collision(game);
+printf("x = %f\ny = %f\nface = %c\n\n", lol.x, lol.y, lol.face);
 	angle -= M_PI / 6;
 	while (angle <= game->degree + M_PI / 6)
 	{
