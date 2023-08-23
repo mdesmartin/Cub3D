@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:35:25 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/17 18:53:55 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 14:51:27 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	ft_wall_face(float x, float y)
 		return ('W');
 }
 
-float	ft_wall_position(int x, int y, char face)
+float	ft_wall_position(float x, float y, char face)
 {
 	float	res;
 
@@ -35,13 +35,13 @@ float	ft_wall_position(int x, int y, char face)
 	{
 		while (y > BOX_SIZE - 1)
 			y -= BOX_SIZE;
-		res = (float)y / BOX_SIZE;
+		res = y / BOX_SIZE;
 	}
 	else
 	{
 		while (x > BOX_SIZE - 1)
 			x -= BOX_SIZE;
-		res = (float)x / BOX_SIZE;
+		res = x / BOX_SIZE;
 	}
 	if (face == 'N' || face == 'E')
 		res = 1 - res;

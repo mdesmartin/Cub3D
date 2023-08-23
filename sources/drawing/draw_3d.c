@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/23 14:09:03 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 17:21:55 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,12 @@ float	ft_wall_height(float distance)
 	return (wall_heigth);
 }
 
-static float	ft_wall_distance(t_data *game, t_point point, float angle)
-{
-	float	distance;
-
-	distance = sqrtf(pow((point.x - game->player_x), 2)
-			+ pow((point.y - game->player_y), 2));
-	distance = cosf(game->degree - angle) * distance;
-	return (distance);
-}
-
-void	ft_draw_wall(t_data *game, t_point point, int x_display, float angle)
+void	ft_draw_wall(t_data *game, t_col_point point, int x_display)
 {
 	t_display_line	line;
-	float			distance;
 
-	distance = ft_wall_distance(game, point, angle);
-	line.wall_line_height = ft_wall_height(distance);
-	line.face = ft_wall_face(point.x, point.y);
+	line.wall_line_height = ft_wall_height(point.depth);
+	line.face = point.face;
 	line.x_wall = ft_wall_position(point.x, point.y, line.face);
 	line.x_win = x_display;
 	print_line(game, line);
@@ -68,23 +56,17 @@ void	ft_draw_wall(t_data *game, t_point point, int x_display, float angle)
 
 void	ft_draw_3d(t_data *game)
 {
-	t_col_point	lol;
-	t_point	point;
-	t_line	line;
-	float	angle;
-	int		i;
+	t_col_point	point;
+	float		angle;
+	int			i;
 
 	i = 0;
 	angle = game->degree;
-lol = ft_float_collision(game);
-printf("x = %f\ny = %f\nface = %c\n\n", lol.x, lol.y, lol.face);
 	angle -= M_PI / 6;
 	while (angle <= game->degree + M_PI / 6)
 	{
-		ft_add_x_line(&line, game->player_x, WIN_WIDTH / 2, angle);
-		ft_add_y_line(&line, game->player_y, WIN_HEIGTH / 2, angle);
-		point = ft_wall_collision(game, &line);
-		ft_draw_wall(game, point, i, angle);
+		point = ft_float_collision(game, angle);
+		ft_draw_wall(game, point, i);
 		angle += M_PI / (3 * WIN_WIDTH);
 		i++;
 	}
