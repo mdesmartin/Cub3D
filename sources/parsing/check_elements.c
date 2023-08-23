@@ -6,13 +6,13 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:34:55 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/16 16:34:47 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 10:39:01 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	color_formated(char *str, int j)
+static int	color_formated(char *str, int j)
 {
 	int	coma;
 	int	digit;
@@ -39,7 +39,7 @@ int	color_formated(char *str, int j)
 		return (1);
 }
 
-int	is_empty(char *str, int j, int size)
+static int	is_empty(char *str, int j, int size)
 {
 	j += size;
 	while (str[j] && is_whitespace(str[j]))
@@ -50,7 +50,7 @@ int	is_empty(char *str, int j, int size)
 		return (1);
 }
 
-int	is_duplicated(t_parsing *parsed, char *element, int size, int i)
+static int	is_duplicated(t_parsing *parsed, char *element, int size, int i)
 {
 	int	j;
 
@@ -68,7 +68,7 @@ int	is_duplicated(t_parsing *parsed, char *element, int size, int i)
 	return (0);
 }
 
-int	find_element(t_parsing *parsed, char *element, int size)
+static int	find_element(t_parsing *parsed, char *element, int size)
 {
 	int	i;
 	int	j;

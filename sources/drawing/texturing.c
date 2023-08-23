@@ -6,13 +6,13 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:41:25 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/17 13:32:29 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 10:38:38 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	get_color(t_display_line line, int i)
+static int	get_color(t_display_line line, int i)
 {
 	u_int32_t	*pixel_tab;
 	u_int32_t	x;
@@ -29,7 +29,7 @@ int	get_color(t_display_line line, int i)
 	return (color);
 }
 
-void	init_face(t_data *game, t_display_line *line)
+static void	init_face(t_data *game, t_display_line *line)
 {
 	if (line->face == 'N')
 		line->wall = game->north;
@@ -51,7 +51,7 @@ void	print_line(t_data *game, t_display_line line)
 	i = 0;
 	init_face(game, &line);
 	y_win_max = (WIN_HEIGTH / 2) + (line.wall_line_height / 2);
-	y_win_min = (WIN_HEIGTH / 2) - (line.wall_line_height / 2);
+	y_win_min = (WIN_HEIGTH / 2) - (line.wall_line_height / 2) + 1;
 	while (y_win_max >= y_win_min)
 	{
 		if (line.x_win > 0 && line.x_win < WIN_WIDTH

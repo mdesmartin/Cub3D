@@ -12,7 +12,7 @@
 
 #include "../../includes/cube3d.h"
 
-int	get_original_size(char **av)
+static int	get_original_size(char **av)
 {
 	int		fd;
 	int		size;
@@ -30,7 +30,7 @@ int	get_original_size(char **av)
 	return (size);
 }
 
-int	get_new_size(char **tab)
+static int	get_new_size(char **tab)
 {
 	int	size;
 	int	i;
@@ -45,7 +45,7 @@ int	get_new_size(char **tab)
 	return (size);
 }
 
-int	get_number_line(char **av)
+static int	get_number_line(char **av)
 {
 	char	*line;
 	int		nb_line;
@@ -71,7 +71,7 @@ int	get_number_line(char **av)
 	return (nb_line);
 }
 
-int	init_map(t_parsing *parsed, char **av)
+static int	init_map(t_parsing *parsed, char **av)
 {
 	int	nb_line;
 

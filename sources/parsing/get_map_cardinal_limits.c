@@ -6,13 +6,13 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:42:13 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/16 16:25:01 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 10:40:00 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-void	get_map_north(t_parsing *parsed)
+static void	get_map_north(t_parsing *parsed)
 {
 	int	i;
 	int	j;
@@ -34,7 +34,7 @@ void	get_map_north(t_parsing *parsed)
 	}
 }
 
-void	get_map_south(t_parsing *parsed)
+static void	get_map_south(t_parsing *parsed)
 {
 	int	i;
 	int	j;
@@ -56,7 +56,7 @@ void	get_map_south(t_parsing *parsed)
 	parsed->map_south = i - 1;
 }
 
-void	get_map_east(t_parsing *parsed)
+static void	get_map_east(t_parsing *parsed)
 {
 	int	i;
 	int	j;
@@ -77,7 +77,7 @@ void	get_map_east(t_parsing *parsed)
 	}
 }
 
-void	get_map_west(t_parsing *parsed)
+static void	get_map_west(t_parsing *parsed)
 {
 	int	i;
 	int	j;

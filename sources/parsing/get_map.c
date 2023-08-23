@@ -6,20 +6,20 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:16 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/10 17:32:21 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 10:40:08 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	error_free(char **tab, char *message)
+static int	error_free(char **tab, char *message)
 {
 	ft_free_tab(tab);
 	ft_dprintf(2, message);
 	return (1);
 }
 
-char	*fill_line(char const *s, unsigned int start, size_t len)
+static char	*fill_line(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
 	int		i;

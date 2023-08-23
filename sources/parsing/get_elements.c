@@ -6,19 +6,19 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:20 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/10 17:41:47 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 10:39:50 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-void	move_on_space(char **tab, int i, int *j)
+static void	move_on_space(char **tab, int i, int *j)
 {
 	while (tab[i][*j] && is_whitespace(tab[i][*j]))
 		*j += 1;
 }
 
-void	get_len(char **tab, int i, int *j, int *len)
+static void	get_len(char **tab, int i, int *j, int *len)
 {
 	*len = *j;
 	while (tab[i][*len] && !is_whitespace(tab[i][*len]))
@@ -27,7 +27,7 @@ void	get_len(char **tab, int i, int *j, int *len)
 	*len -= *j;
 }
 
-int	get_path(t_parsing *parsed, char *element, int size, char **path)
+static int	get_path(t_parsing *parsed, char *element, int size, char **path)
 {
 	int	i;
 	int	j;
