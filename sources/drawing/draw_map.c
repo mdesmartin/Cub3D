@@ -6,11 +6,21 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/21 15:37:49 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 11:21:24 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
+
+void	ft_map_size(t_data *game)
+{
+	game->map_height = 0;
+	game->map_width = 0;
+	while (game->map[game->map_height])
+		game->map_height++;
+	while (game->map[0][game->map_width])
+		game->map_width++;
+}
 
 void	ft_render_player(t_data *game, int x, int y)
 {

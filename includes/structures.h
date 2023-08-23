@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:10 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/18 09:26:40 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 11:20:47 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,36 +35,38 @@ typedef struct s_movements
 
 typedef struct s_data
 {
-	char	**map;
+	char		**map;
+	int			map_height;
+	int			map_width;
 
-	char	*path_north;
-	char	*path_south;
-	char	*path_west;
-	char	*path_east;
-	void	*north;
-	void	*south;
-	void	*west;
-	void	*east;
+	char		*path_north;
+	char		*path_south;
+	char		*path_west;
+	char		*path_east;
+	void		*north;
+	void		*south;
+	void		*west;
+	void		*east;
 
-	int		floor_color;
-	int		ceiling_color;
+	int			floor_color;
+	int			ceiling_color;
 
-	char	player_direction;
-	float	degree;
-	int		show_map;
-	int		player_x;
-	int		player_y;
+	char		player_direction;
+	float		degree;
+	int			show_map;
+	int			player_x;
+	int			player_y;
 
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void		*mlx_ptr;
+	void		*win_ptr;
 
-	char	*addr;
-	void	*img;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	int		map_x;
-	int		map_y;
+	char		*addr;
+	void		*img;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	int			map_x;
+	int			map_y;
 	t_movements	move;
 }				t_data;
 

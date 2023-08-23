@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:36 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/21 15:41:22 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 11:23:05 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_draw_3d(t_data *game);
 float	ft_wall_position(int x, int y, char face);
 char	ft_wall_face(float x, float y);
 void	print_line(t_data *game, t_display_line line);
+float	ft_float_collision(t_data *game);
 
 /********************************  RAY CASTING  *******************************/
 
@@ -75,5 +76,6 @@ int		is_map_symbol(char c);
 int		is_whitespace(char c);
 int		is_whitespace_or_end(char c);
 int		parsing(t_data	*game, char **av);
+void	ft_map_size(t_data *game);
 
 #endif
