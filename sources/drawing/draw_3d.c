@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/17 19:00:42 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 10:46:59 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	ft_draw_3d(t_data *game)
 
 	i = 0;
 	angle = game->degree;
+ft_float_collision(game);
 	angle -= M_PI / 6;
 	while (angle <= game->degree + M_PI / 6)
 	{
