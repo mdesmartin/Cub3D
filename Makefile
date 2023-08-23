@@ -18,27 +18,27 @@ LST_SRC =	main.c								\
 			drawing/draw_map.c					\
 			drawing/texturing.c					\
 			parsing/get_map.c					\
+			parsing/parsing.c					\
 			parsing/check_map.c					\
 			parsing/get_colors.c				\
 			parsing/get_player.c				\
 			parsing/get_elements.c				\
+			parsing/parsing_utils.c				\
 			parsing/check_elements.c			\
 			parsing/get_description.c			\
 			parsing/get_map_cardinal_limits.c	\
-			parsing/parsing.c					\
-			parsing/parsing_utils.c				\
 			movements/move.c					\
-			movements/key_event.c				\
 			movements/move_cal.c				\
+			movements/key_event.c				\
 			movements/player_collision.c		\
 			ray_casting/wall_float.c			\
 			ray_casting/ray_casting.c			\
 			ray_casting/wall_vert_col.c			\
 			ray_casting/wall_hori_col.c			\
 			ray_casting/wall_calculation.c		\
-			utils/check_arg.c					\
+			utils/init.c						\
 			utils/close.c						\
-			utils/init.c
+			utils/check_arg.c
 
 			
 SOURCES	=	$(addprefix $(DIR_SRC), $(LST_SRC))

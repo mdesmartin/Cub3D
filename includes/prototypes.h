@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:36 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/23 14:54:57 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 17:42:26 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		print_line(t_data *game, t_display_line line);
 /********************************  RAY CASTING  *******************************/
 
 t_point		ft_wall_collision(t_data *game, t_line *line);
-t_col_point	ft_float_collision(t_data *game, float angle);
+t_col_point	ft_3d_wall_collision(t_data *game, float angle);
 t_col_point	ft_vert_collision(t_data *game, float angle);
 t_col_point	ft_hori_collision(t_data *game, float angle);
 void		ft_draw_ray(t_data *game, t_line *line, int color, int scale);
