@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:58:06 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/23 11:24:02 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 11:36:19 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static float	ft_vert_col_cos_pos(t_data *game, float angle)
 	{
 		x += BOX_SIZE;
 		y += delta_y;
+		if (x < 0 || y < 0 || x > game->map_width || y > game->map_height)
+			break ;
 		depth_vert += delta_depth;
 	}
 	return (depth_vert);
@@ -67,6 +69,8 @@ static float	ft_vert_col_cos_neg(t_data *game, float angle)
 	{
 		x += BOX_SIZE;
 		y += delta_y;
+		if (x < 0 || y < 0 || x > game->map_width || y > game->map_height)
+			break ;
 		depth_vert += delta_depth;
 	}
 	return (depth_vert);

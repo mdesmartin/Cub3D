@@ -17,9 +17,6 @@ LST_SRC =	main.c								\
 			drawing/draw_3d.c					\
 			drawing/draw_map.c					\
 			drawing/texturing.c					\
-			drawing/wall_float.c				\
-			drawing/ray_casting.c				\
-			drawing/wall_calculation.c			\
 			parsing/get_map.c					\
 			parsing/check_map.c					\
 			parsing/get_colors.c				\
@@ -34,6 +31,9 @@ LST_SRC =	main.c								\
 			movements/key_event.c				\
 			movements/move_cal.c				\
 			movements/player_collision.c		\
+			ray_casting/wall_float.c			\
+			ray_casting/ray_casting.c			\
+			ray_casting/wall_calculation.c		\
 			utils/check_arg.c					\
 			utils/close.c						\
 			utils/init.c
@@ -92,6 +92,7 @@ $(DIR_OBJ)	:
 	@mkdir -p $(DIR_OBJ)/drawing
 	@mkdir -p $(DIR_OBJ)/parsing
 	@mkdir -p $(DIR_OBJ)/movements
+	@mkdir -p $(DIR_OBJ)/ray_casting
 
 $(DIR_OBJ)%.o: $(DIR_SRC)%.c $(HEADERS) $(LIBRARY)
 	cc $(CFLAGS) -c $< -o $@
