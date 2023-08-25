@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texturing.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:41:25 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/17 13:32:29 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/25 13:04:13 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_line(t_data *game, t_display_line line)
 	i = 0;
 	init_face(game, &line);
 	y_win_max = (WIN_HEIGTH / 2) + (line.wall_line_height / 2);
-	y_win_min = (WIN_HEIGTH / 2) - (line.wall_line_height / 2);
+	y_win_min = (WIN_HEIGTH / 2) - (line.wall_line_height / 2) + 1;
 	while (y_win_max >= y_win_min)
 	{
 		if (line.x_win > 0 && line.x_win < WIN_WIDTH
