@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:26:54 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/23 17:22:05 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/25 13:31:02 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static t_col_point	ft_hori_col_sin_neg(t_data *game, float angle)
 		hori.y += BOX_SIZE;
 	hori.y -= BOX_SIZE;
 	hori.depth = (hori.y - game->player_y) / sinf(angle);
-	hori.x = game->player_x + hori.depth * cosf(angle);
+	hori.x = game->player_x + hori.depth * cosf(angle) + 1;
 	delta_depth = BOX_SIZE / -sinf(angle);
 	delta_x = delta_depth * cosf(angle);
 	while (hori.x > 0 && hori.y > 0

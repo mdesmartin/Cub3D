@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:54:25 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/23 17:22:15 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/25 13:30:52 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static t_col_point	ft_vert_col_cos_neg(t_data *game, float angle)
 		vert.x += BOX_SIZE;
 	vert.x -= BOX_SIZE;
 	vert.depth = (vert.x - game->player_x) / cosf(angle);
-	vert.y = game->player_y + vert.depth * sinf(angle);
+	vert.y = game->player_y + vert.depth * sinf(angle) + 1;
 	delta_depth = BOX_SIZE / -cosf(angle);
 	delta_y = delta_depth * sinf(angle);
 	while (vert.x > 0 && vert.y > 0
