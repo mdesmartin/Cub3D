@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:41:25 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/25 13:04:13 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/28 16:05:49 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	get_color(t_display_line line, int i)
 	pixel_tab = (u_int32_t *)line.wall->data;
 	x = line.wall->width * line.x_wall;
 	y = ((line.wall->height * i) / line.wall_line_height * line.wall->width);
-	if ((line.wall->width * line.wall->height) < (int)(x + y))
+	if ((line.wall->width * line.wall->height) < (int)(x + y) || x == 0 || y == 0)
 		color = 0;
 	else
 		color = pixel_tab[x + y];
