@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/28 17:13:02 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/28 17:23:43 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	ft_map_size(t_data *game)
 
 void	ft_render_player(t_data *game, int x, int y)
 {
-	int	i;
-	int	j;
+	static const int	scale = BOX_SIZE / MAP_BOX_SIZE;
+	int					i;
+	int					j;
 
 	x = x + game->map_x * BOX_SIZE;
 	y = y + game->map_y * BOX_SIZE;
@@ -35,9 +36,9 @@ void	ft_render_player(t_data *game, int x, int y)
 		j = -(MAP_PLAYER_SIZE);
 		while (j < (MAP_PLAYER_SIZE))
 		{
-			if (x >= 0 && (x + i) / SCALE < WIN_WIDTH
-				&& y >= 0 && (y + j) / SCALE < WIN_HEIGTH)
-				ft_mlx_pixel_put(game, (x + i) / SCALE, (y + j) / SCALE, RED);
+			if (x >= 0 && (x + i) / scale < WIN_WIDTH
+				&& y >= 0 && (y + j) / scale < WIN_HEIGTH)
+				ft_mlx_pixel_put(game, (x + i) / scale, (y + j) / scale, RED);
 			j++;
 		}
 		i++;
@@ -100,11 +101,10 @@ void	ft_draw_map(t_data *game, char **map)
 
 void	ft_draw_fov(t_data *game, int x, int y)
 {
-	t_line	line;
-	float	angle;
-	int		scale;
+	static const int		scale = BOX_SIZE / MAP_BOX_SIZE;
+	t_line					line;
+	float					angle;
 
-	scale = BOX_SIZE / MAP_BOX_SIZE;
 	angle = game->degree;
 	angle -= M_PI / 6;
 	while (angle <= game->degree + M_PI / 6)
