@@ -6,25 +6,19 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:54:25 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/25 13:30:52 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/28 15:58:58 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-static int	ft_ray_collision(t_data *game, int new_x, int new_y)
+static int	ft_ray_collision_w(t_data *game, int new_x, int new_y)
 {
 	int	new_x_0;
 	int	new_y_0;
 
 	new_x_0 = new_x / BOX_SIZE;
 	new_y_0 = new_y / BOX_SIZE;
-	if (new_x_0 <= 0 || new_y_0 <= 0
-		|| new_x_0 >= game->map_width || new_y_0 >= game->map_height
-		|| game->map[new_y_0][new_x_0] != '0')
-		return (1);
-	new_x_0 = (new_x - 1) / BOX_SIZE;
-	new_y_0 = (new_y - 1) / BOX_SIZE;
 	if (new_x_0 <= 0 || new_y_0 <= 0
 		|| new_x_0 >= game->map_width || new_y_0 >= game->map_height
 		|| game->map[new_y_0][new_x_0] != '0')
@@ -48,13 +42,27 @@ static t_col_point	ft_vert_col_cos_pos(t_data *game, float angle)
 	while (vert.x > 0 && vert.y > 0
 		&& vert.x < game->map_width * BOX_SIZE
 		&& vert.y < game->map_height * BOX_SIZE
-		&& ft_ray_collision(game, (int) vert.x, (int) vert.y) == 0)
+		&& ft_ray_collision_w(game, (int) vert.x, (int) vert.y) == 0)
 	{
 		vert.depth += delta_depth;
 		vert.x += BOX_SIZE;
 		vert.y += delta_y;
 	}
 	return (vert);
+}
+
+static int	ft_ray_collision_e(t_data *game, int new_x, int new_y)
+{
+	int	new_x_0;
+	int	new_y_0;
+
+	new_x_0 = (new_x - 1) / BOX_SIZE;
+	new_y_0 = (new_y - 1) / BOX_SIZE;
+	if (new_x_0 <= 0 || new_y_0 <= 0
+		|| new_x_0 >= game->map_width || new_y_0 >= game->map_height
+		|| game->map[new_y_0][new_x_0] != '0')
+		return (1);
+	return (0);
 }
 
 static t_col_point	ft_vert_col_cos_neg(t_data *game, float angle)
@@ -74,7 +82,7 @@ static t_col_point	ft_vert_col_cos_neg(t_data *game, float angle)
 	while (vert.x > 0 && vert.y > 0
 		&& vert.x < game->map_width * BOX_SIZE
 		&& vert.y < game->map_height * BOX_SIZE
-		&& ft_ray_collision(game, (int) vert.x, (int) vert.y) == 0)
+		&& ft_ray_collision_e(game, (int) vert.x, (int) vert.y) == 0)
 	{
 		vert.depth += delta_depth;
 		vert.x -= BOX_SIZE;
