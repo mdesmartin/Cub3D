@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/23 17:42:40 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/28 17:17:03 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ void	ft_draw_floor_ceiling(t_data *game)
 		j = 0;
 		while (j < WIN_HEIGTH)
 		{
-			if (j >= 0 && j < WIN_HEIGTH / 2)
-				ft_mlx_pixel_put(game, i, j, game->ceiling_color);
-			else if (j >= WIN_HEIGTH / 2 && j < WIN_HEIGTH)
-				ft_mlx_pixel_put(game, i, j, game->floor_color);
+			if (j >= 0 && j < (WIN_HEIGTH >> 1))
+				((int *)game->addr)[j * (game->line_length >> 2) + i]
+					= game->ceiling_color;
+			else if (j >= (WIN_HEIGTH >> 1) && j < WIN_HEIGTH)
+				((int *)game->addr)[j * (game->line_length >> 2) + i]
+					= game->floor_color;
 			j++;
 		}
 		i++;
