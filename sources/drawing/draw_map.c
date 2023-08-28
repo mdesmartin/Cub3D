@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/23 11:21:24 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/28 17:13:02 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,20 @@ void	ft_map_size(t_data *game)
 
 void	ft_render_player(t_data *game, int x, int y)
 {
-	int	scale;
 	int	i;
 	int	j;
 
 	x = x + game->map_x * BOX_SIZE;
 	y = y + game->map_y * BOX_SIZE;
-	scale = BOX_SIZE / MAP_BOX_SIZE;
 	i = -(MAP_PLAYER_SIZE);
 	while (i < (MAP_PLAYER_SIZE))
 	{
 		j = -(MAP_PLAYER_SIZE);
 		while (j < (MAP_PLAYER_SIZE))
 		{
-			if (x >= 0 && (x + i) / scale < WIN_WIDTH
-				&& y >= 0 && (y + j) / scale < WIN_HEIGTH)
-				ft_mlx_pixel_put(game, (x + i) / scale, (y + j) / scale, RED);
+			if (x >= 0 && (x + i) / SCALE < WIN_WIDTH
+				&& y >= 0 && (y + j) / SCALE < WIN_HEIGTH)
+				ft_mlx_pixel_put(game, (x + i) / SCALE, (y + j) / SCALE, RED);
 			j++;
 		}
 		i++;
