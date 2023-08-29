@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:01:10 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/29 16:44:35 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 16:55:11 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	press_key_map(int key, t_data *game)
 	}
 	else if (key == KEY_N)
 	{
-		game->map_x = 0;
-		game->map_y = 0;
+		game->map_x = (game->player_x * -1 + WIN_WIDTH) / BOX_SIZE;
+		game->map_y = (game->player_y * -1 + WIN_HEIGTH) / BOX_SIZE;
 	}
 	else if (key == KEY_I)
 		game->move.i = 1;
