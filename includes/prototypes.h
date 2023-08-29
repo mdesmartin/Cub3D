@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:36 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/29 10:07:40 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 16:03:01 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void		ft_load_textures(t_data *game);
 
 /***********************************  MOVE  ***********************************/
 
-int		release_key(int key, t_data *game);
-int		press_key(int key, t_data *game);
-int		game_refresh(t_data *game);
-void	mouse_move(t_data *game);
+int			release_key(int key, t_data *game);
+int			press_key(int key, t_data *game);
+int			game_refresh(t_data *game);
+void		mouse_move(t_data *game);
+void		move(t_data *game, int forward, int strafe);
 
 
 /***********************************  UTILS  **********************************/
@@ -32,7 +33,6 @@ void		ft_check_arg(int ac, char **av);
 void		ft_free_tab(char **tab);
 int			ft_quit(t_data *data);
 void		ft_error(t_data *data, char *str);
-void		ft_position_cal(t_data *game, int forward, int strafe);
 void		free_main(t_data	*game);
 void		main_parsing_test(t_data	*game);
 
