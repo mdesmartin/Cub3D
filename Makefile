@@ -1,7 +1,7 @@
 NAME = cub3D
 DEBUG = no
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O3
 MLXFlAGS = -L $(DIR_LIB)minilibx-linux -lmlx -lXext -lX11 -lm -I $(DIR_LIB)minilibx-linux
 
 DFLAGS = -g3 -fsanitize=leak -fsanitize=address -fsanitize=pointer-subtract -fsanitize=pointer-compare -fsanitize=undefined
@@ -28,9 +28,9 @@ LST_SRC =	main.c								\
 			parsing/get_description.c			\
 			parsing/get_map_cardinal_limits.c	\
 			movements/move.c					\
+			movements/mouse.c					\
 			movements/move_cal.c				\
 			movements/key_event.c				\
-			movements/mouse.c					\
 			movements/player_collision.c		\
 			ray_casting/wall_float.c			\
 			ray_casting/ray_casting.c			\
