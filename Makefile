@@ -32,6 +32,7 @@ LST_SRC =	main.c								\
 			movements/move.c					\
 			movements/key_event.c				\
 			movements/move_cal.c				\
+			movements/mouse.c					\
 			movements/player_collision.c		\
 			utils/check_arg.c					\
 			utils/close.c						\

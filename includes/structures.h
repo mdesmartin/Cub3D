@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:10 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/18 09:26:40 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 10:03:54 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_movements
 	bool	down;
 	bool	left;
 	bool	right;
+	bool	mouse_left;
+	bool	mouse_right;
 	bool	i;
 	bool	j;
 	bool	k;
