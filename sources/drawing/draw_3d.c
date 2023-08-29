@@ -6,7 +6,7 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 11:12:07 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 14:39:27 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,11 @@ void	ft_draw_floor_ceiling(t_data *game)
 	}
 }
 
-float	ft_wall_height(float distance)
-{
-	float	screen_dst;
-	float	wall_heigth;
-
-	screen_dst = WIN_HEIGTH / (2 * tanf(M_PI / 6));
-	wall_heigth = (screen_dst * (WIN_HEIGTH / 3)) / distance;
-	return (wall_heigth);
-}
-
 void	ft_draw_wall(t_data *game, t_col_point point, int x_display)
 {
 	t_display_line	line;
 
-	line.wall_line_height = ft_wall_height(point.depth);
+	line.wall_line_height = game->screen_dst * BOX_SIZE / point.depth;
 	line.face = point.face;
 	line.x_wall = ft_wall_position(point.x, point.y, line.face);
 	line.x_win = x_display;
@@ -64,12 +54,13 @@ void	ft_draw_3d(t_data *game)
 
 	i = 0;
 	angle = game->degree;
-	angle -= M_PI / 6;
-	while (angle <= game->degree + M_PI / 6)
+	angle -= FOV_2;
+	while (i <= WIN_WIDTH)
 	{
 		point = ft_3d_wall_collision(game, angle);
 		ft_draw_wall(game, point, i);
-		angle += M_PI / (3 * WIN_WIDTH);
+		angle = atan((i + 0.0001 - WIN_WIDTH / 2)
+				/ (game->screen_dst)) + game->degree + 0.0001;
 		i++;
 	}
 }

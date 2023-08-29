@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/23 11:24:21 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 14:41:22 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,8 @@ void	ft_load_textures(t_data *game)
 	ft_map_size(game);
 }
 
-t_data	*ft_game_init(void)
+static void	ft_game_init_null(t_data *game)
 {
-	t_data	*game;
-
-	game = malloc(sizeof(t_data));
-	if (!game)
-	{
-		perror("Memory allocation failed for t_data game");
-		exit (12);
-	}
 	game->img = NULL;
 	game->addr = NULL;
 	game->show_map = 0;
@@ -88,5 +80,19 @@ t_data	*ft_game_init(void)
 	game->path_west = NULL;
 	game->map_x = 0;
 	game->map_y = 0;
+}
+
+t_data	*ft_game_init(void)
+{
+	t_data	*game;
+
+	game = malloc(sizeof(t_data));
+	if (!game)
+	{
+		perror("Memory allocation failed for t_data game");
+		exit (12);
+	}
+	ft_game_init_null(game);
+	game->screen_dst = WIN_WIDTH / (2 * tanf(FOV_2));
 	return (game);
 }

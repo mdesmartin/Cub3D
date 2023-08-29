@@ -28,9 +28,9 @@ LST_SRC =	main.c								\
 			parsing/get_description.c			\
 			parsing/get_map_cardinal_limits.c	\
 			movements/move.c					\
+			movements/mouse.c					\
 			movements/move_cal.c				\
 			movements/key_event.c				\
-			movements/mouse.c					\
 			movements/player_collision.c		\
 			ray_casting/wall_float.c			\
 			ray_casting/ray_casting.c			\
