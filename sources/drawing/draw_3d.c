@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 16:09:09 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 17:58:36 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,31 @@ void	ft_draw_floor_ceiling(t_data *game)
 		}
 		i++;
 	}
+}
+
+static float	ft_wall_position(float x, float y, char face)
+{
+	float	res;
+
+	if (face == 'S')
+		x--;
+	if (face == 'E')
+		y--;
+	if (face == 'E' || face == 'W')
+	{
+		while (y > BOX_SIZE)
+			y -= BOX_SIZE;
+		res = y / BOX_SIZE;
+	}
+	else
+	{
+		while (x > BOX_SIZE)
+			x -= BOX_SIZE;
+		res = x / BOX_SIZE;
+	}
+	if (face == 'N' || face == 'E')
+		res = 1 - res;
+	return (res);
 }
 
 static void	ft_draw_wall(t_data *game, t_col_point point, int x_display)
