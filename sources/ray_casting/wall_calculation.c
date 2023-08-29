@@ -6,42 +6,31 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:35:25 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/17 18:53:55 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/28 16:44:19 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-char	ft_wall_face(float x, float y)
-{
-	if (((int) y % BOX_SIZE == 0 && (int)(x + 1) % BOX_SIZE != 0)
-		|| ((int) y % BOX_SIZE == 0 && (int) x % BOX_SIZE == 0))
-		return ('N');
-	else if (((int)(x + 1) % BOX_SIZE == 0 && (int)(y + 1) % BOX_SIZE != 0)
-		|| ((int)(x + 1) % BOX_SIZE == 0 && (int) y % BOX_SIZE == 0))
-		return ('E');
-	else if (((int)(y + 1) % BOX_SIZE == 0 && (int) x % BOX_SIZE != 0)
-		|| ((int)(y + 1) % BOX_SIZE == 0 && (int)(x + 1) % BOX_SIZE == 0))
-		return ('S');
-	else
-		return ('W');
-}
-
-float	ft_wall_position(int x, int y, char face)
+float	ft_wall_position(float x, float y, char face)
 {
 	float	res;
 
+	if (face == 'S')
+		x--;
+	if (face == 'E')
+		y--;
 	if (face == 'E' || face == 'W')
 	{
-		while (y > BOX_SIZE - 1)
+		while (y > BOX_SIZE)
 			y -= BOX_SIZE;
-		res = (float)y / BOX_SIZE;
+		res = y / BOX_SIZE;
 	}
 	else
 	{
-		while (x > BOX_SIZE - 1)
+		while (x > BOX_SIZE)
 			x -= BOX_SIZE;
-		res = (float)x / BOX_SIZE;
+		res = x / BOX_SIZE;
 	}
 	if (face == 'N' || face == 'E')
 		res = 1 - res;

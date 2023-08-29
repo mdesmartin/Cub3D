@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/17 00:13:50 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 11:24:21 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_load_textures(t_data *game)
 		ft_dprintf(2, "Xpm convertion failed !");
 		ft_quit(game);
 	}
+	ft_map_size(game);
 }
 
 t_data	*ft_game_init(void)

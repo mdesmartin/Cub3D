@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:10 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/29 10:03:54 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 12:08:24 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,36 +37,38 @@ typedef struct s_movements
 
 typedef struct s_data
 {
-	char	**map;
+	char		**map;
+	int			map_height;
+	int			map_width;
 
-	char	*path_north;
-	char	*path_south;
-	char	*path_west;
-	char	*path_east;
-	void	*north;
-	void	*south;
-	void	*west;
-	void	*east;
+	char		*path_north;
+	char		*path_south;
+	char		*path_west;
+	char		*path_east;
+	void		*north;
+	void		*south;
+	void		*west;
+	void		*east;
 
-	int		floor_color;
-	int		ceiling_color;
+	int			floor_color;
+	int			ceiling_color;
 
-	char	player_direction;
-	float	degree;
-	int		show_map;
-	int		player_x;
-	int		player_y;
+	char		player_direction;
+	float		degree;
+	int			show_map;
+	int			player_x;
+	int			player_y;
 
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void		*mlx_ptr;
+	void		*win_ptr;
 
-	char	*addr;
-	void	*img;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	int		map_x;
-	int		map_y;
+	char		*addr;
+	void		*img;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	int			map_x;
+	int			map_y;
 	t_movements	move;
 }				t_data;
 
@@ -106,6 +108,14 @@ typedef struct s_point
 	int		y;
 }				t_point;
 
+typedef struct s_col_point
+{
+	float	depth;
+	float	x;
+	float	y;
+	char	face;
+}				t_col_point;
+
 typedef struct s_display_line
 {
 	char		face;
@@ -114,5 +124,7 @@ typedef struct s_display_line
 	int			wall_line_height;
 	t_img		*wall;
 }				t_display_line;
+
+
 
 #endif

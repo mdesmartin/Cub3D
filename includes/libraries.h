@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libraries.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:58:30 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/18 09:08:14 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 10:54:11 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
-#include <stdbool.h>
+# include <stdbool.h>
 
 # include <sys/time.h>//surement a supprimer rapport a getimeofday pour le fps
 
