@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:58:44 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/29 14:37:05 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 14:54:00 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 /**********************************  KEYS  ************************************/
 
-# define WIN_WIDTH 2560
-# define WIN_HEIGTH 1440
+# define WIN_WIDTH 1920
+# define WIN_HEIGTH 1080
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_S 115
