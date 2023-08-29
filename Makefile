@@ -58,11 +58,7 @@ LIBRARY = 	$(DIR_LIB)libft/libft.a
 all: lib 
 	$(MAKE) $(NAME)
 
-lib :void	ft_mlx_pixel_put(t_data *game, int x, int y, int color)
-{
-	((int *)game->addr)[y * (game->line_length >> 2) + x] = color;
-}
-
+lib :
 	@$(MAKE) -C $(DIR_LIB)libft
 	@$(MAKE) -C $(DIR_LIB)minilibx-linux
 
