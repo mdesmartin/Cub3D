@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:27:59 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/29 09:14:08 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 09:37:41 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ void	mouse_move(t_data *game)
 	x = 0;
 	y = 0;
 	if (!mlx_mouse_get_pos(game->mlx_ptr, game->win_ptr, &x, &y))
-		return;
-	if (x < (WIN_WIDTH / 4))
+	{
+		game->move.left = 0;
+		game->move.right = 0;
+	}
+	if (x < (WIN_WIDTH / 3) && x > 0 && y < WIN_HEIGTH && y > 0)
 		game->move.left = 1;
-	else if (x > ((WIN_WIDTH / 4) * 3))
-		game->move.right = 1;	
+	else if (x > ((WIN_WIDTH / 3) * 2) && x < WIN_WIDTH 
+		&& y < WIN_HEIGTH && y > 0)
+		game->move.right = 1;
 	else
 	{
 		game->move.left = 0;
