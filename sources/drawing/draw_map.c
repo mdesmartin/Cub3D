@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/28 17:23:43 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 10:29:19 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	ft_render_player(t_data *game, int x, int y)
 	}
 }
 
-// square with black sides
 void	ft_draw_square(t_data *game, int x, int y, int color)
 {
 	int	i;
@@ -91,8 +90,6 @@ void	ft_draw_map(t_data *game, char **map)
 				ft_draw_square(game, x + game->map_x, y + game->map_y, SILVER);
 			else if (map[y][x] == '0')
 				ft_draw_square(game, x + game->map_x, y + game->map_y, WHITE);
-			else if (map[y][x] == ' ')
-				ft_draw_square(game, x + game->map_x, y + game->map_y, BLACK);
 			x++;
 		}
 		y++;

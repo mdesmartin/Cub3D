@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:50:53 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/18 10:20:32 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/28 16:56:49 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	ft_draw_ray(t_data *game, t_line *line, int color, int scale)
 		if (line->x0 > 0 && line->x0 / scale < WIN_WIDTH
 			&& line->y0 > 0 && line->y0 / scale < WIN_HEIGTH)
 			ft_mlx_pixel_put(game, line->x0 / scale, line->y0 / scale, color);
+		else
+			break ;
 		e2 = 2 * line->e;
 		if (e2 >= line->dy)
 		{

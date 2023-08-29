@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/21 15:37:29 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/28 17:15:02 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,7 @@ int	ft_refresh_img(t_data *game)
 
 void	ft_mlx_pixel_put(t_data *game, int x, int y, int color)
 {
-	char	*dst;
-
-	dst = game->addr + (y * game->line_length + x * (game->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	((int *)game->addr)[y * (game->line_length >> 2) + x] = color;
 }
 
 void	ft_add_x_line(t_line *line, int x0, int x1, float degree)
