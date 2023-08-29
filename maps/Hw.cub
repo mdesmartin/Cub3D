@@ -1,7 +1,7 @@
-NO ./textures/ethan/patrick.xpm
-SO ./textures/ethan/carlo.xpm
-EA ./textures/ethan/bob.xpm
-WE ./textures/ethan/plancton.xpm
+NO ./textures/Hw/patrick.xpm
+SO ./textures/Hw/carlo.xpm
+EA ./textures/Hw/bob.xpm
+WE ./textures/Hw/plancton.xpm
  
 C               32,0,78
 F 220,100,0
