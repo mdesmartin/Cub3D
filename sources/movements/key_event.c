@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:01:10 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/29 16:35:47 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 16:44:35 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	release_key(int key, t_data *game)
 		game->move.left = 0;
 	else if (key == KEY_RIGHT)
 		game->move.right = 0;
-	release_key_map(key, game);
+	else
+		release_key_map(key, game);
 	return (0);
 }
