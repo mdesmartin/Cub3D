@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texturing.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:41:25 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/28 17:10:35 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 13:01:36 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	print_line(t_data *game, t_display_line line)
 	y_win_min = (WIN_HEIGTH >> 1) - (line.wall_line_height >> 1) + 1;
 	while (y_win_max >= y_win_min)
 	{
-		if (line.x_win > 0 && line.x_win < WIN_WIDTH
-			&& y_win_min > 0 && y_win_min < WIN_HEIGTH)
+		if (line.x_win >= 0 && line.x_win <= WIN_WIDTH
+			&& y_win_min >= 0 && y_win_min <= WIN_HEIGTH)
 			((int *)game->addr)[y_win_min * (game->line_length >> 2)
 				+ line.x_win] = get_color(line, i);
 		i++;
