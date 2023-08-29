@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 10:45:12 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 10:59:23 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	ft_draw_fov(t_data *game, int x, int y)
 		ft_add_x_line(&line, x + game->map_x * BOX_SIZE, WIN_WIDTH / 2, angle);
 		ft_add_y_line(&line, y + game->map_y * BOX_SIZE, WIN_HEIGTH / 2, angle);
 		ft_draw_ray(game, &line, GREEN, scale);
-		angle += M_PI / WIN_WIDTH;
+		angle += M_PI / 400;
 	}
 	ft_add_x_line(&line, x + game->map_x * BOX_SIZE, WIN_WIDTH / 2,
 		game->degree);
