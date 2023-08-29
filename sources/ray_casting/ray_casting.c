@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:50:53 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 17:39:27 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 18:11:41 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void	ft_draw_ray(t_data *game, t_line *line, int color, int scale)
 			&& line->y0 > 0 && line->y0 / scale < WIN_HEIGTH)
 			((int *)game->addr)[line->y0 / scale * (game->line_length >> 2)
 				+ line->x0 / scale] = color;
-		else
-			break ;
 		ft_increment_ray(line);
 	}
 }
