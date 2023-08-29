@@ -25,6 +25,8 @@ typedef struct s_movements
 	bool	down;
 	bool	left;
 	bool	right;
+	bool	mouse_left;
+	bool	mouse_right;
 	bool	i;
 	bool	j;
 	bool	k;

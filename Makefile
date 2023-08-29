@@ -30,6 +30,7 @@ LST_SRC =	main.c								\
 			movements/move.c					\
 			movements/move_cal.c				\
 			movements/key_event.c				\
+			movements/mouse.c					\
 			movements/player_collision.c		\
 			ray_casting/wall_float.c			\
 			ray_casting/ray_casting.c			\
@@ -57,7 +58,11 @@ LIBRARY = 	$(DIR_LIB)libft/libft.a
 all: lib 
 	$(MAKE) $(NAME)
 
-lib :
+lib :void	ft_mlx_pixel_put(t_data *game, int x, int y, int color)
+{
+	((int *)game->addr)[y * (game->line_length >> 2) + x] = color;
+}
+
 	@$(MAKE) -C $(DIR_LIB)libft
 	@$(MAKE) -C $(DIR_LIB)minilibx-linux
 

@@ -6,13 +6,13 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:14:33 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/10 17:45:27 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 10:40:26 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	init_parsed(t_parsing **parsed)
+static int	init_parsed(t_parsing **parsed)
 {
 	*parsed = ft_calloc(1, sizeof(t_parsing));
 	if (!(*parsed))

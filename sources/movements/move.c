@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:27:59 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/18 10:11:10 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 10:07:20 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	map_refresh(t_data *game)
 
 int	game_refresh(t_data *game)
 {
+	mouse_move(game);
 	if (game->move.w || game->move.up)
 		move(game, 1, 0);
 	if (game->move.s || game->move.down)
@@ -48,9 +49,9 @@ int	game_refresh(t_data *game)
 		move(game, 0, 1);
 	if (game->move.d)
 		move(game, 0, -1);
-	if (game->move.left)
+	if (game->move.left || game->move.mouse_left)
 		rotate(game, -(M_PI / 60));
-	if (game->move.right)
+	if (game->move.right || game->move.mouse_right)
 		rotate(game, M_PI / 60);
 	if (game->show_map == 1)
 		map_refresh(game);

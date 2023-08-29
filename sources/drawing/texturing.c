@@ -12,7 +12,7 @@
 
 #include "../../includes/cube3d.h"
 
-int	get_color(t_display_line line, int i)
+static int	get_color(t_display_line line, int i)
 {
 	u_int32_t	*pixel_tab;
 	u_int32_t	x;
@@ -29,7 +29,7 @@ int	get_color(t_display_line line, int i)
 	return (color);
 }
 
-void	init_face(t_data *game, t_display_line *line)
+static void	init_face(t_data *game, t_display_line *line)
 {
 	if (line->face == 'N')
 		line->wall = game->north;

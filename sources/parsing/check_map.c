@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:27 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/18 10:54:40 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 10:39:15 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	check_symbols(t_parsing *parsed)
+static int	check_symbols(t_parsing *parsed)
 {
 	int	y;
 	int	x;
@@ -34,7 +34,7 @@ int	check_symbols(t_parsing *parsed)
 	return (0);
 }
 
-int	borders_whitespace_or_end(t_parsing *parsed, int y, int x)
+static int	borders_whitespace_or_end(t_parsing *parsed, int y, int x)
 {
 	if (y == parsed->map_north || y == parsed->map_south
 		|| x == parsed->map_east || x == parsed->map_west)
@@ -48,7 +48,7 @@ int	borders_whitespace_or_end(t_parsing *parsed, int y, int x)
 		return (0);
 }
 
-int	check_walls(t_parsing *parsed)
+static int	check_walls(t_parsing *parsed)
 {
 	int		y;
 	int		x;
@@ -71,7 +71,7 @@ int	check_walls(t_parsing *parsed)
 	return (0);
 }
 
-int	check_player(t_parsing *parsed)
+static int	check_player(t_parsing *parsed)
 {
 	int	y;
 	int	x;

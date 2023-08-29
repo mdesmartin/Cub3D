@@ -14,4 +14,4 @@ The main objective of Cub3D is to create a visually immersive 3D game using rayc
 
 *By working on Cub3D, you will gain practical experience in graphics programming, game development concepts, and problem-solving skills. It offers an opportunity to apply algorithms, optimize performance, and create an interactive game environment.*
 
-**Note:** This project was developed as part of the 42 school curriculum and should be considered a learning exercise rather than a fully-featured commercial game engine.*
+**Note:** This project was developed as part of the 42 school curriculum and should be considered a learning exercise rather than a fully-featured commercial game engine.

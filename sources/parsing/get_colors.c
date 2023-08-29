@@ -6,13 +6,13 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 23:01:05 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/16 16:23:05 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/23 10:39:25 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	color_error(int r, int g, int b)
+static int	color_error(int r, int g, int b)
 {
 	if (r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0)
 	{
@@ -22,7 +22,7 @@ int	color_error(int r, int g, int b)
 	return (0);
 }
 
-int	get_color_int(char *rgb, int *i)
+static int	get_color_int(char *rgb, int *i)
 {
 	int				start;
 
@@ -34,7 +34,7 @@ int	get_color_int(char *rgb, int *i)
 	return (atoi(&rgb[start]));
 }
 
-int	get_rgb(char *rgb)
+static int	get_rgb(char *rgb)
 {
 	int	i;
 	int	r;
