@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 10:29:19 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 10:45:12 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	ft_render_player(t_data *game, int x, int y)
 		{
 			if (x >= 0 && (x + i) / scale < WIN_WIDTH
 				&& y >= 0 && (y + j) / scale < WIN_HEIGTH)
-				ft_mlx_pixel_put(game, (x + i) / scale, (y + j) / scale, RED);
+				((int *)game->addr)[(y + j) / scale * (game->line_length >> 2)
+					+ (x + i) / scale] = RED;
 			j++;
 		}
 		i++;
