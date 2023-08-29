@@ -6,13 +6,13 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 10:07:01 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/29 10:10:34 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 13:18:06 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	get_mouse(t_data *game)
+static int	get_mouse(t_data *game)
 {
 	int	x;
 	int	y;
