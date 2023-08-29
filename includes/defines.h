@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:58:44 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/28 17:44:18 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 14:37:05 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 /**********************************  KEYS  ************************************/
 
-# define WIN_WIDTH 1280
-# define WIN_HEIGTH 720
+# define WIN_WIDTH 2560
+# define WIN_HEIGTH 1440
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_S 115
@@ -59,5 +59,7 @@
 # define STEP_LENGTH		16
 # define MAP_BOX_SIZE		16
 # define MAP_PLAYER_SIZE	8
+# define FOV				1.047197551
+# define FOV_2				0.5235987756
 
 #endif

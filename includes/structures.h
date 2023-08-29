@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:10 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/23 12:08:24 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 14:13:40 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_data
 
 	char		*addr;
 	void		*img;
+	float		screen_dst;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
