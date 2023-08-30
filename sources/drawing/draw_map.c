@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/30 10:37:23 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 10:55:28 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 void	ft_map_size(t_data *game)
 {
-	game->map_height = 0;
-	game->map_width = 0;
+	int	tmp;
+
+	tmp = 0;
 	while (game->map[game->map_height])
+	{
+		while (game->map[game->map_height][tmp])
+			tmp++;
+		if (tmp > game->map_width)
+			game->map_width = tmp;
 		game->map_height++;
-	while (game->map[0][game->map_width])
-		game->map_width++;
+	}
+	if (!game->map[game->map_height])
+		game->map_height--;
 }
 
 void	ft_render_player(t_data *game, int x, int y)

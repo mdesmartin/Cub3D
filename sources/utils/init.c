@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 14:41:22 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 10:42:32 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ static void	ft_game_init_null(t_data *game)
 	game->path_west = NULL;
 	game->map_x = 0;
 	game->map_y = 0;
+	game->map_height = 0;
+	game->map_width = 0;
 }
 
 t_data	*ft_game_init(void)
