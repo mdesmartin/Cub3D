@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/30 14:04:25 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 15:03:48 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,8 @@ static void	ft_draw_square(t_data *game, int x, int y, int color)
 				&& x * MAP_BOX_SIZE + i < WIN_WIDTH
 				&& y * MAP_BOX_SIZE + j < WIN_HEIGTH)
 			{
-				// if (i == 0 || i == MAP_BOX_SIZE || j == 0 || j == MAP_BOX_SIZE)
-				// 	ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
-				// 		y * MAP_BOX_SIZE + j, BLACK);
-				// else
-					ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
-						y * MAP_BOX_SIZE + j, color);
+				ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
+					y * MAP_BOX_SIZE + j, color);
 			}
 			j++;
 		}
@@ -115,5 +111,4 @@ void	ft_draw_map(t_data *game, char **map)
 	}
 	ft_render_player(game, game->player_x, game->player_y);
 	ft_draw_fov(game, game->player_x, game->player_y);
-
 }
