@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/30 10:42:32 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 11:23:29 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void	ft_check_texture_file(t_data *game, char *texture_file)
 	fd = open(texture_file, O_RDONLY, 0644);
 	if (fd == -1)
 	{
-		msg = ft_strjoin("Error: ", texture_file);
+		msg = ft_strjoin("Error\nBad texture file: ", texture_file);
 		if (!msg)
 		{
-			ft_error(game, "Error when creating error message");
+			ft_error(game, "Error\nError message creation failed");
 			return ;
 		}
 		perror(msg);
@@ -57,7 +57,7 @@ void	ft_load_textures(t_data *game)
 			game->path_west, &box_size, &box_size);
 	if (!game->north || !game->south || !game->east || !game->west)
 	{
-		ft_dprintf(2, "Xpm convertion failed !");
+		ft_dprintf(2, "Error\nXpm convertion failed !");
 		ft_quit(game);
 	}
 	ft_map_size(game);
@@ -91,7 +91,7 @@ t_data	*ft_game_init(void)
 	game = malloc(sizeof(t_data));
 	if (!game)
 	{
-		perror("Memory allocation failed for t_data game");
+		perror("Error\nMemory allocation failed for t_data game");
 		exit (12);
 	}
 	ft_game_init_null(game);
