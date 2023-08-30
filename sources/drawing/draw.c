@@ -3,43 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/30 10:59:30 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 13:11:22 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	time_in_s(void)
-{
-	struct timeval	current_time;
-	int				current_time_in_s;
-
-	gettimeofday(&current_time, NULL);
-	current_time_in_s = current_time.tv_sec;
-	return (current_time_in_s);
-}
-
-void	fps(void)
-{
-	static int	fps;
-	static int	last_second;
-
-	if (last_second == time_in_s())
-		fps += 1;
-	else
-	{
-		printf("fps:%d\n", fps);
-		fps = 0;
-		last_second = time_in_s();
-	}
-}
-
 int	ft_refresh_img(t_data *game)
 {
-	fps();//a supprimer a la fin fps + time_in_s
 	game_refresh(game);
 	game->img = mlx_new_image(game->mlx_ptr, WIN_WIDTH, WIN_HEIGTH);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
