@@ -48,7 +48,11 @@ DIR_OBJ	=	objects/
 OBJECTS = 	$(patsubst $(DIR_SRC)%.c, $(DIR_OBJ)%.o, $(SOURCES))
 
 DIR_HDR = 	includes/
-HEADERS =	$(DIR_HDR)cube3d.h
+HEADERS =	$(DIR_HDR)cube3d.h		\
+			$(DIR_HDR)defines.h		\
+			$(DIR_HDR)libraries.h	\
+			$(DIR_HDR)prototypes.h	\
+			$(DIR_HDR)structures.h
 
 DIR_LIB = 	libraries/
 LIBRARY = 	$(DIR_LIB)libft/libft.a
