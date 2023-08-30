@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:58:44 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/30 14:04:36 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 14:45:49 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 
 /**********************************  SIZES  ***********************************/
 
-# define PLAYER_SIZE		16
+# define PLAYER_SIZE		50
 # define BOX_SIZE			128
 # define STEP_LENGTH		16
 # define MAP_BOX_SIZE		16
