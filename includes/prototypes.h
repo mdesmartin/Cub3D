@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:36 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/29 17:53:59 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 10:59:44 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ void		main_parsing_test(t_data	*game);
 void		ft_draw_floor_ceiling(t_data *game);
 int			ft_refresh_img(t_data *game);
 void		ft_draw_map(t_data *game, char **map);
-void		ft_render_player(t_data *game, int x, int y);
 void		ft_mlx_pixel_put(t_data *game, int x, int y, int color);
-void		ft_draw_fov(t_data *game, int x, int y);
 void		ft_add_x_line(t_line *line, int x0, int x1, float degree);
 void		ft_add_y_line(t_line *line, int y0, int y1, float degree);
 void		ft_draw_3d(t_data *game);
