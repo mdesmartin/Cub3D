@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_3d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 18:36:47 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 13:23:50 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_draw_3d(t_data *game)
 	i = 0;
 	angle = game->degree;
 	angle -= FOV_2;
-	while (i <= WIN_WIDTH)
+	while (i < WIN_WIDTH)
 	{
 		point = ft_3d_wall_collision(game, angle);
 		ft_draw_wall(game, point, i);
