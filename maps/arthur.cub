@@ -3,8 +3,8 @@ SO ./textures/bob/carlo.xpm
 EA ./textures/bob/pinapple.xpm
 WE ./textures/bob/patrick.xpm
  
-C 0,0,0
-F 0,241,217
+C 149,242,223
+F 229,241,217
 
 11111111111111
 100100100000001
