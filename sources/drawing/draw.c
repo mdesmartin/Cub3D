@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 10:45:48 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 10:59:30 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,7 @@ int	ft_refresh_img(t_data *game)
 	ft_draw_floor_ceiling(game);
 	ft_draw_3d(game);
 	if (game->show_map == 1)
-	{
 		ft_draw_map(game, game->map);
-		ft_render_player(game, game->player_x, game->player_y);
-		ft_draw_fov(game, game->player_x, game->player_y);
-	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img, 0, 0);
 	if (game->img)
 		mlx_destroy_image(game->mlx_ptr, game->img);

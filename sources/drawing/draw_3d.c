@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_3d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 14:39:27 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 18:36:47 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,32 @@ void	ft_draw_floor_ceiling(t_data *game)
 	}
 }
 
-void	ft_draw_wall(t_data *game, t_col_point point, int x_display)
+static float	ft_wall_position(float x, float y, char face)
+{
+	float	res;
+
+	if (face == 'S')
+		x--;
+	if (face == 'E')
+		y--;
+	if (face == 'E' || face == 'W')
+	{
+		while (y > BOX_SIZE)
+			y -= BOX_SIZE;
+		res = y / BOX_SIZE;
+	}
+	else
+	{
+		while (x > BOX_SIZE)
+			x -= BOX_SIZE;
+		res = x / BOX_SIZE;
+	}
+	if (face == 'N' || face == 'E')
+		res = 1 - res;
+	return (res);
+}
+
+static void	ft_draw_wall(t_data *game, t_col_point point, int x_display)
 {
 	t_display_line	line;
 
@@ -59,8 +84,8 @@ void	ft_draw_3d(t_data *game)
 	{
 		point = ft_3d_wall_collision(game, angle);
 		ft_draw_wall(game, point, i);
-		angle = atan((i + 0.0001 - WIN_WIDTH / 2)
-				/ (game->screen_dst)) + game->degree + 0.0001;
+		angle = atanf((i + 0.0001 - WIN_WIDTH / 2) / game->screen_dst)
+			+ game->degree + 0.0001;
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 15:57:08 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/09 11:47:13 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 16:02:13 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_calculate_line(t_line *new_pos, int direction)
 	}
 }
 
-void	ft_position_cal(t_data *game, int forward, int strafe)
+void	move(t_data *game, int forward, int strafe)
 {
 	t_line	new_pos;
 

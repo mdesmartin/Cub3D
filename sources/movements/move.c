@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:27:59 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/29 10:07:20 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 16:02:19 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
-
-static void	move(t_data *game, int forward, int strafe)
-{
-	ft_position_cal(game, forward, strafe);
-}
 
 static void	rotate(t_data *game, float rotation)
 {

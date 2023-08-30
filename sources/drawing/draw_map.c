@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 15:41:44 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 10:59:22 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,22 @@
 
 void	ft_map_size(t_data *game)
 {
-	game->map_height = 0;
-	game->map_width = 0;
+	int	tmp;
+
+	tmp = 0;
 	while (game->map[game->map_height])
+	{
+		while (game->map[game->map_height][tmp])
+			tmp++;
+		if (tmp > game->map_width)
+			game->map_width = tmp;
 		game->map_height++;
-	while (game->map[0][game->map_width])
-		game->map_width++;
+	}
+	if (!game->map[game->map_height])
+		game->map_height--;
 }
 
-void	ft_render_player(t_data *game, int x, int y)
+static void	ft_render_player(t_data *game, int x, int y)
 {
 	static const int	scale = BOX_SIZE / MAP_BOX_SIZE;
 	int					i;
@@ -46,7 +53,29 @@ void	ft_render_player(t_data *game, int x, int y)
 	}
 }
 
-void	ft_draw_square(t_data *game, int x, int y, int color)
+static void	ft_draw_fov(t_data *game, int x, int y)
+{
+	static const int		scale = BOX_SIZE / MAP_BOX_SIZE;
+	t_line					line;
+	float					angle;
+
+	angle = game->degree;
+	angle -= M_PI / 6;
+	while (angle <= game->degree + M_PI / 6)
+	{
+		ft_add_x_line(&line, x + game->map_x * BOX_SIZE, WIN_WIDTH / 2, angle);
+		ft_add_y_line(&line, y + game->map_y * BOX_SIZE, WIN_HEIGTH / 2, angle);
+		ft_draw_ray(game, &line, GREEN, scale);
+		angle += M_PI / 400;
+	}
+	ft_add_x_line(&line, x + game->map_x * BOX_SIZE, WIN_WIDTH / 2,
+		game->degree);
+	ft_add_y_line(&line, y + game->map_y * BOX_SIZE, WIN_HEIGTH / 2,
+		game->degree);
+	ft_draw_ray(game, &line, BLUE, scale);
+}
+
+static void	ft_draw_square(t_data *game, int x, int y, int color)
 {
 	int	i;
 	int	j;
@@ -93,26 +122,7 @@ void	ft_draw_map(t_data *game, char **map)
 		}
 		y++;
 	}
-}
+	ft_render_player(game, game->player_x, game->player_y);
+	ft_draw_fov(game, game->player_x, game->player_y);
 
-void	ft_draw_fov(t_data *game, int x, int y)
-{
-	static const int		scale = BOX_SIZE / MAP_BOX_SIZE;
-	t_line					line;
-	float					angle;
-
-	angle = game->degree;
-	angle -= M_PI / 6;
-	while (angle <= game->degree + M_PI / 6)
-	{
-		ft_add_x_line(&line, x + game->map_x * BOX_SIZE, WIN_WIDTH / 2, angle);
-		ft_add_y_line(&line, y + game->map_y * BOX_SIZE, WIN_HEIGTH / 2, angle);
-		ft_draw_ray(game, &line, GREEN, scale);
-		angle += M_PI / 400;
-	}
-	ft_add_x_line(&line, x + game->map_x * BOX_SIZE, WIN_WIDTH / 2,
-		game->degree);
-	ft_add_y_line(&line, y + game->map_y * BOX_SIZE, WIN_HEIGTH / 2,
-		game->degree);
-	ft_draw_ray(game, &line, BLUE, scale);
 }

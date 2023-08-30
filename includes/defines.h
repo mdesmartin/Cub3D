@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:58:44 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/29 14:54:00 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/29 16:34:37 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define KEY_A 97
 # define KEY_D 100
 # define KEY_M 109
+# define KEY_N 110
 # define KEY_UP 65362
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
