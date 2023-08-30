@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 15:41:44 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 10:37:23 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_render_player(t_data *game, int x, int y)
 	}
 }
 
-void	ft_draw_square(t_data *game, int x, int y, int color)
+static void	ft_draw_square(t_data *game, int x, int y, int color)
 {
 	int	i;
 	int	j;
