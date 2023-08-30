@@ -6,13 +6,13 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:50:53 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/29 18:11:41 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 11:06:28 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int	ft_ray_length(int x_start, int y_start, int x_r, int y_r)
+static int	ft_ray_length(int x_start, int y_start, int x_r, int y_r)
 {
 	double	ray_length;
 
@@ -20,7 +20,7 @@ int	ft_ray_length(int x_start, int y_start, int x_r, int y_r)
 	return ((int) ray_length);
 }
 
-void	ft_increment_ray(t_line *line)
+static void	ft_increment_ray(t_line *line)
 {
 	float	e2;
 
