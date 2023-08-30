@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/30 13:04:13 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 14:04:25 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	ft_render_player(t_data *game, int x, int y)
 			if (x >= 0 && (x + i) / scale < WIN_WIDTH
 				&& y >= 0 && (y + j) / scale < WIN_HEIGTH)
 				((int *)game->addr)[(y + j) / scale * (game->line_length >> 2)
-					+ (x + i) / scale] = RED;
+					+ (x + i) / scale] = LIME;
 			j++;
 		}
 		i++;
@@ -63,7 +63,7 @@ static void	ft_draw_fov(t_data *game, int x, int y)
 		game->degree);
 	ft_add_y_line(&line, y + game->map_y * BOX_SIZE, WIN_HEIGTH / 2,
 		game->degree);
-	ft_draw_ray(game, &line, BLUE, scale);
+	ft_draw_ray(game, &line, LIME, scale);
 }
 
 static void	ft_draw_square(t_data *game, int x, int y, int color)
@@ -81,10 +81,10 @@ static void	ft_draw_square(t_data *game, int x, int y, int color)
 				&& x * MAP_BOX_SIZE + i < WIN_WIDTH
 				&& y * MAP_BOX_SIZE + j < WIN_HEIGTH)
 			{
-				if (i == 0 || i == MAP_BOX_SIZE || j == 0 || j == MAP_BOX_SIZE)
-					ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
-						y * MAP_BOX_SIZE + j, BLACK);
-				else
+				// if (i == 0 || i == MAP_BOX_SIZE || j == 0 || j == MAP_BOX_SIZE)
+				// 	ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
+				// 		y * MAP_BOX_SIZE + j, BLACK);
+				// else
 					ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
 						y * MAP_BOX_SIZE + j, color);
 			}
@@ -106,9 +106,9 @@ void	ft_draw_map(t_data *game, char **map)
 		while (map[y][x])
 		{
 			if (map[y][x] == '1')
-				ft_draw_square(game, x + game->map_x, y + game->map_y, SILVER);
+				ft_draw_square(game, x + game->map_x, y + game->map_y, GRAY);
 			else if (map[y][x] == '0')
-				ft_draw_square(game, x + game->map_x, y + game->map_y, WHITE);
+				ft_draw_square(game, x + game->map_x, y + game->map_y, SILVER);
 			x++;
 		}
 		y++;
