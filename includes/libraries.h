@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libraries.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:58:30 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/23 10:54:11 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/08/30 15:22:02 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@
 # include "../libraries/libft/sources/libft.h"
 # include "../libraries/minilibx-linux/mlx.h"
 # include "../libraries/minilibx-linux/mlx_int.h"
-# include <stdio.h>
-# include <stdlib.h>
 # include <math.h>
 # include <stdbool.h>
-
-# include <sys/time.h>//surement a supprimer rapport a getimeofday pour le fps
 
 #endif
