@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:10 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/30 15:04:13 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/31 15:50:21 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,6 @@ typedef struct s_line
 	int		sx;
 	int		sy;
 }				t_line;
-
-typedef struct s_point
-{
-	float	distance;
-	int		x;
-	int		y;
-}				t_point;
 
 typedef struct s_col_point
 {
