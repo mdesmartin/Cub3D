@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:36 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/30 13:10:14 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/31 11:57:47 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void		ft_free_tab(char **tab);
 int			ft_quit(t_data *data);
 void		ft_error(t_data *data, char *str);
 void		free_main(t_data	*game);
+void		ft_check_texture_file(t_data *game, char *texture_file);
+void		ft_check_textures(t_data *game);
 
 /***********************************  DRAW  ***********************************/
 

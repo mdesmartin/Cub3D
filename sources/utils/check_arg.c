@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:26:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/16 16:38:45 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/31 11:58:06 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,33 @@ void	ft_check_arg(int ac, char **av)
 	}
 	else
 		ft_check_map_name(av[1]);
+}
+
+void	ft_check_texture_file(t_data *game, char *texture_file)
+{
+	char	*msg;
+	int		fd;
+
+	fd = open(texture_file, O_RDONLY, 0644);
+	if (fd == -1)
+	{
+		msg = ft_strjoin("Error\nBad texture file: ", texture_file);
+		if (!msg)
+		{
+			ft_error(game, "Error\nError message creation failed");
+			return ;
+		}
+		perror(msg);
+		free(msg);
+		ft_quit(game);
+	}
+	close(fd);
+}
+
+void	ft_check_textures(t_data *game)
+{
+	ft_check_texture_file(game, game->path_north);
+	ft_check_texture_file(game, game->path_south);
+	ft_check_texture_file(game, game->path_east);
+	ft_check_texture_file(game, game->path_west);
 }

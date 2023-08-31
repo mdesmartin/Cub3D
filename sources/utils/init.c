@@ -6,40 +6,11 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/30 12:59:25 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/08/31 11:56:14 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
-
-static void	ft_check_texture_file(t_data *game, char *texture_file)
-{
-	char	*msg;
-	int		fd;
-
-	fd = open(texture_file, O_RDONLY, 0644);
-	if (fd == -1)
-	{
-		msg = ft_strjoin("Error\nBad texture file: ", texture_file);
-		if (!msg)
-		{
-			ft_error(game, "Error\nError message creation failed");
-			return ;
-		}
-		perror(msg);
-		free(msg);
-		ft_quit(game);
-	}
-	close(fd);
-}
-
-static void	ft_check_textures(t_data *game)
-{
-	ft_check_texture_file(game, game->path_north);
-	ft_check_texture_file(game, game->path_south);
-	ft_check_texture_file(game, game->path_east);
-	ft_check_texture_file(game, game->path_west);
-}
 
 void	ft_load_textures(t_data *game)
 {
@@ -84,6 +55,24 @@ static void	ft_game_init_null(t_data *game)
 	game->map_width = 0;
 }
 
+void	game_init_move(t_data	*game)
+{
+	game->move.w = 0;
+	game->move.a = 0;
+	game->move.s = 0;
+	game->move.d = 0;
+	game->move.up = 0;
+	game->move.down = 0;
+	game->move.left = 0;
+	game->move.right = 0;
+	game->move.mouse_left = 0;
+	game->move.mouse_right = 0;
+	game->move.i = 0;
+	game->move.j = 0;
+	game->move.k = 0;
+	game->move.l = 0;
+}
+
 t_data	*ft_game_init(void)
 {
 	t_data	*game;
@@ -95,6 +84,7 @@ t_data	*ft_game_init(void)
 		exit (12);
 	}
 	ft_game_init_null(game);
+	game_init_move(game);
 	game->screen_dst = WIN_WIDTH / (2 * tanf(FOV_2));
 	return (game);
 }
