@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_3d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/30 13:23:50 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 13:11:11 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static float	ft_wall_position(float x, float y, char face)
 			x -= BOX_SIZE;
 		res = x / BOX_SIZE;
 	}
-	if (face == 'N' || face == 'E')
+	if (face == 'S' || face == 'W')
 		res = 1 - res;
 	return (res);
 }
