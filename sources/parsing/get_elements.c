@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:20 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/23 10:39:50 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 14:16:41 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	get_len(char **tab, int i, int *j, int *len)
 {
 	*len = *j;
 	while (tab[i][*len] && !is_whitespace(tab[i][*len]))
+		*len += 1;
+	if (is_whitespace(tab[i][*len]))
 		*len += 1;
 	*len -= 1;
 	*len -= *j;
