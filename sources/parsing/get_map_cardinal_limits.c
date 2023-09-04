@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:42:13 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/23 10:40:00 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 15:22:59 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,10 @@ int	get_map_cardinal_limits(t_parsing *parsed)
 {
 	get_map_north(parsed);
 	get_map_south(parsed);
+	if (something_after_map(parsed) || check_duplicated(parsed))
+		return (1);
 	if (parsed->map_north >= parsed->map_south)
-		return (ft_dprintf(2, "Error\nMissing map buddy ;)\n"), 1);
+		return (ft_dprintf(2, "Error\nMissing map\n"), 1);
 	get_map_west(parsed);
 	get_map_east(parsed);
 	if ((unsigned int)(parsed->map_south - parsed->map_north) >

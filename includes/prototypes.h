@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:36 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/08/31 11:57:47 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 15:24:58 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ int			is_map_symbol(char c);
 int			is_whitespace(char c);
 int			is_whitespace_or_end(char c);
 int			parsing(t_data	*game, char **av);
+int			something_after_map(t_parsing *parsed);
+int			check_duplicated(t_parsing *parsed);
 
 #endif

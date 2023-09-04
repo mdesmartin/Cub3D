@@ -20,6 +20,7 @@ LST_SRC =	main.c								\
 			parsing/check_elements.c			\
 			parsing/get_description.c			\
 			parsing/get_map_cardinal_limits.c	\
+			parsing/check_description.c			\
 			movements/move.c					\
 			movements/mouse.c					\
 			movements/move_cal.c				\

@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:34:55 by mvogel            #+#    #+#             */
-/*   Updated: 2023/09/04 14:42:22 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 15:24:29 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,23 +51,23 @@ static int	is_empty(char *str, int j, int size)
 		return (ft_dprintf(2, "Error\nMissing "), 1);
 }
 
-static int	is_duplicated(t_parsing *parsed, char *element, int size, int i)
-{
-	int	j;
+// static int	is_duplicated(t_parsing *parsed, char *element, int size, int i)
+// {
+// 	int	j;
 
-	while (parsed->description[i])
-	{
-		j = 0;
-		while (parsed->description[i][j]
-			&& is_whitespace(parsed->description[i][j]))
-			j++;
-		if (parsed->description[i][j]
-			&& !ft_strncmp(&parsed->description[i][j], element, size))
-			return (ft_dprintf(2, "Error\nDuplicated "), 1);
-		i++;
-	}
-	return (0);
-}
+// 	while (parsed->description[i])
+// 	{
+// 		j = 0;
+// 		while (parsed->description[i][j]
+// 			&& is_whitespace(parsed->description[i][j]))
+// 			j++;
+// 		if (parsed->description[i][j]
+// 			&& !ft_strncmp(&parsed->description[i][j], element, size))
+// 			return (ft_dprintf(2, "Error\nDuplicated "), 1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 int	nothing_after(char *str, int i)
 {
@@ -98,8 +98,7 @@ static int	find_element(t_parsing *parsed, char *element, int size)
 		if (parsed->description[i][j]
 			&& !ft_strncmp(&parsed->description[i][j], element, size))
 		{
-			if ((is_duplicated(parsed, element, size, i + 1)) || \
-			(is_empty(parsed->description[i], j, size)) || (size == 1 && \
+			if ((is_empty(parsed->description[i], j, size)) || (size == 1 && \
 			!color_formated(parsed->description[i], j + size)) || (size == 2 \
 			&& !nothing_after(parsed->description[i], j + size)))
 				return (0);
