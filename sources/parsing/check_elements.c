@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:34:55 by mvogel            #+#    #+#             */
-/*   Updated: 2023/08/23 10:39:01 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 15:58:26 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,19 @@ static int	color_formated(char *str, int j)
 		j++;
 	while (str[j])
 	{
-		if (!ft_isdigit(str[j]) && str[j] != ','
-			&& !is_whitespace_or_end(str[j]))
-			return (0);
-		if (ft_isdigit(str[j]) && (is_whitespace_or_end(str[j - 1])
-				|| str[j - 1] == ','))
+		if ((!ft_isdigit(str[j]) && str[j] != ','
+				&& str[j] != '\n') && (digit == 3 && !is_whitespace(str[j])))
+			return (ft_dprintf(2, "Error\nInvalid format for "), 0);
+		if (!digit && ft_isdigit(str[j]) && (is_whitespace_or_end(str[j - 1])))
+			digit += 1;
+		else if (digit > 0 && ft_isdigit(str[j]) && str[j - 1] == ',')
 			digit += 1;
 		if (str[j] == ',')
 			coma += 1;
 		j++;
 	}
 	if (coma != 2 || digit != 3)
-		return (0);
+		return (ft_dprintf(2, "Error\nInvalid format for "), 0);
 	else
 		return (1);
 }
@@ -47,25 +48,21 @@ static int	is_empty(char *str, int j, int size)
 	if (str[j] && str[j] != '\n')
 		return (0);
 	else
-		return (1);
+		return (ft_dprintf(2, "Error\nMissing "), 1);
 }
 
-static int	is_duplicated(t_parsing *parsed, char *element, int size, int i)
+int	nothing_after(char *str, int i)
 {
-	int	j;
-
-	while (parsed->description[i])
-	{
-		j = 0;
-		while (parsed->description[i][j]
-			&& is_whitespace(parsed->description[i][j]))
-			j++;
-		if (parsed->description[i][j]
-			&& !ft_strncmp(&parsed->description[i][j], element, size))
-			return (1);
+	while (str[i] && is_whitespace(str[i]))
 		i++;
-	}
-	return (0);
+	while (str[i] && !is_whitespace_or_end(str[i]))
+		i++;
+	while (str[i] && is_whitespace(str[i]))
+		i++;
+	if (str[i] && str[i] == '\n')
+		return (1);
+	else
+		return (ft_dprintf(2, "Error\nInvalid format for "), 0);
 }
 
 static int	find_element(t_parsing *parsed, char *element, int size)
@@ -83,11 +80,10 @@ static int	find_element(t_parsing *parsed, char *element, int size)
 		if (parsed->description[i][j]
 			&& !ft_strncmp(&parsed->description[i][j], element, size))
 		{
-			if (is_duplicated(parsed, element, size, i + 1))
-				return (ft_dprintf(2, "Error\nDuplicated "), 0);
-			if ((is_empty(parsed->description[i], j, size)) || (size == 1
-					&& !color_formated(parsed->description[i], j + size)))
-				return (ft_dprintf(2, "Error\nMissing "), 0);
+			if ((is_empty(parsed->description[i], j, size)) || (size == 1 && \
+			!color_formated(parsed->description[i], j + size)) || (size == 2 \
+			&& !nothing_after(parsed->description[i], j + size)))
+				return (0);
 			if (i + 1 > parsed->map_north)
 				parsed->map_north = i + 1;
 			return (1);
