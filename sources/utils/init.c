@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:02:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/31 11:56:14 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 13:35:30 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_load_textures(t_data *game)
 			game->path_west, &box_size, &box_size);
 	if (!game->north || !game->south || !game->east || !game->west)
 	{
-		ft_dprintf(2, "Error\nXpm convertion failed !");
+		ft_dprintf(2, "Error\nXpm convertion failed !\n");
 		ft_quit(game);
 	}
 	ft_map_size(game);
