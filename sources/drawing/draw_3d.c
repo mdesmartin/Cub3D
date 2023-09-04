@@ -6,7 +6,7 @@
 /*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:20:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/09/04 13:11:11 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 13:25:38 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static float	ft_wall_position(float x, float y, char face)
 {
 	float	res;
 
-	if (face == 'S')
+	if (face == 'N')
 		x--;
-	if (face == 'E')
+	if (face == 'W')
 		y--;
 	if (face == 'E' || face == 'W')
 	{
