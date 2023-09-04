@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:26:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/09/04 13:38:16 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 16:05:45 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_check_texture_file(t_data *game, char *texture_file)
 	fd = open(texture_file, O_RDONLY, 0644);
 	if (fd == -1)
 	{
-		msg = ft_strjoin("Error\nBad texture file: ", texture_file);
+		msg = ft_strjoin("Error\nInvalid texture file: ", texture_file);
 		if (!msg)
 		{
 			ft_error(game, "Error\nError message creation failed");
