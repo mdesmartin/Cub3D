@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 14:58:35 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/09/04 15:25:23 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 15:58:41 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	is_duplicated(t_parsing *parsed, char *element, int size, int i)
 {
 	int	j;
 
-	while (parsed->description[i] && i < parsed->map_north)
+	while (parsed->description[i] && i < parsed->map_north + 1)
 	{
 		j = 0;
 		while (parsed->description[i][j]
