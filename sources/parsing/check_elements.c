@@ -6,39 +6,89 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:34:55 by mvogel            #+#    #+#             */
-/*   Updated: 2023/09/04 15:58:26 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 17:20:05 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
+int	check_number(char *str, int *j)
+{
+	int	i;
+
+	i = 3;
+	if (str[*j] == ',')
+		return (ft_dprintf(2, "Error\nInvalid forffmat for "), 0);
+	while (i && str[*j] != ',' && ft_isdigit(str[*j]))
+	{
+		if (!ft_isdigit(str[*j]) && str[*j] != ',' && str[*j] != '\n')
+			return (printf("%d.%dis:%c\n", *j, i, str[*j - 1]) ,ft_dprintf(2, "Error\nInvaliiid format for "), 0);
+		*j += 1;
+		i--;
+	}
+	if (str[*j] == '\n')
+		return (2);
+	if (str[*j] && str[*j] != ',' && !is_whitespace_or_end(str[*j]))
+		return (ft_dprintf(2, "Error\nInvalid forffmat for "), 0);
+	if (str[*j] == ',')
+		*j += 1;
+	return (1);
+}
+
 static int	color_formated(char *str, int j)
 {
-	int	coma;
-	int	digit;
+	int	i;
+	int	res;
+	int	number;
 
-	coma = 0;
-	digit = 0;
+	i = 3;
+	res = 0;
+	number = 0;
 	while (str[j] && is_whitespace(str[j]))
 		j++;
-	while (str[j])
+	while (i)
 	{
-		if ((!ft_isdigit(str[j]) && str[j] != ','
-				&& str[j] != '\n') && (digit == 3 && !is_whitespace(str[j])))
-			return (ft_dprintf(2, "Error\nInvalid format for "), 0);
-		if (!digit && ft_isdigit(str[j]) && (is_whitespace_or_end(str[j - 1])))
-			digit += 1;
-		else if (digit > 0 && ft_isdigit(str[j]) && str[j - 1] == ',')
-			digit += 1;
-		if (str[j] == ',')
-			coma += 1;
-		j++;
+		res = check_number(str, &j);
+		if (!res)
+			return (0);
+		else if (res == 1)
+			i--;
+		else if (res == 2)
+			i = 0; 
+		number += 1;
 	}
-	if (coma != 2 || digit != 3)
-		return (ft_dprintf(2, "Error\nInvalid format for "), 0);
-	else
-		return (1);
+	if (number != 3)
+		return (ft_dprintf(2, "Error\nInvalid foooormat for "), 0);
+	return (1);
 }
+
+// static int	color_formated(char *str, int j)
+// {
+// 	int	coma;
+// 	int	digit;
+
+// 	coma = 0;
+// 	digit = 0;
+// 	while (str[j] && is_whitespace(str[j]))
+// 		j++;
+// 	while (str[j])
+// 	{
+// 		if (!ft_isdigit(str[j]) && str[j] != ','
+// 				&& str[j] != '\n')
+// 			return (ft_dprintf(2, "Error\nInvalid format for "), 0);
+// 		if (!digit && ft_isdigit(str[j]) && (is_whitespace_or_end(str[j - 1])))
+// 			digit += 1;
+// 		else if (digit > 0 && ft_isdigit(str[j]) && str[j - 1] == ',')
+// 			digit += 1;
+// 		if (str[j] == ',')
+// 			coma += 1;
+// 		j++;
+// 	}
+// 	if (coma != 2 || digit != 3)
+// 		return (ft_dprintf(2, "Error\nInvalid format for "), 0);
+// 	else
+// 		return (1);
+// }
 
 static int	is_empty(char *str, int j, int size)
 {
@@ -81,8 +131,8 @@ static int	find_element(t_parsing *parsed, char *element, int size)
 			&& !ft_strncmp(&parsed->description[i][j], element, size))
 		{
 			if ((is_empty(parsed->description[i], j, size)) || (size == 1 && \
-			!color_formated(parsed->description[i], j + size)) || (size == 2 \
-			&& !nothing_after(parsed->description[i], j + size)))
+			!color_formated(parsed->description[i], j + size)) || \
+			!nothing_after(parsed->description[i], j + size))
 				return (0);
 			if (i + 1 > parsed->map_north)
 				parsed->map_north = i + 1;
