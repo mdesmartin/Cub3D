@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:26:01 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/31 15:53:28 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/04 13:38:16 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_check_arg(int ac, char **av)
 	else if (ac > 2)
 	{
 		ft_dprintf(2,
-			"Error\nPlease execute cube3D followed by only one map!");
+			"Error\nPlease execute cube3D followed by only one map!\n");
 		exit (1);
 	}
 	else
