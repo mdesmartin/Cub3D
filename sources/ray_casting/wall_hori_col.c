@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:26:54 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/31 15:48:56 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/05 12:49:04 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@ t_col_point	ft_hori_collision(t_data *game, float angle)
 	if (sinf(angle) > 0)
 	{
 		horizontal = ft_hori_col_sin_pos(game, angle);
-		horizontal.face = 'S';
+		horizontal.face = 'N';
 	}
 	else if (sinf(angle) < 0)
 	{
 		horizontal = ft_hori_col_sin_neg(game, angle);
-		horizontal.face = 'N';
+		horizontal.face = 'S';
 	}
 	else
 	{

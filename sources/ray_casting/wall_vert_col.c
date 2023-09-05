@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:54:25 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/31 15:49:08 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/05 12:48:53 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@ t_col_point	ft_vert_collision(t_data *game, float angle)
 	if (cosf(angle) > 0)
 	{
 		verticale = ft_vert_col_cos_pos(game, angle);
-		verticale.face = 'E';
+		verticale.face = 'W';
 	}
 	else if (cosf(angle) < 0)
 	{
 		verticale = ft_vert_col_cos_neg(game, angle);
-		verticale.face = 'W';
+		verticale.face = 'E';
 	}
 	else
 	{
