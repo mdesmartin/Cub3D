@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/30 15:03:48 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/05 12:26:20 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,8 @@ static void	ft_draw_square(t_data *game, int x, int y, int color)
 			if (x * MAP_BOX_SIZE + i > 0 && y * MAP_BOX_SIZE + j > 0
 				&& x * MAP_BOX_SIZE + i < WIN_WIDTH
 				&& y * MAP_BOX_SIZE + j < WIN_HEIGTH)
-			{
-				ft_mlx_pixel_put(game, x * MAP_BOX_SIZE + i,
-					y * MAP_BOX_SIZE + j, color);
-			}
+				((int *)game->addr)[(y * MAP_BOX_SIZE + j)
+					* (game->line_length >> 2) + (x * MAP_BOX_SIZE + i)] = color;
 			j++;
 		}
 		i++;

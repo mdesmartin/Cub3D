@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:57:36 by mdesmart          #+#    #+#             */
-/*   Updated: 2023/09/04 15:24:58 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/05 12:33:06 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void		ft_check_textures(t_data *game);
 void		ft_draw_floor_ceiling(t_data *game);
 int			ft_refresh_img(t_data *game);
 void		ft_draw_map(t_data *game, char **map);
-void		ft_mlx_pixel_put(t_data *game, int x, int y, int color);
 void		ft_draw_3d(t_data *game);
 void		print_line(t_data *game, t_display_line line);
 

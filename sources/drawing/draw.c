@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/09/05 12:22:15 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/05 12:33:02 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ int	ft_refresh_img(t_data *game)
 	if (game->img)
 		mlx_destroy_image(game->mlx_ptr, game->img);
 	return (0);
-}
-
-void	ft_mlx_pixel_put(t_data *game, int x, int y, int color)
-{
-	((int *)game->addr)[y * (game->line_length >> 2) + x] = color;
 }
 
 void	ft_add_x_line(t_line *line, int x0, int x1, float degree)
