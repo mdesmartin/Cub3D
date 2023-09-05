@@ -6,7 +6,7 @@
 /*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:29:42 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/08/30 13:11:22 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/05 12:17:44 by mdesmart         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,14 @@ int	ft_refresh_img(t_data *game)
 {
 	game_refresh(game);
 	game->img = mlx_new_image(game->mlx_ptr, WIN_WIDTH, WIN_HEIGTH);
-	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
-			&game->line_length, &game->endian);
+	if (!game->img)
+		ft_error(game, "Error\nmlx_new_image() failed\n");
+	game->addr = NULL;
+	if (!game->addr)
+	{
+		mlx_destroy_image(game->mlx_ptr, game->img);
+		ft_error(game, "Error\nmlx_get_data_addr() failed\n");
+	}
 	ft_draw_floor_ceiling(game);
 	ft_draw_3d(game);
 	if (game->show_map == 1)
