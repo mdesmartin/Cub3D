@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesmart <mdesmart@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jmoutous <jmoutous@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:12:36 by jmoutous          #+#    #+#             */
-/*   Updated: 2023/09/05 12:26:20 by mdesmart         ###   ########lyon.fr   */
+/*   Updated: 2023/09/05 15:32:56 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ static void	ft_draw_square(t_data *game, int x, int y, int color)
 				&& x * MAP_BOX_SIZE + i < WIN_WIDTH
 				&& y * MAP_BOX_SIZE + j < WIN_HEIGTH)
 				((int *)game->addr)[(y * MAP_BOX_SIZE + j)
-					* (game->line_length >> 2) + (x * MAP_BOX_SIZE + i)] = color;
+					* (game->line_length >> 2)
+					+ (x * MAP_BOX_SIZE + i)] = color;
 			j++;
 		}
 		i++;
